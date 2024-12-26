@@ -35,7 +35,6 @@ const SignIn = () => {
   });
 
   async function onSubmit(values: z.infer<typeof signInFormSchema>) {
-    console.log(process.env.BETTER_AUTH_URL);
     const { email, password } = values;
     const { data, error } = await authClient.signIn.email(
       {
@@ -54,14 +53,24 @@ const SignIn = () => {
         },
         onError: async (ctx) => {
           if (ctx.error.status === 403) {
-            await authClient.sendVerificationEmail({
-              email,
-              callbackURL: '/dashboard',
-            });
-            toast({
-              title: 'Please verify your email',
-              description: 'Email verification has been sent, kindly verify',
-            });
+            const { error: verificationError } =
+              await authClient.sendVerificationEmail({
+                email,
+                callbackURL: '/dashboard',
+              });
+            if (verificationError) {
+              console.log(verificationError);
+            }
+            if (!verificationError) {
+              toast({
+                title: 'Email Sent',
+                description: 'Verification email has been sent successfully',
+              });
+            }
+            // toast({
+            //   title: 'Please verify your email',
+            //   description: 'Email verification has been sent, kindly verify',
+            // });
           }
           toast({
             title: 'Error',

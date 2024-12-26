@@ -15,7 +15,7 @@ function Feature({ title, description }: { title: string; description: string })
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <Tag className="w-5 h-5 text-[#FF5733]" />
+          <Tag className="w-5 h-5 text-cyan-500" />
         </div>
       </div>
       {isHovered && (
@@ -38,7 +38,7 @@ export default function Page() {
             <h1 className="text-6xl font-bold mb-6">
               <span className="text-white">ABOUT</span>
               <br />
-              <span className="text-[#FF5733]">MEDIA</span>
+              <span className="text-cyan-400">MEDIA</span>
               <br />
               <span className="text-white">NEXUS</span>
             </h1>
@@ -55,7 +55,7 @@ export default function Page() {
           </div>
 
           {/* Right Column */}
-          <div className="md:w-1/2 relative bg-[#FF5733] p-4 md:p-6 rounded-lg">
+          <div className="md:w-1/2 relative bg-cyan-500 p-4 md:p-6 rounded-lg">
             <div className="space-y-24">
               <Feature
                 title="STATE-OF-THE-ART FACILITY"

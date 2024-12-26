@@ -25,6 +25,7 @@ import { Input } from '@/components/ui/input';
 import { signUpFormSchema } from '@/lib/auth-schema';
 import { authClient } from '@/lib/auth-client';
 import { toast } from '@/hooks/use-toast';
+import { redirect } from 'next/navigation';
 
 const SignUp = () => {
   // 1. Define your form.
@@ -40,6 +41,7 @@ const SignUp = () => {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof signUpFormSchema>) {
     const { name, email, password } = values;
+    console.log('Values: ', values);
     const { data, error } = await authClient.signUp.email(
       {
         email,
@@ -53,11 +55,33 @@ const SignUp = () => {
             title: 'Please Wait...',
           });
         },
-        onSuccess: () => {
+        onSuccess: async () => {
           form.reset();
+          const { error: verificationError } =
+            await authClient.sendVerificationEmail({
+              email,
+              callbackURL: '/dashboard',
+            });
+          if (verificationError) {
+            console.log(verificationError);
+          }
+          if (!verificationError) {
+            toast({
+              title: 'Email Sent',
+              description: 'Verification email has been sent successfully',
+            });
+          }
+          toast({
+            title: 'Account Created',
+            description: 'Please check your email to verify your account',
+          });
+          redirect('/signin');
         },
         onError: (ctx) => {
-          alert(ctx.error.message);
+          toast({
+            title: 'Error',
+            description: ctx.error.message,
+          });
         },
       }
     );
