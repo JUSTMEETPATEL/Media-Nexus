@@ -1,15 +1,15 @@
-"use client";
-import React from "react";
-import { StickyScroll } from "./ui/sticky-scroll-reveal";
-import Image from "next/image";
+'use client';
+import React from 'react';
+import { StickyScroll } from './ui/sticky-scroll-reveal';
+import Image from 'next/image';
 
 const content = [
   {
-    title: "VISUAL STUDIO",
+    title: 'VISUAL STUDIO',
     description:
-      "The green screen studio enables students to create dynamic content, explore visual effects, and master storytelling.",
+      'The green screen studio enables students to create dynamic content, explore visual effects, and master storytelling.',
     content: (
-        <div className="h-full w-full  flex items-center justify-center text-white">
+      <div className="h-full w-full  flex items-center justify-center text-white">
         <Image
           src="/visualstudio.jpeg"
           width={300}
@@ -21,16 +21,14 @@ const content = [
     ),
   },
   {
-    title:"",
-    description:"",
-    content: (
-        <div></div>
-    ),
+    title: '',
+    description: '',
+    content: <div></div>,
   },
   {
-    title: "DIGITAL STUDIO",
+    title: 'DIGITAL STUDIO',
     description:
-      "The photography studio provides professional equip ment and lighting for hands-on learning in various photography projects.",
+      'The photography studio provides professional equip ment and lighting for hands-on learning in various photography projects.',
     content: (
       <div className="h-full w-full  flex items-center justify-center text-white">
         <Image
@@ -44,18 +42,11 @@ const content = [
     ),
   },
   {
-    title:"",
-    description:"",
-    content: (
-        <div></div>
-    ),
-  },
-  {
-    title: "ANIMATION LAB",
+    title: 'ANIMATION LAB',
     description:
-      "The animation lab offers advanced tools for 20/30 creation, fostering storytelling, design, and visual effects.",
+      'The animation lab offers advanced tools for 20/30 creation, fostering storytelling, design, and visual effects.',
     content: (
-        <div className="h-full w-full  flex items-center justify-center text-white">
+      <div className="h-full w-full  flex items-center justify-center text-white">
         <Image
           src="/animationlab.jpeg"
           width={300}
@@ -65,6 +56,11 @@ const content = [
         />
       </div>
     ),
+  },
+  {
+    title: '',
+    description: '',
+    content: <div></div>,
   },
 ];
 export function Infrastructure() {

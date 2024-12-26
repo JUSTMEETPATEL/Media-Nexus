@@ -1,10 +1,10 @@
-import { redirect } from "next/navigation";
-import { session } from "@/lib/session";
+import { redirect } from 'next/navigation';
+import { session } from '@/lib/session';
 
 const Page = async () => {
   const userSession = await session();
   if (!userSession) {
-    return redirect("/");
+    return redirect('/');
   }
   const user = userSession?.user;
   return (

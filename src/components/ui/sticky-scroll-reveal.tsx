@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
-import React, { useEffect, useRef, useState } from "react";
-import { useMotionValueEvent, useScroll } from "framer-motion";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
+import { useMotionValueEvent, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 export const StickyScroll = ({
   content,
@@ -22,11 +22,11 @@ export const StickyScroll = ({
     // uncomment line 22 and comment line 23 if you DONT want the overflow container and want to have it change on the entire page scroll
     // target: ref
     container: ref,
-    offset: ["start start", "end start"],
+    offset: ['start start', 'end start'],
   });
-  const cardLength = content.length;
+  const cardLength = content.length + 1;
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     const cardsBreakpoints = content.map((_, index) => index / cardLength);
     const closestBreakpointIndex = cardsBreakpoints.reduce(
       (acc, breakpoint, index) => {
@@ -42,15 +42,18 @@ export const StickyScroll = ({
   });
 
   const backgroundColors = [
-    "var(--slate-900)",
-    "var(--black)",
-    "var(--neutral-900)",
+    'var(--slate-900)',
+    'var(--black)',
+    'var(--neutral-900)',
   ];
-  const linearGradients = [
-    "linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))",
-    "linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))",
-    "linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))",
-  ];
+  const linearGradients = React.useMemo(
+    () => [
+      'linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))',
+      'linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))',
+      'linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))',
+    ],
+    []
+  );
 
   const [backgroundGradient, setBackgroundGradient] = useState(
     linearGradients[0]
@@ -58,7 +61,7 @@ export const StickyScroll = ({
 
   useEffect(() => {
     setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
-  }, [activeCard]);
+  }, [activeCard, linearGradients]);
 
   return (
     <motion.div
@@ -102,7 +105,7 @@ export const StickyScroll = ({
       <div
         style={{ background: backgroundGradient }}
         className={cn(
-          "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden",
+          'hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden',
           contentClassName
         )}
       >

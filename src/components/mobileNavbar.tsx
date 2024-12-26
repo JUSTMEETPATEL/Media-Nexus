@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
+import Link from 'next/link';
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const MobileNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +24,7 @@ const MobileNavbar = () => {
         </button>
       </div>
       {/* Mobile menu */}
-      <div className={`${isOpen ? "block" : "hidden"} md:hidden bg-black/95`}>
+      <div className={`${isOpen ? 'block' : 'hidden'} md:hidden bg-black/95`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <Link
             href="/about"

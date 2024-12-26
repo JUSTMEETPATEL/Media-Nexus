@@ -1,12 +1,12 @@
-import Image from "next/image"
-import { MapPin, Phone, Mail, Monitor } from 'lucide-react'
-import Navbar from "@/components/navbar"
+import Image from 'next/image';
+import { MapPin, Phone, Mail, Monitor } from 'lucide-react';
+import Navbar from '@/components/navbar';
 
 export default function Page() {
   return (
     <main className="min-h-screen bg-black">
       <Navbar />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
         <div className="grid md:grid-cols-2 gap-8 items-center min-h-[calc(100vh-4rem)]">
           {/* Left Column - Contact Information */}
@@ -26,7 +26,9 @@ export default function Page() {
                   <MapPin className="h-6 w-6 text-[#FF5733]" />
                 </div>
                 <div>
-                  <h3 className="text-[#FF5733] text-xl font-semibold mb-2">ADDRESS</h3>
+                  <h3 className="text-[#FF5733] text-xl font-semibold mb-2">
+                    ADDRESS
+                  </h3>
                   <p className="text-gray-300">
                     Bharathi Salai, Ramapuram,
                     <br />
@@ -41,7 +43,9 @@ export default function Page() {
                   <Phone className="h-6 w-6 text-[#FF5733]" />
                 </div>
                 <div>
-                  <h3 className="text-[#FF5733] text-xl font-semibold mb-2">CALL US</h3>
+                  <h3 className="text-[#FF5733] text-xl font-semibold mb-2">
+                    CALL US
+                  </h3>
                   <p className="text-gray-300">+91 9384088566</p>
                 </div>
               </div>
@@ -52,7 +56,9 @@ export default function Page() {
                   <Mail className="h-6 w-6 text-[#FF5733]" />
                 </div>
                 <div>
-                  <h3 className="text-[#FF5733] text-xl font-semibold mb-2">EMAIL</h3>
+                  <h3 className="text-[#FF5733] text-xl font-semibold mb-2">
+                    EMAIL
+                  </h3>
                   <p className="text-gray-300">medianexus@srmorg.com</p>
                 </div>
               </div>
@@ -63,7 +69,9 @@ export default function Page() {
                   <Monitor className="h-6 w-6 text-[#FF5733]" />
                 </div>
                 <div>
-                  <h3 className="text-[#FF5733] text-xl font-semibold mb-2">WEBSITE</h3>
+                  <h3 className="text-[#FF5733] text-xl font-semibold mb-2">
+                    WEBSITE
+                  </h3>
                   <p className="text-gray-300">www.medianexus.srmorg.com</p>
                 </div>
               </div>
@@ -88,6 +96,5 @@ export default function Page() {
         </div>
       </div>
     </main>
-  )
+  );
 }
-
