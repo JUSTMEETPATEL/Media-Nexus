@@ -41,6 +41,7 @@ const SignUp = () => {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof signUpFormSchema>) {
     const { name, email, password } = values;
+    console.log("Values: ", values);
     const { data, error } = await authClient.signUp.email(
       {
         email,
