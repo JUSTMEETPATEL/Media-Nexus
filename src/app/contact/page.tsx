@@ -15,7 +15,7 @@ export default function Page() {
               <h1 className="text-6xl font-bold text-white">
                 HOW TO
                 <br />
-                <span className="text-[#FF5733]">FIND US</span>
+                <span className="text-cyan-400">FIND US</span>
               </h1>
             </div>
 
@@ -23,10 +23,10 @@ export default function Page() {
               {/* Address */}
               <div className="flex items-start gap-4">
                 <div className="p-2 bg-white/10 rounded-lg">
-                  <MapPin className="h-6 w-6 text-[#FF5733]" />
+                  <MapPin className="h-6 w-6 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="text-[#FF5733] text-xl font-semibold mb-2">
+                  <h3 className="text-cyan-400 text-xl font-semibold mb-2">
                     ADDRESS
                   </h3>
                   <p className="text-gray-300">
@@ -40,10 +40,10 @@ export default function Page() {
               {/* Phone */}
               <div className="flex items-start gap-4">
                 <div className="p-2 bg-white/10 rounded-lg">
-                  <Phone className="h-6 w-6 text-[#FF5733]" />
+                  <Phone className="h-6 w-6 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="text-[#FF5733] text-xl font-semibold mb-2">
+                  <h3 className="text-cyan-400 text-xl font-semibold mb-2">
                     CALL US
                   </h3>
                   <p className="text-gray-300">+91 9384088566</p>
@@ -53,10 +53,10 @@ export default function Page() {
               {/* Email */}
               <div className="flex items-start gap-4">
                 <div className="p-2 bg-white/10 rounded-lg">
-                  <Mail className="h-6 w-6 text-[#FF5733]" />
+                  <Mail className="h-6 w-6 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="text-[#FF5733] text-xl font-semibold mb-2">
+                  <h3 className="text-cyan-400 text-xl font-semibold mb-2">
                     EMAIL
                   </h3>
                   <p className="text-gray-300">medianexus@srmorg.com</p>
@@ -66,10 +66,10 @@ export default function Page() {
               {/* Website */}
               <div className="flex items-start gap-4">
                 <div className="p-2 bg-white/10 rounded-lg">
-                  <Monitor className="h-6 w-6 text-[#FF5733]" />
+                  <Monitor className="h-6 w-6 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="text-[#FF5733] text-xl font-semibold mb-2">
+                  <h3 className="text-cyan-400 text-xl font-semibold mb-2">
                     WEBSITE
                   </h3>
                   <p className="text-gray-300">www.medianexus.srmorg.com</p>
