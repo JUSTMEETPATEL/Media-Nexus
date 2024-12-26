@@ -10,8 +10,22 @@ const Navbar = async () => {
   });
   return (
     <div className="border-b px-4">
-      <div className="flex items-center justify-between mx-auto max-w-4xl h-16">
-        <h1 className="font-bold">Secure App</h1>
+      <div className="flex items-center justify-between h-16 mx-auto">
+        <h1 className="font-bold text-4xl"><span className='text-orange-600'>MEDIA</span> NEXUS</h1>
+        <div className='flex items-center space-x-4 mr-28'>
+          <Link href="/" className="">
+            Home
+          </Link>
+          <Link href="/about" className="">
+            About
+          </Link>
+          <Link href="/courses" className="">
+            Courses
+          </Link>
+          <Link href="/contact" className="">
+            Contact
+          </Link>
+        </div>
         <div>
           {session ? (
             <form
