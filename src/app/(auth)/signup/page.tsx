@@ -41,7 +41,7 @@ const SignUp = () => {
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof signUpFormSchema>) {
     const { name, email, password } = values;
-    console.log("Values: ", values);
+    console.log('Values: ', values);
     const { data, error } = await authClient.signUp.email(
       {
         email,
@@ -55,22 +55,32 @@ const SignUp = () => {
             title: 'Please Wait...',
           });
         },
-        onSuccess: async() => {
+        onSuccess: async () => {
           form.reset();
-          await authClient.sendVerificationEmail({
-            email,
-            callbackURL: '/dashboard',
-          });
+          const { error: verificationError } =
+            await authClient.sendVerificationEmail({
+              email,
+              callbackURL: '/dashboard',
+            });
+          if (verificationError) {
+            console.log(verificationError);
+          }
+          if (!verificationError) {
+            toast({
+              title: 'Email Sent',
+              description: 'Verification email has been sent successfully',
+            });
+          }
           toast({
             title: 'Account Created',
-            description: 'Please check your email to verify your account'
+            description: 'Please check your email to verify your account',
           });
           redirect('/signin');
         },
         onError: (ctx) => {
           toast({
             title: 'Error',
-            description: ctx.error.message
+            description: ctx.error.message,
           });
         },
       }
