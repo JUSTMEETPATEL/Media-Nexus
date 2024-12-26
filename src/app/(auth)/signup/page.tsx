@@ -57,15 +57,13 @@ const SignUp = () => {
           form.reset();
           toast({
             title: 'Account Created',
-            description: 'Please check your email to verify your account',
-            status: 'success',
+            description: 'Please check your email to verify your account'
           });
         },
         onError: (ctx) => {
           toast({
             title: 'Error',
-            description: ctx.error.message,
-            status: 'error',
+            description: ctx.error.message
           });
         },
       }
