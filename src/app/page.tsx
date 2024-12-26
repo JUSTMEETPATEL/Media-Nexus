@@ -1,3 +1,4 @@
+import { Infrastructure } from "@/components/infrastructure"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -40,6 +41,7 @@ export default function Home() {
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-[1]"></div>
       </div>
+      <Infrastructure />
     </main>
   )
 }
