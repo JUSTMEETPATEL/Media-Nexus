@@ -11,8 +11,10 @@ const Navbar = async () => {
   return (
     <div className="border-b px-4">
       <div className="flex items-center justify-between h-16 mx-auto">
-        <h1 className="font-bold text-4xl"><span className='text-orange-600'>MEDIA</span> NEXUS</h1>
-        <div className='flex items-center space-x-4 mr-28'>
+        <h1 className="font-bold text-4xl">
+          <span className="text-orange-600">MEDIA</span> NEXUS
+        </h1>
+        <div className="flex items-center space-x-4 mr-28">
           <Link href="/" className="">
             Home
           </Link>
