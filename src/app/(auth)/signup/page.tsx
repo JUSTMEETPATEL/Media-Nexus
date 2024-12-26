@@ -53,8 +53,12 @@ const SignUp = () => {
             title: 'Please Wait...',
           });
         },
-        onSuccess: () => {
+        onSuccess: async() => {
           form.reset();
+          await authClient.sendVerificationEmail({
+            email,
+            callbackURL: '/dashboard',
+          });
           toast({
             title: 'Account Created',
             description: 'Please check your email to verify your account'

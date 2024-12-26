@@ -35,7 +35,6 @@ const SignIn = () => {
   });
 
   async function onSubmit(values: z.infer<typeof signInFormSchema>) {
-    console.log(process.env.BETTER_AUTH_URL);
     const { email, password } = values;
     const { data, error } = await authClient.signIn.email(
       {
