@@ -1,15 +1,12 @@
-import { auth } from '@/lib/auth';
-import { redirect } from 'next/navigation';
-import { headers } from 'next/headers';
+import { redirect } from "next/navigation";
+import { session } from "@/lib/session";
 
 const Page = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-  if (!session) {
-    return redirect('/');
+  const userSession = await session();
+  if (!userSession) {
+    return redirect("/");
   }
-  const user = session?.user;
+  const user = userSession?.user;
   return (
     <div>
       <h1>Dashboard</h1>
