@@ -1,10 +1,14 @@
 import { Infrastructure } from '@/components/infrastructure';
+import { Loader } from '@/components/loader';
 import { ProgramOffered } from '@/components/program-offered';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
 export default function Home() {
   return (
+    <Suspense fallback={<Loader />}>
+
     <main className="min-h-screen bg-black">
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background image/video container */}
@@ -47,5 +51,6 @@ export default function Home() {
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-[1]"></div>
       <ProgramOffered />
     </main>
+    </Suspense>
   );
 }
