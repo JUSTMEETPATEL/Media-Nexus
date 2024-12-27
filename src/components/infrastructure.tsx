@@ -21,11 +21,6 @@ const content = [
     ),
   },
   {
-    title: '',
-    description: '',
-    content: <div></div>,
-  },
-  {
     title: 'DIGITAL STUDIO',
     description:
       'The photography studio provides professional equip ment and lighting for hands-on learning in various photography projects.',
@@ -56,11 +51,6 @@ const content = [
         />
       </div>
     ),
-  },
-  {
-    title: '',
-    description: '',
-    content: <div></div>,
   },
 ];
 export function Infrastructure() {

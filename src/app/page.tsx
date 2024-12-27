@@ -1,12 +1,17 @@
-import { Suspense } from 'react';
+"use client"
+
+import { Suspense, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Infrastructure } from '@/components/infrastructure';
 import { Loader } from '@/components/loader';
 import { ProgramOffered } from '@/components/program-offered';
-import { BookOpen, Camera, ChevronRight, CurlyBraces, Film, Pencil } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const mediaNexus = {
   vision: "To empower aspiring media professionals with cutting-edge skills and creative expertise, fostering innovation and excellence in the ever-evolving digital landscape.",
@@ -86,6 +91,20 @@ const mediaNexus = {
 };
 
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
+
+  if (!isClient) {
+    return null;
+  }
+
   return (
     <Suspense fallback={<Loader />}>
       <main className="min-h-screen bg-white">
@@ -101,19 +120,24 @@ export default function Home() {
             />
           </div>
 
-          <div className="relative z-10 text-white text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative z-10 text-white text-center px-4"
+          >
             <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight">
               MEDIA <span className="text-cyan-400">NEXUS</span>
             </h1>
             <p className="text-gray-300 text-xl md:text-2xl max-w-2xl mx-auto mb-8">
               Empowering the next generation of media professionals
             </p>
-            <Button asChild size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-black">
+            <Button asChild size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-black transition-colors duration-300">
               <Link href="/studio">
                 Explore Studio <ChevronRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-          </div>
+          </motion.div>
 
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-[1]"></div>
         </section>
@@ -121,8 +145,8 @@ export default function Home() {
         {/* About Section */}
         <section className="py-24 bg-gradient-to-b from-slate-100 to-white text-black">
           <div className="container mx-auto px-4">
-            <h2 className="text-5xl font-bold text-center mb-8">About Media Nexus</h2>
-            <p className="text-xl text-center max-w-4xl mx-auto leading-relaxed">
+            <h2 className="text-5xl font-bold text-center mb-8" data-aos="fade-up">About Media Nexus</h2>
+            <p className="text-xl text-center max-w-4xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
               {mediaNexus.about}
             </p>
           </div>
@@ -131,9 +155,9 @@ export default function Home() {
         {/* Vision and Mission Section */}
         <section className="py-24 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-5xl font-bold text-center mb-16">Our Vision & Mission</h2>
+            <h2 className="text-5xl font-bold text-center mb-16" data-aos="fade-up">Our Vision & Mission</h2>
             <div className="grid md:grid-cols-2 gap-12">
-              <Card className="bg-gradient-to-br from-cyan-500 to-blue-600 text-white">
+              <Card className="bg-gradient-to-br from-cyan-500 to-blue-600 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-xl" data-aos="fade-right">
                 <CardHeader>
                   <CardTitle className="text-3xl mb-4">Vision</CardTitle>
                 </CardHeader>
@@ -141,7 +165,7 @@ export default function Home() {
                   <p className="text-lg">{mediaNexus.vision}</p>
                 </CardContent>
               </Card>
-              <Card className="bg-gradient-to-br from-purple-500 to-pink-600 text-white">
+              <Card className="bg-gradient-to-br from-purple-500 to-pink-600 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-xl" data-aos="fade-left">
                 <CardHeader>
                   <CardTitle className="text-3xl mb-4">Mission</CardTitle>
                 </CardHeader>
@@ -157,34 +181,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Courses Section */}
-        <section className="py-24 bg-gray-100">
-          <div className="container mx-auto px-4">
-            <h2 className="text-5xl font-bold text-center mb-16">Our Courses</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {mediaNexus.courses.map((course, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                  <CardHeader>
-                    <CardTitle className="flex items-center text-2xl">
-                      {getCourseIcon(course.title)}
-                      <span className="ml-2">{course.title}</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600">{course.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Programs Offered Section */}
+        <div>
+          <ProgramOffered />
+        </div>
 
         {/* Course Structure Section */}
         <section className="py-24 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-5xl font-bold text-center mb-16">Course Structure</h2>
+            <h2 className="text-5xl font-bold text-center mb-16" data-aos="fade-up">Course Structure</h2>
             <div className="grid md:grid-cols-2 gap-12">
-              <Card>
+              <Card className="transition-all duration-300 hover:shadow-xl" data-aos="fade-right">
                 <CardHeader>
                   <CardTitle className="text-2xl">Duration and Batches</CardTitle>
                 </CardHeader>
@@ -201,7 +208,7 @@ export default function Home() {
                   </div>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="transition-all duration-300 hover:shadow-xl" data-aos="fade-left">
                 <CardHeader>
                   <CardTitle className="text-2xl">Session Breakdown</CardTitle>
                 </CardHeader>
@@ -210,14 +217,16 @@ export default function Home() {
                     <div className="w-64 h-64 relative">
                       <svg viewBox="0 0 100 100" className="w-full h-full">
                         <circle cx="50" cy="50" r="45" fill="#e0e7ff" />
-                        <circle
+                        <motion.circle
                           cx="50"
                           cy="50"
                           r="45"
                           fill="transparent"
                           stroke="#818cf8"
                           strokeWidth="10"
-                          strokeDasharray={`${mediaNexus.structure.practicalSessions * 2.83} 283`}
+                          initial={{ strokeDasharray: "0 283" }}
+                          animate={{ strokeDasharray: `${mediaNexus.structure.practicalSessions * 2.83} 283` }}
+                          transition={{ duration: 1.5, ease: "easeInOut" }}
                           transform="rotate(-90 50 50)"
                         />
                       </svg>
@@ -242,8 +251,8 @@ export default function Home() {
         {/* Evaluation and Certification Section */}
         <section className="py-24 bg-gray-100">
           <div className="container mx-auto px-4">
-            <h2 className="text-5xl font-bold text-center mb-16">Evaluation & Certification</h2>
-            <Card>
+            <h2 className="text-5xl font-bold text-center mb-16" data-aos="fade-up">Evaluation & Certification</h2>
+            <Card className="transition-all duration-300 hover:shadow-xl" data-aos="fade-up">
               <CardHeader>
                 <CardTitle className="text-3xl">Path to Success</CardTitle>
               </CardHeader>
@@ -269,8 +278,8 @@ export default function Home() {
         {/* Financial Aspects Section */}
         <section className="py-24 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-5xl font-bold text-center mb-16">Investment in Your Future</h2>
-            <Card className="max-w-2xl mx-auto">
+            <h2 className="text-5xl font-bold text-center mb-16" data-aos="fade-up">Investment in Your Future</h2>
+            <Card className="max-w-2xl mx-auto transition-all duration-300 hover:shadow-xl" data-aos="fade-up">
               <CardHeader>
                 <CardTitle className="text-3xl text-center">Course Fee</CardTitle>
               </CardHeader>
@@ -285,35 +294,14 @@ export default function Home() {
         {/* Empowerment Section */}
         <section className="py-24 bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-5xl font-bold text-center mb-8">Empowering the Next Generation</h2>
-            <p className="text-xl text-center max-w-4xl mx-auto leading-relaxed">
+            <h2 className="text-5xl font-bold text-center mb-8" data-aos="fade-up">Empowering the Next Generation</h2>
+            <p className="text-xl text-center max-w-4xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
               {mediaNexus.empowerment.description}
             </p>
           </div>
         </section>
-
-        {/* Programs Offered Section */}
-        <div className="mt-28">
-          <ProgramOffered />
-        </div>
       </main>
     </Suspense>
   );
 }
 
-function getCourseIcon(title: string) {
-  switch (title) {
-    case "Short Film Making":
-      return <Film className="h-6 w-6" />;
-    case "Photography":
-      return <Camera className="h-6 w-6" />;
-    case "Editing Techniques":
-      return <Pencil className="h-6 w-6" />;
-    case "Social Media Design":
-      return <BookOpen className="h-6 w-6" />;
-    case "3D Animation":
-      return <CurlyBraces className="h-6 w-6" />;
-    default:
-      return null;
-  }
-}
