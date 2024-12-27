@@ -72,6 +72,24 @@ export default function Navbar() {
                 Mentors
               </Link>
               <Link
+                href="/faculty"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Faculty
+              </Link>
+              <Link
+                href="/programs"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Programs
+              </Link>
+              <Link
+                href="/infrastructure"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Infrastructure
+              </Link>
+              <Link
                 href="/contact"
                 className="text-gray-300 hover:text-white transition-colors"
               >
