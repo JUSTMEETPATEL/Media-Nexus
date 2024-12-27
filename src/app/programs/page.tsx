@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Film, Camera, Video, Share2, CuboidIcon as Cube } from 'lucide-react'
 import { motion } from "framer-motion"
+import Link from 'next/link'
 
 const programs = [
   {
@@ -42,6 +43,7 @@ const MotionCard = motion(Card)
 export default function ProgramsPage() {
   return (
     <motion.div 
+      key="programs-page"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -101,49 +103,50 @@ export default function ProgramsPage() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {programs.map((program, index) => (
-            <MotionCard 
-              key={index} 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.5,
-                delay: 0.8 + index * 0.1,
-                ease: "easeOut"
-              }}
-              whileHover={{ 
-                y: -4,
-                transition: { duration: 0.2 }
-              }}
-              className="group relative overflow-hidden border-0 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg"
-            >
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100"
-                transition={{ duration: 0.3 }}
-              />
-              <CardHeader className="relative">
+            <Link href="/enquiry" key={index} className="block">
+              <MotionCard 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.5,
+                  delay: 0.8 + index * 0.1,
+                  ease: "easeOut"
+                }}
+                whileHover={{ 
+                  y: -4,
+                  transition: { duration: 0.2 }
+                }}
+                className="group relative overflow-hidden border-0 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg h-full"
+              >
                 <motion.div 
-                  className="w-16 h-16 rounded-2xl bg-cyan-400/10 flex items-center justify-center mb-6"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                >
-                  <program.icon className="w-8 h-8 text-cyan-400" />
-                </motion.div>
-                <CardTitle className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-500">
-                  {program.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {program.description}
-                </p>
-              </CardContent>
-              <motion.div 
-                className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-400 to-cyan-500"
-                initial={{ scaleX: 0 }}
-                whileHover={{ scaleX: 1 }}
-                transition={{ duration: 0.3 }}
-              />
-            </MotionCard>
+                  className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100"
+                  transition={{ duration: 0.3 }}
+                />
+                <CardHeader className="relative">
+                  <motion.div 
+                    className="w-16 h-16 rounded-2xl bg-cyan-400/10 flex items-center justify-center mb-6"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
+                    <program.icon className="w-8 h-8 text-cyan-400" />
+                  </motion.div>
+                  <CardTitle className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-500">
+                    {program.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {program.description}
+                  </p>
+                </CardContent>
+                <motion.div 
+                  className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-400 to-cyan-500"
+                  initial={{ scaleX: 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </MotionCard>
+            </Link>
           ))}
         </div>
       </div>
