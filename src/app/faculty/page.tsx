@@ -9,22 +9,23 @@ interface Mentor {
 }
 
 const mentors: Mentor[] = [
-
   {
-      name: 'Dr.Akash',
-      designation: 'Professor and Head',
-      image:'/Drakash.png',
-      link: 'https://drive.google.com/file/d/1kya_fywVK6qjOu9oKtChy_ko5rbnx-tv/view?usp=sharing',
-      description: 'Department of Media Studies, College of Science and Humanities, SRM Institute of Science and Technology, Ramapuram Campus.',
+    name: 'Dr.Akash',
+    designation: 'Professor and Head',
+    image: '/Drakash.png',
+    link: 'https://drive.google.com/file/d/1kya_fywVK6qjOu9oKtChy_ko5rbnx-tv/view?usp=sharing',
+    description:
+      'Department of Media Studies, College of Science and Humanities, SRM Institute of Science and Technology, Ramapuram Campus.',
   },
   {
     name: 'Mr.Akshej S Menon',
     designation: 'Professor and Head',
     image: '/Akshej.jpg',
     link: 'https://drive.google.com/file/d/1w1CrrMvTKI8oX7WvDvfDhevFnfQnZgul/view?usp=sharing',
-    description: 'Department of Media Studies, College of Science and Humanities, SRM Institute of Science and Technology, Ramapuram Campus.',
-},
-{
+    description:
+      'Department of Media Studies, College of Science and Humanities, SRM Institute of Science and Technology, Ramapuram Campus.',
+  },
+  {
     name: 'Ms. Sinduja',
     designation: 'Professor and Head',
     image: '/Sinduja.jpg',
