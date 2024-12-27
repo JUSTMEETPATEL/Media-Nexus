@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
-import React, { useEffect, useRef, useState } from "react";
-import { useMotionValueEvent, useScroll } from "framer-motion";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
+import { useMotionValueEvent, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 export const StickyScroll = ({
   content,
@@ -20,11 +20,11 @@ export const StickyScroll = ({
   const ref = useRef<any>(null);
   const { scrollYProgress } = useScroll({
     container: ref,
-    offset: ["start start", "end start"],
+    offset: ['start start', 'end start'],
   });
   const cardLength = content.length + 1;
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     const cardsBreakpoints = content.map((_, index) => index / cardLength);
     const closestBreakpointIndex = cardsBreakpoints.reduce(
       (acc, breakpoint, index) => {
@@ -40,15 +40,20 @@ export const StickyScroll = ({
   });
 
   // Light gradients (Darker Indigo, Purple, Blue variations, left to right, light to dark)
-  const lightGradients = React.useMemo(() => [
-    "linear-gradient(to right, #6d28d9, #a1a1aa)",  // Indigo 600 to Gray 400
-    "linear-gradient(to right, #6b21a8, #a3a3a3)",  // Purple 600 to Gray 500
-    "linear-gradient(to right, #2563eb, #93c5fd)",  // Blue 500 to Light Blue 200
-    "linear-gradient(to right, #4c1d95, #9f7aea)",  // Indigo 800 to Purple 400
-    "linear-gradient(to right, #7e22ce, #d4d4ff)",  // Purple 700 to Light Purple 200
-  ], []);
+  const lightGradients = React.useMemo(
+    () => [
+      'linear-gradient(to right, #6d28d9, #a1a1aa)', // Indigo 600 to Gray 400
+      'linear-gradient(to right, #6b21a8, #a3a3a3)', // Purple 600 to Gray 500
+      'linear-gradient(to right, #2563eb, #93c5fd)', // Blue 500 to Light Blue 200
+      'linear-gradient(to right, #4c1d95, #9f7aea)', // Indigo 800 to Purple 400
+      'linear-gradient(to right, #7e22ce, #d4d4ff)', // Purple 700 to Light Purple 200
+    ],
+    []
+  );
 
-  const [backgroundGradient, setBackgroundGradient] = useState(lightGradients[0]);
+  const [backgroundGradient, setBackgroundGradient] = useState(
+    lightGradients[0]
+  );
 
   useEffect(() => {
     setBackgroundGradient(lightGradients[activeCard % lightGradients.length]);
@@ -96,7 +101,7 @@ export const StickyScroll = ({
       <div
         style={{ background: backgroundGradient }}
         className={cn(
-          "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden",
+          'hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden',
           contentClassName
         )}
       >

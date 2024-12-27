@@ -2,30 +2,41 @@
 
 import { CardStack } from './ui/card-stack';
 import { cn } from '@/lib/utils';
-import { Film, Camera, Pencil, BookOpen, CuboidIcon as Cube } from 'lucide-react';
+import {
+  Film,
+  Camera,
+  Pencil,
+  BookOpen,
+  CuboidIcon as Cube,
+} from 'lucide-react';
 
 const mediaNexus = {
   courses: [
     {
-      title: "Short Film Making",
-      description: "This course introduces students to the art of crafting compelling narratives and mastering visual storytelling. From scripting to filming and post-production, participants will gain a holistic understanding of short film creation."
+      title: 'Short Film Making',
+      description:
+        'This course introduces students to the art of crafting compelling narratives and mastering visual storytelling. From scripting to filming and post-production, participants will gain a holistic understanding of short film creation.',
     },
     {
-      title: "Photography",
-      description: "Designed for those passionate about capturing moments, this course delves into both the technical and artistic aspects of photography. Students will learn to use cameras effectively, understand lighting, and develop their unique creative vision."
+      title: 'Photography',
+      description:
+        'Designed for those passionate about capturing moments, this course delves into both the technical and artistic aspects of photography. Students will learn to use cameras effectively, understand lighting, and develop their unique creative vision.',
     },
     {
-      title: "Editing Techniques",
-      description: "This course focuses on video editing, teaching students how to assemble footage, apply effects, and create seamless transitions to produce professional-quality videos."
+      title: 'Editing Techniques',
+      description:
+        'This course focuses on video editing, teaching students how to assemble footage, apply effects, and create seamless transitions to produce professional-quality videos.',
     },
     {
-      title: "Social Media Design",
-      description: "In today's digital age, the ability to create engaging content for social platforms is invaluable. This course covers the essentials of graphic design, content strategy, and platform-specific techniques to help students excel in the realm of social media."
+      title: 'Social Media Design',
+      description:
+        "In today's digital age, the ability to create engaging content for social platforms is invaluable. This course covers the essentials of graphic design, content strategy, and platform-specific techniques to help students excel in the realm of social media.",
     },
     {
-      title: "3D Animation",
-      description: "For those interested in bringing ideas to life, this course introduces the fundamentals of 3D animation, including modeling, texturing, and rendering."
-    }
+      title: '3D Animation',
+      description:
+        'For those interested in bringing ideas to life, this course introduces the fundamentals of 3D animation, including modeling, texturing, and rendering.',
+    },
   ],
 };
 
@@ -78,20 +89,19 @@ const CARDS = mediaNexus.courses.map((course, index) => ({
 }));
 
 function getCourseIcon(title: string) {
-  const iconProps = { className: "w-16 h-16 text-cyan-600" };
+  const iconProps = { className: 'w-16 h-16 text-cyan-600' };
   switch (title) {
-    case "Short Film Making":
+    case 'Short Film Making':
       return <Film {...iconProps} />;
-    case "Photography":
+    case 'Photography':
       return <Camera {...iconProps} />;
-    case "Editing Techniques":
+    case 'Editing Techniques':
       return <Pencil {...iconProps} />;
-    case "Social Media Design":
+    case 'Social Media Design':
       return <BookOpen {...iconProps} />;
-    case "3D Animation":
+    case '3D Animation':
       return <Cube {...iconProps} />;
     default:
       return null;
   }
 }
-

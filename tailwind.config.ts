@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Config } from 'tailwindcss';
-import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
+import { default as flattenColorPalette } from 'tailwindcss/lib/util/flattenColorPalette';
 
 export default {
   darkMode: ['class'],
@@ -60,20 +60,16 @@ export default {
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    addVariablesForColors,
-  ],
+  plugins: [require('tailwindcss-animate'), addVariablesForColors],
 } satisfies Config;
 
 function addVariablesForColors({ addBase, theme }: any) {
-	const allColors = flattenColorPalette(theme("colors"));
-	const newVars = Object.fromEntries(
-	  Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-	);
-   
-	addBase({
-	  ":root": newVars,
-	});
-  }
+  const allColors = flattenColorPalette(theme('colors'));
+  const newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
 
+  addBase({
+    ':root': newVars,
+  });
+}

@@ -69,7 +69,9 @@ export const CardStack = ({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <div className="font-normal text-sm text-neutral-200">{card.content}</div>
+            <div className="font-normal text-sm text-neutral-200">
+              {card.content}
+            </div>
             <div>
               <p className="font-medium text-white">{card.name}</p>
               <p className="font-normal text-neutral-200">{card.designation}</p>
@@ -80,4 +82,3 @@ export const CardStack = ({
     </div>
   );
 };
-
