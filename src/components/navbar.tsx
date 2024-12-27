@@ -2,8 +2,6 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { handler } from '@/app/action';
-
-import { session } from '@/lib/session';
 import { useSession } from '@/lib/auth-client';
 import { useState, useEffect, useRef } from 'react';
 import { Menu } from 'lucide-react';
@@ -39,9 +37,9 @@ export default function Navbar() {
     };
   }, []);
 
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
-  };
+  // const toggleDropdown = () => {
+  //   setIsOpen((prev) => !prev);
+  // };
 
   return (
     <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-sm border-b border-gray-800">
