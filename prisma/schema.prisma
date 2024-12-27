@@ -13,61 +13,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id            String       @id 
-  email         String    @unique
-  name          String?
-  emailVerified Boolean
-  image         String?
-  createdAt     DateTime
-  updatedAt     DateTime
-  sessions      Session[]
-  accounts      Account[]
-
-  @@map("user")
+model Course {
+  id        Int       @id @default(autoincrement()) // Unique identifier for each course
+  name      String    @unique // Name of the course (e.g., "SHORT FILM MAKING")
+  slots     Slot[] // Relation to Slot model
+  enquiries Enquiry[] // Relation to Enquiry model
 }
 
-model Session {
-  id        String   @id
-  expiresAt DateTime
-  token     String
-  createdAt DateTime
-  updatedAt DateTime
-  ipAddress String?
-  userAgent String?
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+model Slot {
+  id        Int       @id @default(autoincrement()) // Unique identifier for each slot
+  courseId  Int // Foreign key to the Course model
+  course    Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  slotName  String // Name of the slot (e.g., "Morning", "Evening")
+  capacity  Int       @default(30) // Total capacity of the slot
+  remaining Int       @default(30) // Remaining available seats in the slot
+  enquiries Enquiry[] // Relation to Enquiry model
 
-  @@unique([token])
-  @@map("session")
+  @@unique([courseId, slotName]) // Ensures a course has unique slots
 }
 
-model Account {
-  id                    String    @id
-  accountId             String
-  providerId            String
-  userId                String
-  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  accessToken           String?
-  refreshToken          String?
-  idToken               String?
-  accessTokenExpiresAt  DateTime?
-  refreshTokenExpiresAt DateTime?
-  scope                 String?
-  password              String?
-  createdAt             DateTime
-  updatedAt             DateTime
-
-  @@map("account")
-}
-
-model Verification {
-  id         String    @id
-  identifier String
-  value      String
-  expiresAt  DateTime
-  createdAt  DateTime?
-  updatedAt  DateTime?
-
-  @@map("verification")
+model Enquiry {
+  id             Int      @id @default(autoincrement()) // Unique identifier for each enquiry
+  name           String // Name of the person enquiring
+  whatsappNumber String // WhatsApp number
+  email          String // Email address
+  courseId       Int // Foreign key to the Course model
+  slotId         Int // Foreign key to the Slot model
+  course         Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  slot           Slot     @relation(fields: [slotId], references: [id], onDelete: Cascade)
+  createdAt      DateTime @default(now()) // Timestamp of the enquiry
 }

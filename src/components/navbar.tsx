@@ -1,13 +1,10 @@
 'use client';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { handler } from '@/app/action';
-import { useSession } from '@/lib/auth-client';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { useState, useEffect, useRef } from 'react';
 import { Menu } from 'lucide-react';
 
 export default function Navbar() {
-  const userSession = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -98,13 +95,12 @@ export default function Navbar() {
 
           {/* Sign In/Out Button (Desktop) */}
           <div className="hidden md:block">
-            <Button
-              variant="outline"
-              className="border-cyan-400 rounded text-cyan-400 hover:bg-cyan-400 bg-black hover:text-black"
-              onClick={handler}
+            <Link
+              href="/enquiry"
+              className={`border-cyan-400 rounded text-cyan-400 hover:bg-cyan-400 bg-black hover:text-black ${buttonVariants()}`}
             >
-              {userSession ? 'Sign Out' : 'Sign In'}
-            </Button>
+              Book Enquiry
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -141,13 +137,12 @@ export default function Navbar() {
             >
               Contact
             </Link>
-            <Button
-              variant="outline"
-              className="w-full mt-4 border-cyan-400 rounded text-cyan-400 hover:bg-cyan-400 bg-black hover:text-black"
-              onClick={handler}
+            <Link
+              href="/enquiry"
+              className={`w-full mt-4 border-cyan-400 rounded text-cyan-400 hover:bg-cyan-400 bg-black hover:text-black ${buttonVariants()}`}
             >
-              {userSession ? 'Sign Out' : 'Sign In'}
-            </Button>
+              Book Enquiry
+            </Link>
           </div>
         </div>
       )}
