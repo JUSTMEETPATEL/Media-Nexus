@@ -222,7 +222,7 @@ export default function Home() {
         </div>
 
         {/* Course Structure Section */}
-        <section className="py-24 bg-white">
+        {/* <section className="py-24 bg-white">
           <div className="container mx-auto px-4">
             <h2
               className="text-5xl font-bold text-center mb-16"
@@ -303,13 +303,10 @@ export default function Home() {
               </Card>
             </div>
           </div>
-        </section>
-
-        {/* Infrastructure Section */}
-        <Infrastructure />
+        </section> */}
 
         {/* Evaluation and Certification Section */}
-        <section className="py-24 bg-gray-100">
+        {/* <section className="py-24 bg-gray-100">
           <div className="container mx-auto px-4">
             <h2
               className="text-5xl font-bold text-center mb-16"
@@ -355,10 +352,10 @@ export default function Home() {
               </CardContent>
             </Card>
           </div>
-        </section>
+        </section> */}
 
         {/* Financial Aspects Section */}
-        <section className="py-24 bg-white">
+        {/* <section className="py-24 bg-white">
           <div className="container mx-auto px-4">
             <h2
               className="text-5xl font-bold text-center mb-16"
@@ -385,7 +382,7 @@ export default function Home() {
               </CardContent>
             </Card>
           </div>
-        </section>
+        </section> */}
 
         {/* Empowerment Section */}
         <section className="py-24 bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
@@ -405,6 +402,9 @@ export default function Home() {
             </p>
           </div>
         </section>
+
+        {/* Infrastructure Section */}
+        <Infrastructure />
       </main>
     </Suspense>
   );
