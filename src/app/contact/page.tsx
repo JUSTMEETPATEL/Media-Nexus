@@ -4,7 +4,7 @@ import Navbar from '@/components/navbar';
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-white">
       <Navbar />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
@@ -12,7 +12,7 @@ export default function Page() {
           {/* Left Column - Contact Information */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <h1 className="text-6xl font-bold text-white">
+              <h1 className="text-6xl font-bold text-black">
                 HOW TO
                 <br />
                 <span className="text-cyan-400">FIND US</span>
@@ -29,7 +29,7 @@ export default function Page() {
                   <h3 className="text-cyan-400 text-xl font-semibold mb-2">
                     ADDRESS
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-slate-700">
                     Bharathi Salai, Ramapuram,
                     <br />
                     Chennai, Tamil Nadu 600089
@@ -46,7 +46,7 @@ export default function Page() {
                   <h3 className="text-cyan-400 text-xl font-semibold mb-2">
                     CALL US
                   </h3>
-                  <p className="text-gray-300">+91 9384088566</p>
+                  <p className="text-slate-700">+91 9384088566</p>
                 </div>
               </div>
 
@@ -59,7 +59,7 @@ export default function Page() {
                   <h3 className="text-cyan-400 text-xl font-semibold mb-2">
                     EMAIL
                   </h3>
-                  <p className="text-gray-300">medianexus@srmorg.com</p>
+                  <p className="text-slate-700">medianexus@srmorg.com</p>
                 </div>
               </div>
 
@@ -72,7 +72,7 @@ export default function Page() {
                   <h3 className="text-cyan-400 text-xl font-semibold mb-2">
                     WEBSITE
                   </h3>
-                  <p className="text-gray-300">www.medianexus.srmorg.com</p>
+                  <p className="text-slate-700">www.medianexus.srmorg.com</p>
                 </div>
               </div>
             </div>
@@ -91,7 +91,7 @@ export default function Page() {
         </div>
 
         {/* Footer Text */}
-        <div className="text-center text-gray-400 py-8">
+        <div className="text-center text-slate-900 py-8">
           A Venture of SRM IST Ramapuram
         </div>
       </div>

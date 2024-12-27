@@ -5,8 +5,8 @@ import { cn } from '@/lib/utils';
 export function ProgramOffered() {
   return (
     <span className="h-[40rem] flex flex-col items-center justify-center w-full">
-      <span className="mb-20 text-center text-white text-4xl">
-        <span className="text-cyan-400">PROGRAM</span> OFFERED
+      <span className="mb-20 text-center text-black text-5xl font-semibold">
+        <span className="text-cyan-600">PROGRAM</span> OFFERED
       </span>
       <CardStack items={CARDS} />
     </span>
@@ -24,7 +24,7 @@ export const Highlight = ({
   return (
     <span
       className={cn(
-        'font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500 px-1 py-0.5',
+        'font-bold bg-emerald-700/[0.2] text-emerald-500 px-1 py-0.5',
         className
       )}
     >
@@ -43,15 +43,18 @@ const CARDS = [
         <span>
           <Highlight>SHORT FILM MAKING</Highlight>
         </span>
-        This course will train the students practically in the art of
-        storytelling, cinematography, directing and basic editing from a concept
-        to the final cut.
+        <span>
+          This course will train the students practically in the art of
+          storytelling, cinematography, directing and basic editing from a
+          concept to the final cut.
+        </span>
         <span className="md:flex md:items-center md:mt-5 md:justify-center hidden">
           <Image
             src="/short-film.png"
             alt="Short Film Making"
             width={100}
             height={100}
+            style={{ backgroundColor: 'transparent' }}
           />
         </span>
       </p>
@@ -66,9 +69,11 @@ const CARDS = [
         <span>
           <Highlight>DIGITAL PHOTOGRAPHY</Highlight>
         </span>
-        Through real-world applications and expert guidance, they will sharpen
-        their skills in film editing. Gaining practical insights into the
-        creative process.
+        <span>
+          Through real-world applications and expert guidance, they will sharpen
+          their skills in film editing. Gaining practical insights into the
+          creative process.
+        </span>
         <span className="md:flex md:items-center md:justify-center hidden">
           <Image
             src="/photography.jpeg"
@@ -89,8 +94,10 @@ const CARDS = [
         <span>
           <Highlight>3D ANIMATION</Highlight>
         </span>
-        Master 3D animation, modeling, and motion graphics to create
-        professional quality content for film and gaming.
+        <span>
+          Master 3D animation, modeling, and motion graphics to create
+          professional quality content for film and gaming.
+        </span>
         <span className="md:flex md:items-center md:mt-5 md:justify-center hidden">
           <Image
             src="/3danimation.png"

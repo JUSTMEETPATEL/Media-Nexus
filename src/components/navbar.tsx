@@ -48,7 +48,7 @@ export default async function Navbar() {
           <div className="hidden md:block">
             <Button
               variant="outline"
-              className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 bg-black hover:text-black"
+              className="border-cyan-400 rounded text-cyan-400 hover:bg-cyan-400 bg-black hover:text-black"
               onClick={handler}
             >
               {userSession ? 'Sign Out' : 'Sign In'}
@@ -61,4 +61,3 @@ export default async function Navbar() {
     </nav>
   );
 }
-

@@ -9,7 +9,7 @@ const content = [
     description:
       'The green screen studio enables students to create dynamic content, explore visual effects, and master storytelling.',
     content: (
-      <div className="h-full w-full  flex items-center justify-center text-white">
+      <div className="h-full w-full  flex items-center justify-center text-black">
         <Image
           src="/visualstudio.jpeg"
           width={300}
@@ -30,7 +30,7 @@ const content = [
     description:
       'The photography studio provides professional equip ment and lighting for hands-on learning in various photography projects.',
     content: (
-      <div className="h-full w-full  flex items-center justify-center text-white">
+      <div className="h-full w-full  flex items-center justify-center text-black">
         <Image
           src="/digitalstudio.jpeg"
           width={300}
@@ -46,7 +46,7 @@ const content = [
     description:
       'The animation lab offers advanced tools for 20/30 creation, fostering storytelling, design, and visual effects.',
     content: (
-      <div className="h-full w-full  flex items-center justify-center text-white">
+      <div className="h-full w-full  flex items-center justify-center text-black">
         <Image
           src="/animationlab.jpeg"
           width={300}
