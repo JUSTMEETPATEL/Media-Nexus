@@ -57,9 +57,10 @@ const content = [
 export function Infrastructure() {
   return (
     <div className="p-4 sm:p-10">
-      <h1 className='mb-8 sm:mb-14 text-center font-bold text-3xl sm:text-5xl'>Infrastructure</h1>
+      <h1 className="mb-8 sm:mb-14 text-center font-bold text-3xl sm:text-5xl">
+        Infrastructure
+      </h1>
       <StickyScroll content={content} />
     </div>
   );
 }
-

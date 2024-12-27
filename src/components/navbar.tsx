@@ -93,10 +93,7 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <Button
-              variant="ghost"
-              className="text-gray-300"
-            >
+            <Button variant="ghost" className="text-gray-300">
               <Menu className="h-6 w-6" />
             </Button>
           </div>
@@ -141,4 +138,3 @@ export default function Navbar() {
     </nav>
   );
 }
-

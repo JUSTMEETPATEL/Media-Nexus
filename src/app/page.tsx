@@ -116,10 +116,17 @@ export default function Home() {
         {/* About Section */}
         <section className="py-8 sm:py-16 md:py-24 bg-gradient-to-b from-slate-100 to-white text-black">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8" data-aos="fade-up">
+            <h2
+              className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8"
+              data-aos="fade-up"
+            >
               About Media Nexus
             </h2>
-            <p className="text-sm sm:text-lg md:text-xl text-center max-w-4xl mx-auto leading-relaxed px-4 sm:px-6" data-aos="fade-up" data-aos-delay="200">
+            <p
+              className="text-sm sm:text-lg md:text-xl text-center max-w-4xl mx-auto leading-relaxed px-4 sm:px-6"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               {mediaNexus.about}
             </p>
           </div>
@@ -128,7 +135,10 @@ export default function Home() {
         {/* Vision and Mission Section */}
         <section className="py-8 sm:py-16 md:py-24 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16" data-aos="fade-up">
+            <h2
+              className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16"
+              data-aos="fade-up"
+            >
               Our Vision & Mission
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12">
@@ -137,7 +147,9 @@ export default function Home() {
                 data-aos="fade-up"
               >
                 <CardHeader>
-                  <CardTitle className="text-2xl sm:text-3xl mb-2 sm:mb-4">Vision</CardTitle>
+                  <CardTitle className="text-2xl sm:text-3xl mb-2 sm:mb-4">
+                    Vision
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-base sm:text-lg">{mediaNexus.vision}</p>
@@ -149,7 +161,9 @@ export default function Home() {
                 data-aos-delay="100"
               >
                 <CardHeader>
-                  <CardTitle className="text-2xl sm:text-3xl mb-2 sm:mb-4">Mission</CardTitle>
+                  <CardTitle className="text-2xl sm:text-3xl mb-2 sm:mb-4">
+                    Mission
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="list-disc pl-5 space-y-2 text-base sm:text-lg">
@@ -171,10 +185,17 @@ export default function Home() {
         {/* Empowerment Section */}
         <section className="py-8 sm:py-16 md:py-24 bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8" data-aos="fade-up">
+            <h2
+              className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8"
+              data-aos="fade-up"
+            >
               Empowering the Next Generation
             </h2>
-            <p className="text-sm sm:text-lg md:text-xl text-center max-w-4xl mx-auto leading-relaxed px-4 sm:px-6" data-aos="fade-up" data-aos-delay="200">
+            <p
+              className="text-sm sm:text-lg md:text-xl text-center max-w-4xl mx-auto leading-relaxed px-4 sm:px-6"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               {mediaNexus.empowerment.description}
             </p>
           </div>
@@ -186,4 +207,3 @@ export default function Home() {
     </Suspense>
   );
 }
-
