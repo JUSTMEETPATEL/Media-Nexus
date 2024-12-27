@@ -1,11 +1,47 @@
+'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { handler } from '@/app/action';
-import MobileNavbar from './mobileNavbar';
-import { session } from '@/lib/session';
 
-export default async function Navbar() {
-  const userSession = await session();
+import { session } from '@/lib/session';
+import { useSession } from '@/lib/auth-client';
+import { useState, useEffect, useRef } from 'react';
+import { Menu } from 'lucide-react';
+
+export default function Navbar() {
+  const userSession = useSession();
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node) &&
+        !(event.target as Element).closest('button')
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleMenuClick = (event: MouseEvent) => {
+      if ((event.target as Element).closest('button')) {
+        setIsOpen((prev) => !prev);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('click', handleMenuClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('click', handleMenuClick);
+    };
+  }, []);
+
+  const toggleDropdown = () => {
+    setIsOpen((prev) => !prev);
+  };
 
   return (
     <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-sm border-b border-gray-800">
@@ -62,7 +98,7 @@ export default async function Navbar() {
             </div>
           </div>
 
-          {/* Sign In/Out Button */}
+          {/* Sign In/Out Button (Desktop) */}
           <div className="hidden md:block">
             <Button
               variant="outline"
@@ -73,9 +109,50 @@ export default async function Navbar() {
             </Button>
           </div>
 
-          <MobileNavbar />
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <Button variant="ghost" className="text-gray-300">
+              <Menu className="h-6 w-6" />
+            </Button>
+          </div>
         </div>
       </div>
+
+      {/* Mobile dropdown */}
+      {isOpen && (
+        <div
+          ref={dropdownRef}
+          className="md:hidden absolute top-16 left-0 w-full bg-black/90 border-b border-gray-800"
+        >
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            <Link
+              href="/about"
+              className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
+            >
+              About
+            </Link>
+            <Link
+              href="/mentors"
+              className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
+            >
+              Mentors
+            </Link>
+            <Link
+              href="/contact"
+              className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
+            >
+              Contact
+            </Link>
+            <Button
+              variant="outline"
+              className="w-full mt-4 border-cyan-400 rounded text-cyan-400 hover:bg-cyan-400 bg-black hover:text-black"
+              onClick={handler}
+            >
+              {userSession ? 'Sign Out' : 'Sign In'}
+            </Button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
