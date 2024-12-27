@@ -81,7 +81,7 @@ const CARDS = mediaNexus.courses.map((course, index) => ({
         <Highlight>{course.title.toUpperCase()}</Highlight>
       </span>
       <span className="mt-2 text-center">{course.description}</span>
-      <span className="mt-5 flex items-center justify-center">
+      <span className="md:mt-5 md:flex md:items-center md:justify-center hidden">
         {getCourseIcon(course.title)}
       </span>
     </p>
