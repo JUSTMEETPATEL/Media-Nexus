@@ -37,6 +37,8 @@ const AdvisoryBoard: React.FC = () => {
             <div key={index} className="flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
               <Image
               src={member.imageUrl}
+              width={320} 
+                height={320}
               alt={member.name}
               className="w-80 h-80 object-cover shadow-lg"
               style={{ aspectRatio: '1 / 1' }}
