@@ -1,88 +1,99 @@
-import React from 'react';
-import Image from 'next/image';
-interface Mentor {
-  name: string;
-  description: string;
-  image: string;
-  
-  
-}
+import Image from 'next/image'
+import { Card, CardContent } from "@/components/ui/card"
 
-const mentors: Mentor[] = [
-  
-  {
-    name: 'Visual Studio',
-   
-    image: '/infra-1.png',
-    
-    description:
-      'The green screen studio enables students to create dynamic content, explore visual effects, and master storytelling .',
-  },
-  {
-    name: 'Digital Studio',
-    description:
-      'The photography studio provides professional equiment and lightning for hands-on learning in various photography projects. ',
-    
-    image: '/infra-2.png',
-    
-  },
-  {
-    name: 'Animation Lab',
-    description:
-      'The animation lab offers advanced tools for 2D/3D creation, fostering storytelling, design and visual effects.',
-    
-    image: '/infra-3.png',
+export default function FacilityShowcase() {
+  const facilities = [
+    {
+      title: "RECORDING STUDIO",
+      image: "/infra-7.png",
+      gridArea: "recording"
+    },
+    {
+      title: "ANIMATION STUDIO",
+      image: "/infra-2.png",
+      gridArea: "animation"
+    },
+    {
+      title: "GRAPHICS LAB",
+      image: "/infra-8.png",
+      gridArea: "graphics"
+    },
+    {
+      title: "VISUAL STUDIO",
+      image: "/infra-4.png",
+      gridArea: "visual"
+    },
+    {
+      title: "GREEN SCREEN STUDIO",
+      image: "/infra-1.png",
+      gridArea: "green"
+    },
+    {
+      title: "PHOTOGRAPHY STUDIO",
+      image: "/infra-5.png",
+      gridArea: "photo"
+    },
+    {
+      title: "EDIT SUITE",
+      image: "/infra-6.png",
+      gridArea: "edit"
+    },
+  ]
 
-    
-  },
-  {
-  name: 'Animation Lab',
-    description:
-      'The dubbing studio offers professional tools for mastering voiceovers, audio synchronization, sound design, and mixing.',
-    
-    image: '/infra-4.png',},
-  
-];
-
-const MentorsPage: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white p-4 pt-20 ">
-      <h1 className="text-6xl font-bold mb-12 text-gray-900 mt-12">
-        Our Infrastructure
-      </h1>
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-        {mentors.map((mentor, index) => (
-          <a
-            key={index}
-            
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 cursor-pointer w-full sm:w-96"
+    <div className="container mx-auto p-4 md:p-12">
+      <div className="grid gap-6 mt-8" 
+           style={{
+             display: 'grid',
+             gridTemplateAreas: `
+               "header header visual photo"
+               "recording animation green edit"
+               "recording graphics green edit"
+             `,
+             gridTemplateColumns: 'repeat(4, 1fr)',
+             gridTemplateRows: 'auto repeat(2, 200px)'
+           }}>
+  
+        <div className="col-span-2 mt-16" style={{ gridArea: 'header' }}>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-cyan-400">STATE-OF-THE-ART</span>
+            <br />
+            <span className="text-gray-800">FACILITY</span>
+          </h1>
+        </div>
+
+        
+        {facilities.map((facility) => (
+          <Card 
+            key={facility.title}
+            className="group overflow-hidden transition-transform duration-300 hover:scale-105"
+            style={{ gridArea: facility.gridArea }}
           >
-            <Image
-              src={mentor.image}
-              alt={mentor.name}
-              width={380}
-              height={240}
-              priority={index < 3}
-              loading={index >= 3 ? 'lazy' : 'eager'}
-              className="w-full h-64 object-cover"
-            />
-            <div className="p-4">
-              <h2 className="text-xl text-gray-800 font-extrabold ">
-                {mentor.name}
-              </h2>
-              {/* <p className="text-orange-700 text-lg font-bold">
-                {mentor.designation}
-              </p> */}
-              <p className="text-gray-500">{mentor.description}</p>
-            </div>
-          </a>
+            <CardContent className="p-0 relative h-full">
+              <div className="relative h-full">
+                <Image
+                  src={facility.image}
+                  alt={facility.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-2">
+                  <h2 className="text-white text-sm md:text-base font-bold tracking-wider">
+                    {facility.title}
+                  </h2>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MentorsPage;
+
+
+
+
+
