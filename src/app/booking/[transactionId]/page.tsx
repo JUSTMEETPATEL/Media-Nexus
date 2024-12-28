@@ -10,7 +10,8 @@ export default async function Page(props: Props) {
   const transactionId = params.transactionId;
   console.log("Transaction Id: ", transactionId);
 
-  const res = await fetch('http://localhost:3000/api/check-booking', {
+  const origin = process.env.NEXT_PUBLIC_API_ORIGIN || 'http://localhost:3000';
+  const res = await fetch(`${origin}/api/check-booking`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
