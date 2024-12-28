@@ -73,3 +73,13 @@ function addVariablesForColors({ addBase, theme }: any) {
     ':root': newVars,
   });
 }
+// module.exports = {
+//   theme: {
+//     extend: {
+//       gridTemplateColumns: {
+//         4: "repeat(4, minmax(0, 1fr))",
+//         6: "repeat(6, minmax(0, 1fr))",
+//       },
+//     },
+//   },
+// };
