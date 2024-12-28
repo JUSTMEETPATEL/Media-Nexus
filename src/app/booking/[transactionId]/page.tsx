@@ -12,7 +12,9 @@ export default async function Page(props: Props) {
 
   const origin = process.env.NEXT_PUBLIC_API_ORIGIN || 'http://localhost:3000';
   console.log("Origin: ", origin);
-  const res = await fetch(`${origin}/api/check-booking`, {
+
+  // Fetch booking details
+  const bookingRes = await fetch(`${origin}/api/check-booking`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -20,16 +22,40 @@ export default async function Page(props: Props) {
     body: JSON.stringify({ transactionId }),
   });
 
-  const data = await res.json();
+  const bookingData = await bookingRes.json();
 
-  if (data.message === 'Transaction not found') {
+  if (bookingData.message === 'Transaction not found') {
     notFound();
   }
 
-  const { transaction, user, course, slot } = data;
+  const { transaction, user, course, slot } = bookingData;
+
+  // Send the email
+  const emailRes = await fetch(`${origin}/api/send-mail`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: user.name,
+      email: user.email,
+      courseName: course.name,
+      slotName: slot.slotName,
+      amount: transaction.amount,
+      bookingDate: transaction.createdAt,
+    }),
+  });
+
+  const emailData = await emailRes.json();
+
+  if (!emailData.success) {
+    console.error("Failed to send email:", emailData.error);
+  } else {
+    console.log("Email sent successfully!");
+  }
 
   return (
-    <div className='pt-24'>
+    <div className="pt-24">
       <h1>Booking Confirmed!</h1>
       <p>Thank you for your payment. Your booking details are as follows:</p>
       <ul>
