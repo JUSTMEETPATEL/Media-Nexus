@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface AdvisoryMember {
   name: string;
@@ -34,8 +35,10 @@ const AdvisoryBoard: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-8">
           {advisoryMembers.map((member, index) => (
             <div key={index} className="flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
-              <img
+              <Image
               src={member.imageUrl}
+              width={320} 
+                height={320}
               alt={member.name}
               className="w-80 h-80 object-cover shadow-lg"
               style={{ aspectRatio: '1 / 1' }}
