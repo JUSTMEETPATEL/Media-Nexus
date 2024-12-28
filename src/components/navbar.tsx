@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { useState, useEffect, useRef } from 'react';
 import { Menu } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,9 +40,9 @@ export default function Navbar() {
   // };
 
   return (
-    <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-sm border-b border-gray-800">
+    <nav className="fixed w-full z-50 bg-gradient-to-r from-black via-gray-900 to-black border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-24">
           {/* Logo and brand */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
@@ -90,17 +91,25 @@ export default function Navbar() {
               >
                 Contact Us
               </Link>
+              <Link
+                href="/enquiry"
+                className={`border-cyan-400 rounded text-cyan-400 hover:bg-cyan-400 bg-black hover:text-black ${buttonVariants()}`}
+              >
+                Book Enquiry
+              </Link>
             </div>
           </div>
 
-          {/* Sign In/Out Button (Desktop) */}
-          <div className="hidden md:block">
-            <Link
-              href="/enquiry"
-              className={`border-cyan-400 rounded text-cyan-400 hover:bg-cyan-400 bg-black hover:text-black ${buttonVariants()}`}
-            >
-              Book Enquiry
-            </Link>
+          {/* Logo (Desktop) */}
+          <div className="hidden md:block w-48">
+            <Image
+              src="/srm-logo.png"
+              alt="SRM Logo"
+              width={192}
+              height={56}
+              className="w-48 h-14 object-contain"
+              style={{ background: 'transparent' }}
+            />
           </div>
 
           {/* Mobile menu button */}
@@ -116,7 +125,7 @@ export default function Navbar() {
       {isOpen && (
         <div
           ref={dropdownRef}
-          className="md:hidden absolute top-16 left-0 w-full bg-black/90 border-b border-gray-800"
+          className="md:hidden absolute top-20 left-0 w-full bg-black/90 border-b border-gray-800"
         >
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
@@ -157,7 +166,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/enquiry"
-              className={`w-full mt-4 border-cyan-400 rounded text-cyan-400 hover:bg-cyan-400 bg-black hover:text-black ${buttonVariants()}`}
+              className={`block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md`}
             >
               Book Enquiry
             </Link>
@@ -167,3 +176,4 @@ export default function Navbar() {
     </nav>
   );
 }
+
