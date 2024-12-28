@@ -58,37 +58,37 @@ export default function Navbar() {
                 href="/about"
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                About
+                About Us
               </Link>
               <Link
-                href="/mentors"
+                href="/courses"
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Mentors
+                Courses
               </Link>
               <Link
-                href="/faculty"
+                href="/facility"
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Faculty
+                Facilities
               </Link>
               <Link
-                href="/programs"
+                href="/team"
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Programs
+                Our Team
               </Link>
               <Link
-                href="/infrastructure"
+                href="/advisory"
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Infrastructure
+                Advisory Board
               </Link>
               <Link
                 href="/contact"
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                Contact
+                Contact Us
               </Link>
             </div>
           </div>
@@ -123,19 +123,37 @@ export default function Navbar() {
               href="/about"
               className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
             >
-              About
+              About Us
             </Link>
             <Link
-              href="/mentors"
+              href="/courses"
               className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
             >
-              Mentors
+              Courses
+            </Link>
+            <Link
+              href="/facility"
+              className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
+            >
+              Facilities
+            </Link>
+            <Link
+              href="/team"
+              className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
+            >
+              Our Team
+            </Link>
+            <Link
+              href="/advisory"
+              className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
+            >
+              Advisory Board
             </Link>
             <Link
               href="/contact"
               className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
             >
-              Contact
+              Contact Us
             </Link>
             <Link
               href="/enquiry"
