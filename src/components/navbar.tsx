@@ -93,7 +93,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/enquiry"
-                className={`border-cyan-400 rounded text-cyan-400 hover:bg-cyan-400 bg-black hover:text-black ${buttonVariants()}`}
+                className={`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25`}
               >
                 Book Enquiry
               </Link>
