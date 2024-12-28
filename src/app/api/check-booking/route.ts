@@ -2,12 +2,11 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
 export async function POST(req: Request) {
-  const { transactionId } = await req.json(); // Parse the request body to get transactionId
+  const { transactionId } = await req.json();
 
   try {
-    // Use `findFirst` to query by `transactionId` instead of `findUnique`
     const transaction = await prisma.transaction.findFirst({
-      where: { transactionId: transactionId }, // Use transactionId instead of id
+      where: { transactionId: transactionId },
       include: {
         enquiry: {
           include: {
@@ -18,7 +17,6 @@ export async function POST(req: Request) {
       },
     });
 
-    // If no transaction is found, return 404
     if (!transaction) {
       return NextResponse.json(
         { message: 'Transaction not found' },
@@ -26,7 +24,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Return the transaction details
     return NextResponse.json({
       message: 'Booking confirmed',
       transaction,

@@ -5,8 +5,7 @@ export async function POST(req: NextRequest) {
   try {
     const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = await req.json();
 
-    // Ensure the Razorpay secret is available
-    const razorpaySecret = process.env.RAZORPAY_SECRET; // Update to use RAZORPAY_SECRET
+    const razorpaySecret = process.env.RAZORPAY_SECRET;
     if (!razorpaySecret) {
       console.error("RAZORPAY_SECRET is not set in the environment variables.");
       return NextResponse.json(
@@ -15,7 +14,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Generate the expected signature using your Razorpay key secret
     const body = razorpay_order_id + "|" + razorpay_payment_id;
 
     const expectedSignature = crypto
