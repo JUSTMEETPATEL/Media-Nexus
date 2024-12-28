@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { useState, useEffect, useRef } from 'react';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';

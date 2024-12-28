@@ -11,6 +11,7 @@ export default async function Page(props: Props) {
   console.log("Transaction Id: ", transactionId);
 
   const origin = process.env.NEXT_PUBLIC_API_ORIGIN || 'http://localhost:3000';
+  console.log("Origin: ", origin);
   const res = await fetch(`${origin}/api/check-booking`, {
     method: 'POST',
     headers: {
