@@ -46,26 +46,29 @@ export default function EnquiryForm({ courses }: EnquiryFormProps) {
 
   async function onSubmit(values: z.infer<typeof slotSchema>) {
     // Create the payload to send in the POST request
-    const payload = {
-      name: values.name,
-      whatsappNumber: values.whatsappNumber,
-      email: values.email,
-      courseId: values.courseId,
-      slotId: values.slotId,
-    };
+
+    console.log(values);
+
+    // const payload = {
+    //   name: values.name,
+    //   whatsappNumber: values.whatsappNumber,
+    //   email: values.email,
+    //   courseId: values.courseId,
+    //   slotId: values.slotId,
+    // };
   
-    // Make the POST request to /api/enquiry
-    const response = await fetch('/api/enquiry', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: { 'Content-Type': 'application/json' },
-    });
+    // // Make the POST request to /api/enquiry
+    // const response = await fetch('/api/enquiry', {
+    //   method: 'POST',
+    //   body: JSON.stringify(payload),
+    //   headers: { 'Content-Type': 'application/json' },
+    // });
   
-    if (response.ok) {
-      console.log('Enquiry submitted successfully');
-    } else {
-      console.error('Failed to submit enquiry');
-    }
+    // if (response.ok) {
+    //   console.log('Enquiry submitted successfully');
+    // } else {
+    //   console.error('Failed to submit enquiry');
+    // }
   }
   
 
@@ -135,11 +138,11 @@ export default function EnquiryForm({ courses }: EnquiryFormProps) {
                         <SelectValue placeholder="Select a course" />
                       </SelectTrigger>
                       <SelectContent>
-                        {courses.map((course) => (
-                          <SelectItem key={course.id} value={course.id.toString()}>
-                            {course.name}
-                          </SelectItem>
-                        ))}
+                        <SelectItem value='1'>3D Animation</SelectItem>
+                        <SelectItem value='2'>Short Film Making</SelectItem>
+                        <SelectItem value='3'>Digital Photography</SelectItem>
+                        <SelectItem value='4'>Editing Techniques</SelectItem>
+                        <SelectItem value='5'>Social Media Design</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormControl>
@@ -158,19 +161,15 @@ export default function EnquiryForm({ courses }: EnquiryFormProps) {
                   <FormControl>
                     <Select
                       onValueChange={field.onChange}
-                      value={field.value.toString()}
+                      value={field.value?.toString()}
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Select a slot" />
                       </SelectTrigger>
                       <SelectContent>
-                        {courses
-                          .find((course) => course.id === parseInt(form.watch('courseId')?.toString() || '0'))
-                          ?.slots.map((slot) => (
-                            <SelectItem key={slot.id} value={slot.id}>
-                              Slot {slot.id} (Remaining: {slot.remaining})
-                            </SelectItem>
-                          ))}
+                        <SelectItem value='1'>Morning Slot</SelectItem>
+                        <SelectItem value='2'>Evening Slot</SelectItem>
+
                       </SelectContent>
                     </Select>
                   </FormControl>

@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,33 +7,48 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Enquiry {
+  id              String       @id @default(cuid()) // Unique identifier for each enquiry
+  name            String // User's name
+  whatsappNumber  String // User's WhatsApp number
+  email           String        // User's email, must be unique
+  courseId        Int // Preferred course (foreign key)
+  slotId          Int // Preferred slot (foreign key)
+  createdAt       DateTime     @default(now()) // Timestamp for when the enquiry was submitted
+  paymentVerified Boolean      @default(false) // Track if payment is verified
+  transaction     Transaction[] @relation // Relation to Transaction, one-to-many
+
+  course Course @relation(fields: [courseId], references: [id])
+  slot   Slot   @relation(fields: [slotId], references: [id])
+
+  @@index([email]) // Index on email for faster queries
+  @@index([courseId, slotId]) // Index on courseId and slotId for faster queries
+}
+
 model Course {
-  id        Int       @id @default(autoincrement()) // Unique identifier for each course
-  name      String    @unique // Name of the course (e.g., "SHORT FILM MAKING")
-  slots     Slot[] // Relation to Slot model
-  enquiries Enquiry[] // Relation to Enquiry model
+  id        Int       @id @default(autoincrement()) // Unique identifier for courses
+  name      String // Course name
+  slots     Slot[] // One-to-many relationship with Slot
+  enquiries Enquiry[] // One-to-many relationship with Enquiry
 }
 
 model Slot {
-  id        Int       @id @default(autoincrement()) // Unique identifier for each slot
+  id        Int       @id @default(autoincrement()) // Unique identifier for slots
+  slotName  String // Slot name
   courseId  Int // Foreign key to the Course model
-  course    Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
-  slotName  String // Name of the slot (e.g., "Morning", "Evening")
-  capacity  Int       @default(30) // Total capacity of the slot
-  remaining Int       @default(30) // Remaining available seats in the slot
-  enquiries Enquiry[] // Relation to Enquiry model
-
-  @@unique([courseId, slotName]) // Ensures a course has unique slots
+  course    Course    @relation(fields: [courseId], references: [id])
+  enquiries Enquiry[] // One-to-many relationship with Enquiry
 }
 
-model Enquiry {
-  id             Int      @id @default(autoincrement()) // Unique identifier for each enquiry
-  name           String // Name of the person enquiring
-  whatsappNumber String // WhatsApp number
-  email          String // Email address
-  courseId       Int // Foreign key to the Course model
-  slotId         Int // Foreign key to the Slot model
-  course         Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
-  slot           Slot     @relation(fields: [slotId], references: [id], onDelete: Cascade)
-  createdAt      DateTime @default(now()) // Timestamp of the enquiry
+model Transaction {
+  id            String   @id @default(cuid()) // Unique identifier for the transaction
+  enquiryId     String   // Foreign key to the Enquiry model (no `@unique` here)
+  amount        Float // Payment amount
+  status        String // Payment status (e.g., 'completed', 'failed', 'pending')
+  transactionId String // Unique transaction ID from the payment gateway
+  createdAt     DateTime @default(now()) // Timestamp for when the transaction was created
+  updatedAt     DateTime @updatedAt // Timestamp for when the transaction was last updated
+
+  // This side defines the relation with "fields" and "references"
+  enquiry Enquiry @relation(fields: [enquiryId], references: [id])
 }
