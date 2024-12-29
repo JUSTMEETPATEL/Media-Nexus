@@ -27,7 +27,7 @@ model Enquiry {
 
 model Course {
   id        Int       @id @default(autoincrement()) // Unique identifier for courses
-  name      String // Course name
+  name      String // Course name  
   slots     Slot[] // One-to-many relationship with Slot
   enquiries Enquiry[] // One-to-many relationship with Enquiry
 }
