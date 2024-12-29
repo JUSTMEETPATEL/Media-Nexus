@@ -99,15 +99,6 @@ export default function Home() {
             <p className="text-gray-300 text-base sm:text-xl md:text-2xl max-w-2xl mx-auto mb-4 sm:mb-6 px-4 sm:px-0">
               Empowering the next generation of media professionals
             </p>
-            <Button
-              asChild
-              size="lg"
-              className="bg-cyan-500 hover:bg-cyan-400 text-black transition-colors duration-300 text-sm sm:text-base"
-            >
-              <Link href="/studio">
-                Explore Studio <ChevronRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
           </motion.div>
 
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-[1]"></div>
