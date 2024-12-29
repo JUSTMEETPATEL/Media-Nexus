@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import DownloadButton from './components/download-button';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 interface Props {
   params: Promise<{ transactionId: string }>;
@@ -55,22 +56,38 @@ export default async function Page(props: Props) {
   }
 
   return (
-    <div className="pt-24">
-      <h1>Booking Confirmed!</h1>
-      <p>Thank you for your payment. Your booking details are as follows:</p>
-      <ul>
-        <li><strong>User Name:</strong> {user.name}</li>
-        <li><strong>Email:</strong> {user.email}</li>
-        <li><strong>Phone:</strong> {user.whatsappNumber}</li>
-        <li><strong>Course:</strong> {course.name}</li>
-        <li><strong>Slot:</strong> {slot.slotName}</li>
-        <li><strong>Transaction ID:</strong> {transaction.transactionId}</li>
-        <li><strong>Payment Status:</strong> {transaction.status}</li>
-        <li><strong>Amount Paid:</strong> {transaction.amount}</li>
-      </ul>
-
-      {/* Using the Client Component */}
-      <DownloadButton transaction={transaction} user={user} course={course} slot={slot} />
+    <div className="container mx-auto px-4 py-16 max-w-3xl">
+      <Card className="overflow-hidden transition-all duration-300 hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] hover:border-cyan-400">
+        <CardHeader className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white">
+          <CardTitle className="text-3xl font-bold">Booking Confirmed!</CardTitle>
+        </CardHeader>
+        <CardContent className="p-6 space-y-6">
+          <p className="text-lg text-gray-700">Thank you for your payment. Your booking details are as follows:</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <InfoItem label="User Name" value={user.name} />
+            <InfoItem label="Email" value={user.email} />
+            <InfoItem label="Phone" value={user.whatsappNumber} />
+            <InfoItem label="Course" value={course.name} />
+            <InfoItem label="Slot" value={slot.slotName} />
+            <InfoItem label="Transaction ID" value={transaction.transactionId} />
+            <InfoItem label="Payment Status" value={transaction.status} />
+            <InfoItem label="Amount Paid" value={`$${transaction.amount}`} />
+          </div>
+          <div className="mt-8">
+            <DownloadButton transaction={transaction} user={user} course={course} slot={slot} />
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
+
+function InfoItem({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex flex-col">
+      <span className="text-sm font-medium text-gray-500">{label}</span>
+      <span className="text-lg font-semibold text-gray-900">{value}</span>
+    </div>
+  );
+}
+
