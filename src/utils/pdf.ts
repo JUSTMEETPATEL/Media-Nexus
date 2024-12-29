@@ -12,7 +12,7 @@ export async function generateBookingPDF(details: {
   const page = pdfDoc.addPage([500, 700]);
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
-  const amountText = `Amount Paid: INR ${details.amount.toFixed(2)}`; // Use 'INR' instead of '₹'
+  const amountText = `Amount Paid: INR ${details.amount.toFixed(2)}`; 
 
   page.drawText(`Booking Details`, { x: 50, y: 650, size: 20, font });
   page.drawText(`Name: ${details.name}`, { x: 50, y: 600, size: 12, font });
