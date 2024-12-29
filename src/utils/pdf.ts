@@ -7,8 +7,6 @@ export async function generateBookingPDF(details: {
   courseName: string;
   slotName: string;
   amount: number;
-  transactionId: string;
-  paymentStatus: string;
   bookingDate: string;
 }) {
   const pdfDoc = await PDFDocument.create();
@@ -54,10 +52,8 @@ export async function generateBookingPDF(details: {
   drawTableRow(detailsStartY - rowHeight, 'Email', details.email);
   drawTableRow(detailsStartY - rowHeight * 2, 'Course', details.courseName);
   drawTableRow(detailsStartY - rowHeight * 3, 'Slot', details.slotName);
-  drawTableRow(detailsStartY - rowHeight * 4, 'Transaction ID', details.transactionId);
-  drawTableRow(detailsStartY - rowHeight * 5, 'Payment Status', details.paymentStatus);
-  drawTableRow(detailsStartY - rowHeight * 6, 'Amount Paid', `INR ${details.amount.toFixed(2)}`);
-  drawTableRow(detailsStartY - rowHeight * 7, 'Booking Date', details.bookingDate);
+  drawTableRow(detailsStartY - rowHeight * 4, 'Amount Paid', `INR ${details.amount.toFixed(2)}`);
+  drawTableRow(detailsStartY - rowHeight * 5, 'Booking Date', details.bookingDate);
 
   // Save the PDF
   const pdfBytes = await pdfDoc.save();
