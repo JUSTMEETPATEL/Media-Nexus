@@ -145,15 +145,15 @@ export default function EnquiryForm() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="min-h-screen bg-gradient-to-br from-gray-50 to-white pt-24 p-4 md:p-8"
+        className="min-h-screen bg-gradient-to-br from-gray-50 to-white pt-12 md:pt-24 p-4 md:p-8"
       >
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start pt-28">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start pt-28 px-4 md:px-8">
           {/* Left Section */}
           <motion.div 
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="space-y-6 mt-12"
+            className="space-y-6 mt-12 col-span-1 md:col-span-1"
           >
             <h1 className="text-5xl font-bold">
               ENQUIRE{" "}
@@ -169,10 +169,10 @@ export default function EnquiryForm() {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="relative group"
+            className="relative group col-span-1 md:col-span-1"
           >
             <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-cyan-300 rounded-lg blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
-            <Card className="relative bg-white p-8 rounded-lg shadow-xl transition-all duration-300 ease-in-out hover:shadow-2xl hover:transform hover:-translate-y-1 min-w-[400px]">
+            <Card className="relative bg-white p-8 rounded-lg shadow-xl transition-all duration-300 ease-in-out hover:shadow-2xl hover:transform hover:-translate-y-1 w-full md:min-w-[400px]">
               <CardContent>
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -307,7 +307,7 @@ export default function EnquiryForm() {
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="relative min-w-[400px] h-[450px]"
+            className="relative min-w-[400px] h-[450px] hidden md:block col-span-1 md:col-span-1"
           >
             <Image
               src="/enquire.png"

@@ -12,7 +12,7 @@ export default function Page() {
           {/* Left Column - Contact Information */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <h1 className="text-6xl font-bold text-black">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black">
                 HOW TO
                 <br />
                 <span className="text-cyan-400">FIND US</span>
@@ -23,13 +23,13 @@ export default function Page() {
               {/* Address */}
               <div className="flex items-start gap-4">
                 <div className="p-2 bg-white/10 rounded-lg">
-                  <MapPin className="h-6 w-6 text-cyan-400" />
+                  <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="text-cyan-400 text-xl font-semibold mb-2">
+                  <h3 className="text-cyan-400 text-lg sm:text-xl font-semibold mb-2">
                     ADDRESS
                   </h3>
-                  <p className="text-slate-700">
+                  <p className="text-slate-700 text-sm sm:text-base">
                     Bharathi Salai, Ramapuram,
                     <br />
                     Chennai, Tamil Nadu 600089
@@ -40,46 +40,46 @@ export default function Page() {
               {/* Phone */}
               <div className="flex items-start gap-4">
                 <div className="p-2 bg-white/10 rounded-lg">
-                  <Phone className="h-6 w-6 text-cyan-400" />
+                  <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="text-cyan-400 text-xl font-semibold mb-2">
+                  <h3 className="text-cyan-400 text-lg sm:text-xl font-semibold mb-2">
                     CALL US
                   </h3>
-                  <p className="text-slate-700">+91 9384088566</p>
+                  <p className="text-slate-700 text-sm sm:text-base">+91 9384088566</p>
                 </div>
               </div>
 
               {/* Email */}
               <div className="flex items-start gap-4">
                 <div className="p-2 bg-white/10 rounded-lg">
-                  <Mail className="h-6 w-6 text-cyan-400" />
+                  <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="text-cyan-400 text-xl font-semibold mb-2">
+                  <h3 className="text-cyan-400 text-lg sm:text-xl font-semibold mb-2">
                     EMAIL
                   </h3>
-                  <p className="text-slate-700">medianexus@srmorg.com</p>
+                  <p className="text-slate-700 text-sm sm:text-base">medianexus@srmorg.com</p>
                 </div>
               </div>
 
               {/* Website */}
               <div className="flex items-start gap-4">
                 <div className="p-2 bg-white/10 rounded-lg">
-                  <Monitor className="h-6 w-6 text-cyan-400" />
+                  <Monitor className="h-5 w-5 sm:h-6 sm:w-6 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="text-cyan-400 text-xl font-semibold mb-2">
+                  <h3 className="text-cyan-400 text-lg sm:text-xl font-semibold mb-2">
                     WEBSITE
                   </h3>
-                  <p className="text-slate-700">www.medianexus.srmorg.com</p>
+                  <p className="text-slate-700 text-sm sm:text-base">www.medianexus.srmorg.com</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right Column - Image */}
-          <div className="relative h-[600px] rounded-lg overflow-hidden">
+          <div className="relative h-[500px] rounded-lg overflow-hidden hidden md:block">
             <Image
               src="/contact.jpg?height=600&width=800"
               alt="Workspace"
@@ -91,10 +91,11 @@ export default function Page() {
         </div>
 
         {/* Footer Text */}
-        <div className="text-center text-slate-900 py-8">
+        <div className="text-center text-slate-900 py-8 text-sm sm:text-base">
           A Venture of SRM IST Ramapuram
         </div>
       </div>
     </main>
   );
 }
+
