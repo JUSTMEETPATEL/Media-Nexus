@@ -16,7 +16,7 @@ const DownloadButton = ({ transaction, user, course, slot }: Props) => {
     const doc = new jsPDF();
 
     // Add the logo
-    doc.addImage('/srm-logo.png', 'PNG', 15, 10, 192, 56);
+    doc.addImage('/srm-logo.png', 'PNG', 15, 10, 60, 30);
 
     // Add the text "MEDIA NEXUS"
     doc.setFontSize(24);
