@@ -16,7 +16,7 @@ function Feature({
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between gap-4">
-        <h2 className="text-white text-xl font-bold">{title}</h2>
+        <h2 className="text-black text-xl font-bold">{title}</h2>
         <div
           className="bg-white rounded-full p-2 hover:bg-opacity-90 transition-colors cursor-pointer"
           onMouseEnter={() => setIsHovered(true)}
@@ -25,7 +25,7 @@ function Feature({
           <Tag className="w-5 h-5 text-cyan-500" />
         </div>
       </div>
-      {isHovered && <p className="text-white animate-fadeIn">{description}</p>}
+      {isHovered && <p className="text-black animate-fadeIn">{description}</p>}
     </div>
   );
 }
@@ -59,13 +59,13 @@ export default function Page() {
           </div>
 
           {/* Right Column */}
-          <div className="md:w-1/2 relative bg-cyan-500 bg-opacity-80 p-4 md:p-6 rounded-lg overflow-hidden mt-10">
+          <div className="md:w-1/2 relative bg-cyan-500 bg-opacity-90 p-4 md:p-6 rounded-lg overflow-hidden mt-10">
             <Image
-              src="/placeholder.svg?height=600&width=800"
+              src="/about-bg.jpg?height=600&width=800"
               alt="Background"
               layout="fill"
               objectFit="cover"
-              className="mix-blend-overlay"
+              className="mix-blend-overlay opacity-30"
             />
             <div className="space-y-24 relative z-10">
               <Feature
