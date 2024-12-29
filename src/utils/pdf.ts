@@ -18,7 +18,7 @@ export async function generateBookingPDF(details: {
   const logoUrl = '/srm-logo.png';
   const logoBytes = await fetch(logoUrl).then(res => res.arrayBuffer());
   const logoImage = await pdfDoc.embedPng(logoBytes);
-  page.drawImage(logoImage, { x: 15, y: 650, width: 30, height: 30 });
+  page.drawImage(logoImage, { x: 15, y: 650, width: 192, height: 56 });
 
   // Add the title "Booking Confirmed!" with styling
   page.drawText('Booking Confirmed!', {
