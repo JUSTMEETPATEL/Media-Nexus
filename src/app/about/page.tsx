@@ -2,6 +2,7 @@
 
 import { Tag } from 'lucide-react';
 import { useState } from 'react';
+import Image from 'next/image';
 
 function Feature({
   title,
@@ -58,8 +59,15 @@ export default function Page() {
           </div>
 
           {/* Right Column */}
-          <div className="md:w-1/2 relative bg-cyan-500 p-4 md:p-6 rounded-lg">
-            <div className="space-y-24">
+          <div className="md:w-1/2 relative bg-cyan-500 bg-opacity-80 p-4 md:p-6 rounded-lg overflow-hidden mt-10">
+            <Image
+              src="/placeholder.svg?height=600&width=800"
+              alt="Background"
+              layout="fill"
+              objectFit="cover"
+              className="mix-blend-overlay"
+            />
+            <div className="space-y-24 relative z-10">
               <Feature
                 title="STATE-OF-THE-ART FACILITY"
                 description="State-of-the-art facilities, modern classrooms, advanced technology, comfortable study spaces, well-equipped labs, and vibrant campus."
@@ -86,3 +94,4 @@ export default function Page() {
     </div>
   );
 }
+
