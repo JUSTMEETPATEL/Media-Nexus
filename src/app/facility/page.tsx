@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Card, CardContent } from "@/components/ui/card"
+import './facility-showcase.css'
 
 export default function FacilityShowcase() {
   const facilities = [
@@ -42,7 +43,7 @@ export default function FacilityShowcase() {
 
   return (
     <div className="container mx-auto p-4 md:p-12">
-      <div className="grid gap-6 mt-8" 
+      <div className="grid gap-2 mt-8 md:grid md:grid-cols-4 md:grid-rows-3 md:gap-2"
            style={{
              display: 'grid',
              gridTemplateAreas: `
@@ -52,9 +53,9 @@ export default function FacilityShowcase() {
              `,
              gridTemplateColumns: 'repeat(4, 1fr)',
              gridTemplateRows: 'auto repeat(2, 200px)'
-           }}>
-  
-        <div className="col-span-2 mt-16" style={{ gridArea: 'header' }}>
+           }}
+      >
+        <div className="col-span-2 mt-16 pt-8" style={{ gridArea: 'header' }}>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-cyan-400">STATE-OF-THE-ART</span>
             <br />
@@ -62,11 +63,10 @@ export default function FacilityShowcase() {
           </h1>
         </div>
 
-        
         {facilities.map((facility) => (
           <Card 
             key={facility.title}
-            className="group overflow-hidden transition-transform duration-300 hover:scale-105"
+            className="group overflow-hidden transition-transform duration-300 hover:scale-105 mt-8"
             style={{ gridArea: facility.gridArea }}
           >
             <CardContent className="p-0 relative h-full">
@@ -75,6 +75,7 @@ export default function FacilityShowcase() {
                   src={facility.image}
                   alt={facility.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -87,13 +88,10 @@ export default function FacilityShowcase() {
             </CardContent>
           </Card>
         ))}
+        
       </div>
     </div>
-  )
-}
-
-
-
+  );}
 
 
 
