@@ -56,7 +56,7 @@ export default async function Page(props: Props) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-12 sm:py-16 md:py-24 max-w-3xl">
+    <div className="container mx-auto px-4 py-12 sm:py-16 md:py-32 max-w-3xl">
       <Card className="overflow-hidden transition-all duration-300 hover:shadow-[0_0_15px_rgba(34,211,238,0.4)] hover:border-cyan-400 animate-fadeIn">
         <CardHeader className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white">
           <CardTitle className="text-2xl sm:text-3xl font-bold">Booking Confirmed!</CardTitle>
