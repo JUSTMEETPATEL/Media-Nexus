@@ -13,12 +13,6 @@ export async function generateBookingPDF(details: {
   const page = pdfDoc.addPage([500, 700]);
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
-  // Add the logo (optional)
-  // Use your logo image in base64 or embed it similarly if required
-  const logoUrl = '/srm-logo.png';
-  const logoBytes = await fetch(logoUrl).then(res => res.arrayBuffer());
-  const logoImage = await pdfDoc.embedPng(logoBytes);
-  page.drawImage(logoImage, { x: 15, y: 650, width: 192, height: 56 });
 
   // Add the title "Booking Confirmed!" with styling
   page.drawText('Booking Confirmed!', {
@@ -59,4 +53,3 @@ export async function generateBookingPDF(details: {
   const pdfBytes = await pdfDoc.save();
   return pdfBytes;
 }
-
