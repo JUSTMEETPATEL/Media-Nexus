@@ -102,6 +102,7 @@ export default function Navbar() {
 
           {/* Logo (Desktop) */}
           <div className="hidden md:block w-48">
+            <Link href = "https://srmrmp.edu.in/">
             <Image
               src="/srm-logo.png"
               alt="SRM Logo"
@@ -110,6 +111,7 @@ export default function Navbar() {
               className="w-48 h-14 object-contain"
               style={{ background: 'transparent' }}
             />
+            </Link>
           </div>
 
           {/* Mobile menu button */}
