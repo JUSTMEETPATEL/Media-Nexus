@@ -50,15 +50,15 @@ export default function ProgramsPage() {
       transition={{ duration: 0.6 }}
       className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center pt-24"
     >
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-3 gap-6 h-[calc(100vh-6rem)]">
+      <div className="container mx-auto px-4 md:px-6 py-4 md:py-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[calc(100vh-6rem)]">
           {/* Title and Social Media Design */}
-          <div className="col-span-1 flex flex-col justify-between">
+          <div className="col-span-1 flex flex-col gap-6 md:justify-between">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-8 ml-8 mt-12"
+              className="mb-8 ml-4 md:ml-8 mt-6 md:mt-12"
             >
               <motion.h1
                 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-left mb-4 relative z-10"
@@ -93,13 +93,13 @@ export default function ProgramsPage() {
           </div>
 
           {/* Film Making and Digital Photography */}
-          <div className="col-span-1 flex flex-col justify-between">
+          <div className="col-span-1 flex flex-col gap-6 md:justify-between">
             <ProgramCard program={programs[0]} index={0} />
             <ProgramCard program={programs[3]} index={3} />
           </div>
 
           {/* Video Editing and 3D Animation */}
-          <div className="col-span-1 flex flex-col justify-between">
+          <div className="col-span-1 flex flex-col gap-6 md:justify-between">
             <ProgramCard program={programs[1]} index={1} />
             <ProgramCard program={programs[4]} index={4} />
           </div>
