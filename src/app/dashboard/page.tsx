@@ -1,11 +1,23 @@
-import React from 'react';
+"use client";
 
-const DashboardPage: React.FC = () => {
-    return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-            <h1>Dashboard</h1>
-        </div>
-    );
-};
+import { useSession } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
 
-export default DashboardPage;
+
+const Page = () => {
+    const session = useSession();
+    console.log(session);
+    if(session.data === null){ 
+        redirect("/sign-in");
+    }
+
+  return (
+    <div className="h-screen flex items-center justify-center"> 
+        <h1 className="text-2xl text-black font-bold ">
+        {session.data?.user.email}
+        </h1>
+    </div>
+  )
+}
+
+export default Page

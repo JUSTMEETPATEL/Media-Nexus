@@ -52,7 +52,7 @@ const Page = () => {
             title: "Success",
             description: "Password reset successfully",
           })
-          redirect("/signin");
+          redirect("/sign-in");
         },
         onError: async (ctx) => {
           toast({
