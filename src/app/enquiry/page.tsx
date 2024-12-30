@@ -109,7 +109,9 @@ export default function EnquiryForm() {
               const dbUpdateResult = await dbUpdateResponse.json()
               if (dbUpdateResult.success) {
                 console.log("Payment verified and database updated")
+                //WIP: Migrate the email sending logic to the API
               }
+              //WIP: Get Pass from the api generated randomly
               
               redirect(`/booking/${razorpay_payment_id}`)
             }
