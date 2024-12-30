@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 
 async function sendMagicLink(email: string, magicLink: string): Promise<void> {
     // Create a transporter object using SMTP transport
-    let transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
             user: process.env.EMAIL_USER, // your email
@@ -11,7 +11,7 @@ async function sendMagicLink(email: string, magicLink: string): Promise<void> {
     });
 
     // Email content
-    let mailOptions = {
+    const mailOptions = {
         from: '"Media Nexus" <medianexus@srmorg.com>',
         to: email,
         subject: 'Your Magic Link for Authentication',

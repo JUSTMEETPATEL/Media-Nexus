@@ -1,3 +1,4 @@
+import { authClient } from "@/lib/auth-client";
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
@@ -58,6 +59,15 @@ export async function POST(req: Request) {
     where: { id: enquiry.id },
     data: { paymentVerified: true },
     });
+
+    const {error } = await authClient.signIn.magicLink({
+      email,
+      callbackURL: "/dashboard" //redirect after successful login (optional)
+  });
+  if (error) {
+      console.error("Error sending magic link:", error);
+      return NextResponse.json({ message: 'Error sending magic link' }, { status: 500 });
+  }
   
     return NextResponse.json({ message: 'Payment details updated successfully', transaction });
   } catch (error) {
