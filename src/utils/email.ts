@@ -15,7 +15,7 @@ export async function sendBookingEmail(
   const pdfBuffer = Buffer.from(pdfBytes);
 
   const mailOptions = {
-    from: "no-reply@yourdomain.com",
+    from: '"Media Nexus" <medianexus@srmorg.com>',
     to: recipientEmail,
     subject: "Your Booking Receipt",
     text: "Please find attached your booking receipt.",
