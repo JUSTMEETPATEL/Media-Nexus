@@ -1,30 +1,39 @@
-import prisma from '@/lib/prisma';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
+import prisma from '@/lib/prisma'; // Adjust the import path based on your project structure
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method !== 'GET') {
-        return res.status(405).json({ error: 'Method not allowed' });
+// Define the request body type
+interface CheckUserRequest {
+  email: string;
+}
+
+// Define the response types
+interface CheckUserResponse {
+  exists: boolean;
+  message: string;
+}
+
+// POST /api/check-user
+export async function POST(req: Request): Promise<Response> {
+  try {
+    const body: CheckUserRequest = await req.json();
+    const { email } = body;
+
+    if (!email) {
+      return NextResponse.json({ error: 'Email is required.' }, { status: 400 });
     }
 
-    const { email } = req.query;
+    // Check if the user exists in the Users table
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
 
-    if (!email || typeof email !== 'string') {
-        return res.status(400).json({ error: 'Email parameter is required and must be a string' });
-    }
+    const response: CheckUserResponse = user
+      ? { exists: true, message: 'User already exists.' }
+      : { exists: false, message: 'User does not exist.' };
 
-    try {
-        const user = await prisma.user.findUnique({
-            where: {
-                email: email,
-            },
-        });
-
-        if (user) {
-            return res.status(200).json({ exists: true });
-        } else {
-            return res.status(400).json({ exists: false });
-        }
-    } catch {
-        return res.status(500).json({ error: 'Internal server error' });
-    } 
+    return NextResponse.json(response);
+  } catch (error) {
+    console.error('Error checking user:', error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
 }

@@ -15,6 +15,7 @@ import { redirect } from "next/navigation"
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { motion } from "framer-motion"
+import { toast } from "@/hooks/use-toast"
 
 // Helper functions remain the same
 const checkSlotAvailability = async (courseId: number, slotId: number) => {
@@ -56,6 +57,26 @@ export default function EnquiryForm() {
     setSlotError(null)
 
     try {
+      //check-user API call remains the same
+      const response = await fetch('/api/check-user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: data.email }),
+      });
+      
+      const fetchUserData = await response.json();
+      console.log(fetchUserData);
+      if(fetchUserData.exists) {
+        toast({
+          title: "User already exists",
+          description: "User already exists with this email. Please login to continue.",
+        })
+        window.location.href = "/sign-in";
+        return;
+      }
+
       const isSlotAvailable = await checkSlotAvailability(data.courseId, data.slotId)
 
       if (!isSlotAvailable) {
@@ -64,7 +85,7 @@ export default function EnquiryForm() {
         return
       }
 
-      const amount = 100
+      const amount = 100 //Specify the amount for the course
       const orderId = await createRazorpayOrder(amount)
 
       if (orderId) {
@@ -73,7 +94,7 @@ export default function EnquiryForm() {
           amount: amount * 100,
           currency: "INR",
           order_id: orderId,
-          name: "Your Company Name",
+          name: "Media Nexus",
           description: "Payment for Enquiry",
           handler: async function (response: any) {
             const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response
@@ -122,7 +143,7 @@ export default function EnquiryForm() {
             contact: data.whatsappNumber,
           },
           notes: {
-            address: "Your Company Address",
+            address: "Bharathi Salai, Ramapuram, Chennai, Tamil Nadu 600089",
           },
         }
 
