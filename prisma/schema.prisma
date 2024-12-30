@@ -1,3 +1,4 @@
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,21 +9,23 @@ datasource db {
 }
 
 model Enquiry {
-  id              String       @id @default(cuid()) // Unique identifier for each enquiry
+  id              String        @id @default(cuid()) // Unique identifier for each enquiry
   name            String // User's name
   whatsappNumber  String // User's WhatsApp number
-  email           String        // User's email, must be unique
+  email           String // User's email, must be unique
   courseId        Int // Preferred course (foreign key)
   slotId          Int // Preferred slot (foreign key)
-  createdAt       DateTime     @default(now()) // Timestamp for when the enquiry was submitted
-  paymentVerified Boolean      @default(false) // Track if payment is verified
+  createdAt       DateTime      @default(now()) // Timestamp for when the enquiry was submitted
+  paymentVerified Boolean       @default(false) // Track if payment is verified
   transaction     Transaction[] @relation // Relation to Transaction, one-to-many
 
   course Course @relation(fields: [courseId], references: [id])
   slot   Slot   @relation(fields: [slotId], references: [id])
 
-  @@index([email]) // Index on email for faster queries
-  @@index([courseId, slotId]) // Index on courseId and slotId for faster queries
+  // Index on email for faster queries
+  // Index on courseId and slotId for faster queries
+  @@index([email])
+  @@index([courseId, slotId])
 }
 
 model Course {
@@ -42,7 +45,7 @@ model Slot {
 
 model Transaction {
   id            String   @id @default(cuid()) // Unique identifier for the transaction
-  enquiryId     String   // Foreign key to the Enquiry model (no `@unique` here)
+  enquiryId     String // Foreign key to the Enquiry model (no `@unique` here)
   amount        Float // Payment amount
   status        String // Payment status (e.g., 'completed', 'failed', 'pending')
   transactionId String // Unique transaction ID from the payment gateway
@@ -51,4 +54,64 @@ model Transaction {
 
   // This side defines the relation with "fields" and "references"
   enquiry Enquiry @relation(fields: [enquiryId], references: [id])
+}
+
+model User {
+  id            String    @id
+  name          String
+  email         String
+  emailVerified Boolean
+  image         String?
+  createdAt     DateTime
+  updatedAt     DateTime
+  sessions      Session[]
+  accounts      Account[]
+
+  @@unique([email])
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime
+  updatedAt DateTime
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime
+  updatedAt             DateTime
+
+  @@map("account")
+}
+
+model Verification {
+  id         String    @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime?
+  updatedAt  DateTime?
+
+  @@map("verification")
 }
