@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 import {
   Form,
   FormField,
@@ -15,20 +15,20 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
-} from "@/components/ui/form";
-import { toast } from "@/hooks/use-toast";
-import { authClient } from "@/lib/auth-client";
-import { Input } from "@/components/ui/input";
-import { useForm } from "react-hook-form";
-import { forgotPasswordFormSchema } from "@/lib/auth-schema";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+} from '@/components/ui/form';
+import { toast } from '@/hooks/use-toast';
+import { authClient } from '@/lib/auth-client';
+import { Input } from '@/components/ui/input';
+import { useForm } from 'react-hook-form';
+import { forgotPasswordFormSchema } from '@/lib/auth-schema';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 const Page = () => {
   const form = useForm<z.infer<typeof forgotPasswordFormSchema>>({
     resolver: zodResolver(forgotPasswordFormSchema),
     defaultValues: {
-      email: "",
+      email: '',
     },
   });
 
@@ -37,24 +37,24 @@ const Page = () => {
     const { data, error } = await authClient.forgetPassword(
       {
         email,
-        redirectTo: "/reset-password",
+        redirectTo: '/reset-password',
       },
       {
         onRequest: () => {
           toast({
-            title: "Please Wait...",
+            title: 'Please Wait...',
           });
         },
         onSuccess: () => {
           form.reset();
           toast({
-            title: "Success",
-            description: "Password reset link sent to your email",
-          })
+            title: 'Success',
+            description: 'Password reset link sent to your email',
+          });
         },
         onError: async (ctx) => {
           toast({
-            title: "Error",
+            title: 'Error',
             description: ctx.error.message,
           });
         },
@@ -63,7 +63,7 @@ const Page = () => {
     console.log(data);
     if (error) {
       toast({
-        title: "Error",
+        title: 'Error',
         description: error.message,
       });
     }

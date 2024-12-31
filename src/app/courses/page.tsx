@@ -10,31 +10,36 @@ const programs = [
   {
     icon: Film,
     title: 'SHORT FILM MAKING',
-    description: 'This course will train the students practically in the art of storytelling, cinematography, directing and basic editing from a concept to the final cut.',
+    description:
+      'This course will train the students practically in the art of storytelling, cinematography, directing and basic editing from a concept to the final cut.',
     backgroundImage: '/film.jpeg?height=400&width=600',
   },
   {
     icon: Video,
     title: 'EDITING TECHNIQUES',
-    description: "The certificate course will explore film director's editing techniques and their collaboration with Industry trained experts, offering insights into the creative process.",
+    description:
+      "The certificate course will explore film director's editing techniques and their collaboration with Industry trained experts, offering insights into the creative process.",
     backgroundImage: '/editing.jpg?height=400&width=600',
   },
   {
     icon: Share2,
     title: 'SOCIAL MEDIA DESIGN',
-    description: 'Learn to create impactful, visually appealing content through graphic design, branding, and hands-on projects.',
+    description:
+      'Learn to create impactful, visually appealing content through graphic design, branding, and hands-on projects.',
     backgroundImage: '/social-media.png?height=400&width=600',
   },
   {
     icon: Camera,
     title: 'DIGITAL PHOTOGRAPHY',
-    description: 'Through real-world applications and expert guidance, they will sharpen their skills in film editing, gaining practical insights into the creative process.',
+    description:
+      'Through real-world applications and expert guidance, they will sharpen their skills in film editing, gaining practical insights into the creative process.',
     backgroundImage: '/digital-photography.jpeg?height=400&width=600',
   },
   {
     icon: Cube,
     title: '3D ANIMATION',
-    description: 'Master 3D animation, modeling, and motion graphics to create professional-quality content for film and gaming.',
+    description:
+      'Master 3D animation, modeling, and motion graphics to create professional-quality content for film and gaming.',
     backgroundImage: '/3d-animation.jpeg?height=400&width=600',
   },
 ];
@@ -109,7 +114,13 @@ export default function ProgramsPage() {
   );
 }
 
-function ProgramCard({ program, index }: { program: typeof programs[0], index: number }) {
+function ProgramCard({
+  program,
+  index,
+}: {
+  program: (typeof programs)[0];
+  index: number;
+}) {
   return (
     <Link href="/enquiry" className="block">
       <MotionCard
@@ -153,8 +164,16 @@ function ProgramCard({ program, index }: { program: typeof programs[0], index: n
           <div className="mt-4">
             <span className="inline-flex items-center text-sm font-medium text-cyan-600 dark:text-cyan-400 group-hover:text-white transition-colors duration-300">
               Read More
-              <svg className="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
+              <svg
+                className="w-4 h-4 ml-1"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </span>
           </div>
@@ -163,4 +182,3 @@ function ProgramCard({ program, index }: { program: typeof programs[0], index: n
     </Link>
   );
 }
-

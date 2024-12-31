@@ -13,7 +13,6 @@ export async function generateBookingPDF(details: {
   const page = pdfDoc.addPage([500, 700]);
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
-
   // Add the title "Booking Confirmed!" with styling
   page.drawText('Booking Confirmed!', {
     x: 105,
@@ -24,13 +23,16 @@ export async function generateBookingPDF(details: {
   });
 
   // Add a subtitle thanking the user for the payment
-  page.drawText('Thank you for your payment. Your booking details are as follows:', {
-    x: 105,
-    y: 630,
-    size: 12,
-    font,
-    color: rgb(0, 0, 0), // Black color for the subtitle
-  });
+  page.drawText(
+    'Thank you for your payment. Your booking details are as follows:',
+    {
+      x: 105,
+      y: 630,
+      size: 12,
+      font,
+      color: rgb(0, 0, 0), // Black color for the subtitle
+    }
+  );
 
   // Create the table-like structure for booking details
   const detailsStartY = 580;
@@ -46,8 +48,16 @@ export async function generateBookingPDF(details: {
   drawTableRow(detailsStartY - rowHeight, 'Email', details.email);
   drawTableRow(detailsStartY - rowHeight * 2, 'Course', details.courseName);
   drawTableRow(detailsStartY - rowHeight * 3, 'Slot', details.slotName);
-  drawTableRow(detailsStartY - rowHeight * 4, 'Amount Paid', `INR ${details.amount.toFixed(2)}`);
-  drawTableRow(detailsStartY - rowHeight * 5, 'Booking Date', details.bookingDate);
+  drawTableRow(
+    detailsStartY - rowHeight * 4,
+    'Amount Paid',
+    `INR ${details.amount.toFixed(2)}`
+  );
+  drawTableRow(
+    detailsStartY - rowHeight * 5,
+    'Booking Date',
+    details.bookingDate
+  );
 
   // Save the PDF
   const pdfBytes = await pdfDoc.save();

@@ -23,7 +23,10 @@ export function Lightbox({ src, alt, onClose }: LightboxProps) {
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+      onClick={onClose}
+    >
       <div className="relative max-w-4xl max-h-[90vh] w-full h-full">
         <Image
           src={src}
@@ -36,4 +39,3 @@ export function Lightbox({ src, alt, onClose }: LightboxProps) {
     </div>
   );
 }
-

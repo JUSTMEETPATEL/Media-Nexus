@@ -31,7 +31,12 @@ const DownloadButton = ({ transaction, user, course, slot }: Props) => {
 
     doc.setFontSize(12);
     doc.setTextColor(0);
-    doc.text('Thank you for your payment. Your booking details are as follows:', 105, 70, { align: 'center' });
+    doc.text(
+      'Thank you for your payment. Your booking details are as follows:',
+      105,
+      70,
+      { align: 'center' }
+    );
 
     // Create a table for the booking details
     autoTable(doc, {
@@ -56,11 +61,13 @@ const DownloadButton = ({ transaction, user, course, slot }: Props) => {
   };
 
   return (
-    <button onClick={downloadPDF} className="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+    <button
+      onClick={downloadPDF}
+      className="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+    >
       Download Your Details
     </button>
   );
 };
 
 export default DownloadButton;
-

@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 import {
   Form,
   FormField,
@@ -15,22 +15,22 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
-} from "@/components/ui/form";
-import { toast } from "@/hooks/use-toast";
-import { authClient } from "@/lib/auth-client";
-import { Input } from "@/components/ui/input";
-import { useForm } from "react-hook-form";
-import { resetPasswordFormSchema } from "@/lib/auth-schema";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { redirect } from "next/navigation";
+} from '@/components/ui/form';
+import { toast } from '@/hooks/use-toast';
+import { authClient } from '@/lib/auth-client';
+import { Input } from '@/components/ui/input';
+import { useForm } from 'react-hook-form';
+import { resetPasswordFormSchema } from '@/lib/auth-schema';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { redirect } from 'next/navigation';
 
 const Page = () => {
   const form = useForm<z.infer<typeof resetPasswordFormSchema>>({
     resolver: zodResolver(resetPasswordFormSchema),
     defaultValues: {
-      newpassword: "",
-      confirmPassword: "",
+      newpassword: '',
+      confirmPassword: '',
     },
   });
 
@@ -43,20 +43,20 @@ const Page = () => {
       {
         onRequest: () => {
           toast({
-            title: "Please Wait...",
+            title: 'Please Wait...',
           });
         },
         onSuccess: () => {
           form.reset();
           toast({
-            title: "Success",
-            description: "Password reset successfully",
-          })
-          redirect("/sign-in");
+            title: 'Success',
+            description: 'Password reset successfully',
+          });
+          redirect('/sign-in');
         },
         onError: async (ctx) => {
           toast({
-            title: "Error",
+            title: 'Error',
             description: ctx.error.message,
           });
         },
@@ -65,7 +65,7 @@ const Page = () => {
     console.log(data);
     if (error) {
       toast({
-        title: "Error",
+        title: 'Error',
         description: error.message,
       });
     }
@@ -88,7 +88,11 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>New Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="Enter a new password" {...field} />
+                    <Input
+                      type="password"
+                      placeholder="Enter a new password"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -101,7 +105,11 @@ const Page = () => {
                 <FormItem>
                   <FormLabel>Confirm Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="Confirm password" {...field} />
+                    <Input
+                      type="password"
+                      placeholder="Confirm password"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

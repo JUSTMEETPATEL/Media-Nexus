@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
-import prisma from "@/lib/prisma"; 
+import { NextResponse } from 'next/server';
+import prisma from '@/lib/prisma';
 
 export async function POST(req: Request) {
   try {
@@ -18,7 +18,10 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ isAvailable: false });
   } catch (error) {
-    console.error("Error checking slot availability:", error);
-    return NextResponse.json({ isAvailable: false, error: "Internal Server Error" });
+    console.error('Error checking slot availability:', error);
+    return NextResponse.json({
+      isAvailable: false,
+      error: 'Internal Server Error',
+    });
   }
 }

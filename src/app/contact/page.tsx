@@ -46,7 +46,9 @@ export default function Page() {
                   <h3 className="text-cyan-400 text-lg sm:text-xl font-semibold mb-2">
                     CALL US
                   </h3>
-                  <p className="text-slate-700 text-sm sm:text-base">+91 9384088566</p>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    +91 9384088566
+                  </p>
                 </div>
               </div>
 
@@ -59,7 +61,9 @@ export default function Page() {
                   <h3 className="text-cyan-400 text-lg sm:text-xl font-semibold mb-2">
                     EMAIL
                   </h3>
-                  <p className="text-slate-700 text-sm sm:text-base">medianexus@srmorg.com</p>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    medianexus@srmorg.com
+                  </p>
                 </div>
               </div>
 
@@ -72,7 +76,9 @@ export default function Page() {
                   <h3 className="text-cyan-400 text-lg sm:text-xl font-semibold mb-2">
                     WEBSITE
                   </h3>
-                  <p className="text-slate-700 text-sm sm:text-base">www.medianexus.srmorg.com</p>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    www.medianexus.srmorg.com
+                  </p>
                 </div>
               </div>
             </div>
@@ -98,4 +104,3 @@ export default function Page() {
     </main>
   );
 }
-

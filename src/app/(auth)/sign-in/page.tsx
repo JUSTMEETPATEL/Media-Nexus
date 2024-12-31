@@ -1,15 +1,15 @@
-"use client";
+'use client';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import Link from "next/link";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+} from '@/components/ui/card';
+import Link from 'next/link';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import {
   Form,
   FormControl,
@@ -17,19 +17,19 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { signInFormSchema } from "@/lib/auth-schema";
-import { authClient } from "@/lib/auth-client";
-import { toast } from "@/hooks/use-toast";
+} from '@/components/ui/form';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { signInFormSchema } from '@/lib/auth-schema';
+import { authClient } from '@/lib/auth-client';
+import { toast } from '@/hooks/use-toast';
 
 const SignIn = () => {
   const form = useForm<z.infer<typeof signInFormSchema>>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
   });
 
@@ -39,30 +39,30 @@ const SignIn = () => {
       {
         email,
         password,
-        callbackURL: "/dashboard",
+        callbackURL: '/dashboard',
       },
       {
         onRequest: () => {
           toast({
-            title: "Please Wait...",
+            title: 'Please Wait...',
           });
         },
         onSuccess: () => {
-          window.location.href = "/dashboard";
+          window.location.href = '/dashboard';
         },
         onError: async (ctx) => {
           if (ctx.error.status === 403) {
             await authClient.sendVerificationEmail({
               email,
-              callbackURL: "/dashboard",
+              callbackURL: '/dashboard',
             });
             toast({
-              title: "Please verify your email",
-              description: "Email verification has been sent, kindly verify",
+              title: 'Please verify your email',
+              description: 'Email verification has been sent, kindly verify',
             });
           }
           toast({
-            title: "Error",
+            title: 'Error',
             description: ctx.error.message,
           });
         },
@@ -71,7 +71,7 @@ const SignIn = () => {
     console.log(data);
     if (error) {
       toast({
-        title: "Error",
+        title: 'Error',
         description: error.message,
       });
     }
@@ -119,7 +119,7 @@ const SignIn = () => {
               )}
             />
             <p className="text-sm text-muted-foreground">
-              Forgot Password?{" "}
+              Forgot Password?{' '}
               <Link
                 href="/forgot-password"
                 className="text-primary hover:underline"

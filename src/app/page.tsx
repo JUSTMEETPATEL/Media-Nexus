@@ -9,9 +9,8 @@ import { motion } from 'framer-motion';
 import { Lightbox } from '@/components/lightbox';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { InfiniteScrollCards } from "@/components/infinite-scroll-cards"
-import { Footer } from "@/components/footer"
-
+import { InfiniteScrollCards } from '@/components/infinite-scroll-cards';
+import { Footer } from '@/components/footer';
 
 const mediaNexus = {
   vision:
@@ -80,9 +79,7 @@ export default function Home() {
     { id: 4, src: '/photo4.jpg', alt: 'Photo 4' },
   ];
 
-  const videos = [
-    { id: 1, youtubeId: 'bh4MoEVW4Wc', title: 'Video 1' },
-  ];
+  const videos = [{ id: 1, youtubeId: 'bh4MoEVW4Wc', title: 'Video 1' }];
 
   return (
     <Suspense fallback={<Loader />}>
@@ -219,15 +216,30 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row items-start justify-between">
               <div className="md:w-1/3 mb-8 md:mb-0">
-                <h2 className="text-3xl font-bold mb-4" data-aos="fade-up">Photo Gallery</h2>
-                <p className="mb-4" data-aos="fade-up" data-aos-delay="100">Explore our collection of inspiring photos.</p>
-                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" data-aos="fade-up" data-aos-delay="200">
+                <h2 className="text-3xl font-bold mb-4" data-aos="fade-up">
+                  Photo Gallery
+                </h2>
+                <p className="mb-4" data-aos="fade-up" data-aos-delay="100">
+                  Explore our collection of inspiring photos.
+                </p>
+                <button
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
                   View All Photos
                 </button>
               </div>
-              <div className="md:w-2/3 grid grid-cols-2 gap-4" data-aos="fade-up" data-aos-delay="300">
+              <div
+                className="md:w-2/3 grid grid-cols-2 gap-4"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
                 {photos.map((photo) => (
-                  <div key={photo.id} className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer">
+                  <div
+                    key={photo.id}
+                    className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer"
+                  >
                     <Image
                       src={photo.src}
                       alt={photo.alt}
@@ -237,7 +249,9 @@ export default function Home() {
                       onClick={() => setLightboxImage(photo.src)}
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                      <span className="text-white text-lg font-semibold">View Photo</span>
+                      <span className="text-white text-lg font-semibold">
+                        View Photo
+                      </span>
                     </div>
                   </div>
                 ))}
@@ -251,15 +265,26 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="md:w-1/3 mb-8 md:mb-0">
-                <h2 className="text-3xl font-bold mb-4" data-aos="fade-up">Video Gallery</h2>
-                <p className="mb-4" data-aos="fade-up" data-aos-delay="100">Watch our collection of inspiring videos.</p>
-                <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" data-aos="fade-up" data-aos-delay="200">
+                <h2 className="text-3xl font-bold mb-4" data-aos="fade-up">
+                  Video Gallery
+                </h2>
+                <p className="mb-4" data-aos="fade-up" data-aos-delay="100">
+                  Watch our collection of inspiring videos.
+                </p>
+                <button
+                  className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
                   View All Videos
                 </button>
               </div>
               <div className="md:w-2/3" data-aos="fade-up" data-aos-delay="300">
                 {videos.slice(0, 1).map((video) => (
-                  <div key={video.id} className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer">
+                  <div
+                    key={video.id}
+                    className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer"
+                  >
                     <Image
                       src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
                       alt={video.title}
@@ -267,7 +292,11 @@ export default function Home() {
                       height={360}
                       className="w-full h-64 object-cover transition duration-300 group-hover:scale-110"
                     />
-                    <Link href={`https://www.youtube.com/watch?v=${video.youtubeId}`} target="_blank" rel="noopener noreferrer">
+                    <Link
+                      href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
                         <svg
                           className="w-16 h-16 text-white opacity-80"
@@ -304,12 +333,18 @@ export default function Home() {
                       className="object-cover transition duration-300 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                      <h3 className="text-white text-2xl font-bold">Media Coverage</h3>
+                      <h3 className="text-white text-2xl font-bold">
+                        Media Coverage
+                      </h3>
                     </div>
                   </div>
                 </Link>
               </div>
-              <div className="w-full md:w-1/2" data-aos="fade-up" data-aos-delay="100">
+              <div
+                className="w-full md:w-1/2"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
                 <Link href="/enquiry">
                   <div className="relative overflow-hidden rounded-lg shadow-lg group h-80">
                     <Image
@@ -320,7 +355,9 @@ export default function Home() {
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white">
                       <h3 className="text-2xl font-bold mb-2">Tune In</h3>
-                      <p className="text-center px-4">Stay updated with our latest news and events</p>
+                      <p className="text-center px-4">
+                        Stay updated with our latest news and events
+                      </p>
                     </div>
                   </div>
                 </Link>
@@ -341,4 +378,3 @@ export default function Home() {
     </Suspense>
   );
 }
-

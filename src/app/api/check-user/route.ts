@@ -19,7 +19,10 @@ export async function POST(req: Request): Promise<Response> {
     const { email } = body;
 
     if (!email) {
-      return NextResponse.json({ error: 'Email is required.' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Email is required.' },
+        { status: 400 }
+      );
     }
 
     // Check if the user exists in the Users table
@@ -34,6 +37,9 @@ export async function POST(req: Request): Promise<Response> {
     return NextResponse.json(response);
   } catch (error) {
     console.error('Error checking user:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 }
+    );
   }
 }

@@ -8,10 +8,10 @@ const SkeletonOne = () => {
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         Our green screen facility is equipped with the latest technology to
-        provide a seamless and immersive experience. Whether you&apos;re shooting a
-        film, creating visual effects, or conducting a virtual event, our green
-        screen studio offers the perfect environment to bring your vision to
-        life.
+        provide a seamless and immersive experience. Whether you&apos;re
+        shooting a film, creating visual effects, or conducting a virtual event,
+        our green screen studio offers the perfect environment to bring your
+        vision to life.
       </p>
     </div>
   );
@@ -41,8 +41,8 @@ const SkeletonThree = () => {
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         Our recording studio is equipped with state-of-the-art equipment and
         facilities to provide a professional and creative environment for
-        musicians and sound engineers. Whether you&apos;re recording music, voice
-        overs, or podcasts, our studio offers the perfect space to capture
+        musicians and sound engineers. Whether you&apos;re recording music,
+        voice overs, or podcasts, our studio offers the perfect space to capture
         high-quality audio.
       </p>
     </div>
@@ -56,8 +56,9 @@ const SkeletonFour = () => {
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         Our photo studio is equipped with state-of-the-art equipment and
         facilities to provide a professional and creative environment for
-        photographers. Whether you&apos;re a beginner or an experienced photographer,
-        our studio offers the perfect space to capture stunning images.
+        photographers. Whether you&apos;re a beginner or an experienced
+        photographer, our studio offers the perfect space to capture stunning
+        images.
       </p>
     </div>
   );
@@ -101,8 +102,8 @@ const SkeletonSeven = () => {
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         Our graphics lab is equipped with high-end equipment and software to
         provide a professional and creative environment for graphic designers
-        and artists. Whether you&apos;re creating logos, branding, or digital art,
-        our lab offers the perfect space to bring your ideas to life.
+        and artists. Whether you&apos;re creating logos, branding, or digital
+        art, our lab offers the perfect space to bring your ideas to life.
       </p>
     </div>
   );
