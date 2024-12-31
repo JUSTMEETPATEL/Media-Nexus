@@ -7,6 +7,27 @@ interface Props {
 const Page = async (props: Props) => {
   const params = await props.params;
   // console.log(params);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ORIGIN}/api/get-assignment`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        courseId: params.courseId,
+        slotId: params.slotId,
+      }),
+    }
+  );
+  if (!response.ok) {
+    console.error('Error:', response.status, response.statusText);
+    return;
+  }
+
+  const data = await response.json();
+  console.log(data); //Please check the console to see the data
+  
   return (
     <div className="container mx-auto px-4 py-12 sm:py-16 md:py-32 max-w-3xl">
       <h2>{params.courseId}</h2>
