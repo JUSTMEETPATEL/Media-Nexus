@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -45,13 +44,13 @@ model Slot {
 
 model Transaction {
   id            String   @id @default(cuid()) // Unique identifier for the transaction
-  enquiryId     String?  // Foreign key to the Enquiry model (nullable to allow SetNull behavior)
-  amount        Float    // Payment amount
-  status        String   // Payment status (e.g., 'completed', 'failed', 'pending')
-  transactionId String   // Unique transaction ID from the payment gateway
+  enquiryId     String? // Foreign key to the Enquiry model (nullable to allow SetNull behavior)
+  amount        Float // Payment amount
+  status        String // Payment status (e.g., 'completed', 'failed', 'pending')
+  transactionId String // Unique transaction ID from the payment gateway
   createdAt     DateTime @default(now()) // Timestamp for when the transaction was created
-  updatedAt     DateTime @updatedAt  // Timestamp for when the transaction was last updated   
-  userMail      String   // User's email
+  updatedAt     DateTime @updatedAt // Timestamp for when the transaction was last updated   
+  userMail      String // User's email
 
   enquiry Enquiry? @relation(fields: [enquiryId], references: [id], onDelete: SetNull)
 }
@@ -62,6 +61,7 @@ model User {
   email         String
   emailVerified Boolean
   image         String?
+  role          String    @default("user")
   createdAt     DateTime
   updatedAt     DateTime
   sessions      Session[]
