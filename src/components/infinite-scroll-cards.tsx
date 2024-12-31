@@ -50,7 +50,7 @@ export function InfiniteScrollCards({ items }: InfiniteScrollCardsProps) {
             className="no-underline"
           >
             <Card
-              className="bg-white shrink-0 w-[300px] transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
+              className="bg-white shrink-0 w-[300px] h-[300px] transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer flex flex-col"
             >
               <CardHeader>
                 <CardTitle className="text-xl sm:text-2xl mb-2">{course.title}</CardTitle>
