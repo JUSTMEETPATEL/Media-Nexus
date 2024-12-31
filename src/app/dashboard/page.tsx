@@ -12,8 +12,8 @@ type Enquiry = {
 const Page = () => {
   const session = useSession();
   const router = useRouter();
-  const [role, setRole] = useState<string | null>(null);
-  const [enquiries, setEnquiries] = useState<Enquiry[] | null>(null);
+  // const [role, setRole] = useState<string | null>(null);
+  const [enquiries, setEnquiries] = useState<Enquiry | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -35,14 +35,14 @@ const Page = () => {
         }
 
         const { role } = await response.json();
-        setRole(role);
+        // setRole(role);
 
         if (role === 'admin') {
           router.push('/admin');
         } else if (role === 'faculty') {
           router.push('/faculty');
         } else if (role === 'user') {
-          fetchEnquiries(); // Fetch enquiries for users
+          fetchEnquiries(); // Fetch user's enquiries
         }
       } catch (error) {
         console.error('Error fetching role:', error);
@@ -51,18 +51,19 @@ const Page = () => {
 
     const fetchEnquiries = async () => {
       try {
-        if (!session.data?.session.id) {
-          setError('Session not found. Please log in.');
-          return;
-        }
+        // if (!session.data?.session.id) {
+        //   setError('Session not found. Please log in.');
+        //   return;
+        // }
 
-        const sessionToken = session.data.session.id;
+        const email = session.data?.user.email;
 
         const response = await fetch('/api/get-course', {
-          method: 'GET',
+          method: 'POST',
           headers: {
-            Authorization: `Bearer ${sessionToken}`,
+            'Content-Type': 'application/json',
           },
+          body: JSON.stringify({ email: email }),
         });
 
         if (!response.ok) {
@@ -72,7 +73,8 @@ const Page = () => {
         }
 
         const data = await response.json();
-        setEnquiries(data.enquiries);
+        console.log(data);
+        setEnquiries(data);
       } catch (err) {
         console.error('Error fetching enquiries:', err);
         setError('Failed to fetch enquiries.');
@@ -90,33 +92,23 @@ const Page = () => {
     );
   }
 
-  if (role === 'user') {
-    return (
-      <div className="h-screen flex flex-col items-center justify-center bg-gray-100">
-        <h1 className="text-3xl font-bold mb-4">Welcome, {session.data?.user.email}!</h1>
-        <div className="w-full max-w-4xl p-4 bg-white shadow-md rounded-md">
-          {error && <div className="text-red-500 mb-4">Error: {error}</div>}
-          {!enquiries ? (
-            <div>Loading...</div>
-          ) : (
-            <ul>
-              {enquiries.map((enquiry, index) => (
-                <li key={index}>
-                  Course ID: {enquiry.courseId}, Slot ID: {enquiry.slotId}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="h-screen flex items-center justify-center">
-      <h1 className="text-2xl text-black font-bold">
-        {session.data?.user.email}
+    <div className="h-screen flex flex-col items-center justify-center bg-gray-100">
+      <h1 className="text-3xl font-bold mb-4">
+        Welcome, {session.data?.user.email}!
       </h1>
+      <div className="w-full max-w-4xl p-4 bg-white shadow-md rounded-md">
+        {error && <div className="text-red-500 mb-4">Error: {error}</div>}
+        {!enquiries ? (
+          <div>Loading...</div>
+        ) : (
+          <ul>
+            
+                <li>{enquiries.courseId}</li>
+                <li>{enquiries.slotId}</li>
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
