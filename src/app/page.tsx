@@ -22,7 +22,7 @@ const mediaNexus = {
     'To inspire a passion for continuous learning and adaptability in the rapidly changing media industry.',
   ],
   about:
-    'The Media Nexus, a new venture of SRMIST-Ramapuram, is set to revolutionize learning opportunities for non-media students with the introduction of dynamic certificate courses. Recognizing the increasing interest in creative and technical media skills, these programs aim to provide hands-on training and foundational knowledge in diverse media arts disciplines. Designed specifically for students of Easwari Engineering College, the courses also extend an invitation to other interested learners, subject to availability.',
+    'The Media Nexus, a new venture of SRMIST-Ramapuram, is set to revolutionize learning opportunities for non-media students with the introduction of dynamic certificate courses. Recognizing the increasing interest in creative and technical media skills, these programs aim to provide hands-on training and foundational knowledge in diverse media arts disciplines. Designed specifically for students of Eashwari Engineering College, the courses also extend an invitation to other interested learners, subject to availability.',
   courses: [
     {
       title: 'Short Film Making',
