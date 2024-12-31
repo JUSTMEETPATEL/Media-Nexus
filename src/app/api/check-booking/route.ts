@@ -28,8 +28,8 @@ export async function POST(req: Request) {
       message: 'Booking confirmed',
       transaction,
       user: transaction.enquiry,
-      course: transaction.enquiry.course,
-      slot: transaction.enquiry.slot,
+      course: transaction.enquiry!.course,
+      slot: transaction.enquiry!.slot,
     });
   } catch (error) {
     console.error('Error fetching booking details:', error);
