@@ -46,9 +46,13 @@ export default function Navbar() {
           {/* Logo and brand */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <span className="text-white text-xl font-bold">
-                MEDIA <span className="text-cyan-400">NEXUS</span>
-              </span>
+              <Image
+                src="/Final Logo.png"
+                alt="Media Nexus Logo"
+                width={300}
+                height={100}
+                className="h-20 w-auto object-contain"
+              />
             </Link>
           </div>
 
