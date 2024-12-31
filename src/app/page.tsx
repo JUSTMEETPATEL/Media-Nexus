@@ -10,6 +10,7 @@ import { Lightbox } from '@/components/lightbox';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { InfiniteScrollCards } from "@/components/infinite-scroll-cards"
+import { Footer } from "@/components/footer"
 
 const mediaNexus = {
   vision:
@@ -334,6 +335,7 @@ export default function Home() {
             onClose={() => setLightboxImage(null)}
           />
         )}
+        <Footer />
       </main>
     </Suspense>
   );
