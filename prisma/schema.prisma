@@ -50,7 +50,7 @@ model Transaction {
   status        String // Payment status (e.g., 'completed', 'failed', 'pending')
   transactionId String // Unique transaction ID from the payment gateway
   createdAt     DateTime @default(now()) // Timestamp for when the transaction was created
-  updatedAt     DateTime @updatedAt // Timestamp for when the transaction was last updated
+  updatedAt     DateTime @updatedAt // Timestamp for when the transaction was last updated   
 
   // This side defines the relation with "fields" and "references"
   enquiry Enquiry @relation(fields: [enquiryId], references: [id])
