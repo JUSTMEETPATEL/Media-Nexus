@@ -2,24 +2,14 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
 export async function POST(req: Request) {
-  try {
-    // Log the incoming request
-    console.log('Received request');
-    
-    // Parse the request body and log it
-    const body = await req.json();
-    console.log('Received body:', body);
-    
-    const { email } = body;
+  try {    
+    const { email } = await req.json(); 
 
     if (!email) {
       console.log('Email missing in request');
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
-    console.log('Querying database for email:', email);
-    
-    // Query the Enquiry table for the email
     const enquiry = await prisma.enquiry.findFirst({
       where: { email },
       select: {
@@ -28,8 +18,6 @@ export async function POST(req: Request) {
       }
     });
 
-    console.log('Database response:', enquiry);
-
     if (!enquiry) {
       console.log('No enquiry found for email:', email);
       return NextResponse.json(
@@ -37,8 +25,6 @@ export async function POST(req: Request) {
         { status: 404 }
       );
     }
-
-    // Log the successful response
     console.log('Sending successful response:', enquiry);
     return NextResponse.json(enquiry, { status: 200 });
     
