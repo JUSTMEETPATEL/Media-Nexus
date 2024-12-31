@@ -13,10 +13,10 @@ export async function POST(req: Request) {
     });
 
     if (existingEnquiriesCount < 30) {
-      return NextResponse.json({ isAvailable: true });
+      return NextResponse.json({ isAvailable: true, enquiryCount: existingEnquiriesCount });
     }
 
-    return NextResponse.json({ isAvailable: false });
+    return NextResponse.json({ isAvailable: false, enquiryCount: existingEnquiriesCount });
   } catch (error) {
     console.error('Error checking slot availability:', error);
     return NextResponse.json({
