@@ -27,19 +27,42 @@ model Enquiry {
   @@index([courseId, slotId])
 }
 
+// Add this to your existing schema.prisma file
+
+model Assignment {
+  id          String   @id @default(cuid())
+  courseId    Int // Using Int to match your Course model's ID type
+  slotId      Int // Using Int to match your Slot model's ID type
+  title       String
+  description String?  @db.Text
+  deadline    DateTime
+  assignedBy  String // Simple string field instead of relation
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  course Course @relation(fields: [courseId], references: [id])
+  slot   Slot   @relation(fields: [slotId], references: [id])
+
+  @@index([courseId, slotId])
+}
+
+// Add these relation fields to your existing models
 model Course {
-  id        Int       @id @default(autoincrement()) // Unique identifier for courses
-  name      String // Course name  
-  slots     Slot[] // One-to-many relationship with Slot
-  enquiries Enquiry[] // One-to-many relationship with Enquiry
+  id          Int          @id @default(autoincrement())
+  name        String
+  slots       Slot[]
+  enquiries   Enquiry[]
+  assignments Assignment[] // Add this line
 }
 
 model Slot {
-  id        Int       @id @default(autoincrement()) // Unique identifier for slots
-  slotName  String // Slot name
-  courseId  Int // Foreign key to the Course model
-  course    Course    @relation(fields: [courseId], references: [id])
-  enquiries Enquiry[] // One-to-many relationship with Enquiry
+  id          Int          @id @default(autoincrement())
+  slotName    String
+  courseId    Int
+  course      Course       @relation(fields: [courseId], references: [id])
+  enquiries   Enquiry[]
+  assignments Assignment[] // Add this line
 }
 
 model Transaction {
