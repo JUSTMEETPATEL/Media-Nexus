@@ -11,7 +11,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { InfiniteScrollCards } from "@/components/infinite-scroll-cards"
 import { Footer } from "@/components/footer"
-import { BookEnquiryButton } from "@/components/book-enquiry-button"
+
 
 const mediaNexus = {
   vision:
@@ -336,7 +336,6 @@ export default function Home() {
             onClose={() => setLightboxImage(null)}
           />
         )}
-        <BookEnquiryButton />
         <Footer />
       </main>
     </Suspense>
