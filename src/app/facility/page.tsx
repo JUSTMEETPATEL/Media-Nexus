@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
 import './facility-showcase.css';
 import { LayoutGrid } from '@/components/ui/layout-grid';
 
@@ -10,7 +8,7 @@ const SkeletonOne = () => {
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         Our green screen facility is equipped with the latest technology to
-        provide a seamless and immersive experience. Whether you're shooting a
+        provide a seamless and immersive experience. Whether you&apos;re shooting a
         film, creating visual effects, or conducting a virtual event, our green
         screen studio offers the perfect environment to bring your vision to
         life.
@@ -43,7 +41,7 @@ const SkeletonThree = () => {
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         Our recording studio is equipped with state-of-the-art equipment and
         facilities to provide a professional and creative environment for
-        musicians and sound engineers. Whether you're recording music, voice
+        musicians and sound engineers. Whether you&apos;re recording music, voice
         overs, or podcasts, our studio offers the perfect space to capture
         high-quality audio.
       </p>
@@ -58,7 +56,7 @@ const SkeletonFour = () => {
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         Our photo studio is equipped with state-of-the-art equipment and
         facilities to provide a professional and creative environment for
-        photographers. Whether you're a beginner or an experienced photographer,
+        photographers. Whether you&apos;re a beginner or an experienced photographer,
         our studio offers the perfect space to capture stunning images.
       </p>
     </div>
@@ -74,7 +72,7 @@ const SkeletonFive = () => {
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         Our animation studio is equipped with the latest technology and software
         to provide a creative and professional environment for animators and
-        designers. Whether you're creating 2D or 3D animations, our studio
+        designers. Whether you&apos;re creating 2D or 3D animations, our studio
         offers the perfect space to bring your ideas to life.
       </p>
     </div>
@@ -88,7 +86,7 @@ const SkeletonSix = () => {
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         Our visual studio is equipped with high-end equipment and facilities to
         provide a professional and creative environment for visual artists and
-        designers. Whether you're creating digital art, illustrations, or
+        designers. Whether you&apos;re creating digital art, illustrations, or
         graphics, our studio offers the perfect space to unleash your
         creativity.
       </p>
@@ -103,7 +101,7 @@ const SkeletonSeven = () => {
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         Our graphics lab is equipped with high-end equipment and software to
         provide a professional and creative environment for graphic designers
-        and artists. Whether you're creating logos, branding, or digital art,
+        and artists. Whether you&apos;re creating logos, branding, or digital art,
         our lab offers the perfect space to bring your ideas to life.
       </p>
     </div>
