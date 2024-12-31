@@ -11,15 +11,12 @@ export function Footer() {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h3 className="text-lg font-semibold mb-2 text-cyan-400">ADDRESS</h3>
-                <a 
-                  href="https://goo.gl/maps/1234567890" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                <p
                   className="text-gray-300 hover:text-white transition-colors block cursor-pointer"
                 >
                   Bharathi Salai, Ramapuram,<br />
                   Chennai, Tamil Nadu 600089
-                </a>
+                </p>
               </div>
               <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/25 transition-shadow duration-300">
                 <iframe 
@@ -59,7 +56,7 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4 text-cyan-400">CONNECT WITH US</h3>
             <div className="flex gap-4">
               <a
-                href="https://www.instagram.com/srmistr/"
+                href="https://www.instagram.com/iie_srmrmp/"
                 className="p-3 rounded-full bg-gradient-to-br from-white/10 to-white/5 hover:from-cyan-500 hover:to-cyan-400 hover:text-white transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 cursor-pointer"
                 aria-label="Instagram"
                 target="_blank"
@@ -86,7 +83,7 @@ export function Footer() {
                 <Facebook className="h-6 w-6" />
               </a>
               <a
-                href="https://www.linkedin.com/school/srmistr/"
+                href="https://www.linkedin.com/school/iie-srm-ist-rmp/"
                 className="p-3 rounded-full bg-gradient-to-br from-white/10 to-white/5 hover:from-cyan-500 hover:to-cyan-400 hover:text-white transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 cursor-pointer"
                 aria-label="LinkedIn"
                 target="_blank"
