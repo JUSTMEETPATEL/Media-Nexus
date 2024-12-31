@@ -1,50 +1,58 @@
-import prisma from '@/lib/prisma';
 import { NextResponse } from 'next/server';
+import prisma from '@/lib/prisma';
 
-// Define the GET API route
-export async function GET(request: Request) {
+export async function POST(req: Request) {
   try {
-    // Extract session token from Authorization header
-    const authHeader = request.headers.get('Authorization');
-    const sessionToken = authHeader?.replace('Bearer ', '');
+    // Log the incoming request
+    console.log('Received request');
+    
+    // Parse the request body and log it
+    const body = await req.json();
+    console.log('Received body:', body);
+    
+    const { email } = body;
 
-    if (!sessionToken) {
-      return NextResponse.json(
-        { error: 'Session token is required' },
-        { status: 401 }
-      );
+    if (!email) {
+      console.log('Email missing in request');
+      return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
-    // Find session and associated user
-    const session = await prisma.session.findUnique({
-      where: { token: sessionToken },
-      include: { user: true },
-    });
-
-    if (!session || !session.user) {
-      return NextResponse.json(
-        { error: 'Invalid session or user not found' },
-        { status: 401 }
-      );
-    }
-
-    const userEmail = session.user.email;
-
-    // Fetch enquiries for the user
-    const enquiries = await prisma.enquiry.findMany({
-      where: { email: userEmail },
+    console.log('Querying database for email:', email);
+    
+    // Query the Enquiry table for the email
+    const enquiry = await prisma.enquiry.findFirst({
+      where: { email },
       select: {
         courseId: true,
-        slotId: true,
-      },
+        slotId: true
+      }
     });
 
-    // Return the response
-    return NextResponse.json({ enquiries }, { status: 200 });
+    console.log('Database response:', enquiry);
+
+    if (!enquiry) {
+      console.log('No enquiry found for email:', email);
+      return NextResponse.json(
+        { error: 'No enquiry found for this email' },
+        { status: 404 }
+      );
+    }
+
+    // Log the successful response
+    console.log('Sending successful response:', enquiry);
+    return NextResponse.json(enquiry, { status: 200 });
+    
   } catch (error) {
-    console.error('Error fetching enquiries:', error);
+    if (error instanceof Error) {
+      console.error('Detailed error in API:', {
+        message: error.message,
+        stack: error.stack
+      });
+    } else {
+      console.error('Unknown error in API:', error);
+    }
     return NextResponse.json(
-      { error: 'Internal Server Error' },
+      { error: 'Internal Server Error', details: (error as Error).message },
       { status: 500 }
     );
   }

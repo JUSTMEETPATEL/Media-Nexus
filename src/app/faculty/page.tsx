@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSession } from '@/lib/auth-client'; // Assuming useSession is correctly set up
 
 type Enquiry = {
   courseId: number;
@@ -9,11 +10,21 @@ const FetchEnquiries = () => {
   const [enquiries, setEnquiries] = useState<Enquiry[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Get session data, including the token
+  const { data: session } = useSession();
+
   useEffect(() => {
     const fetchEnquiries = async () => {
       try {
-        const sessionToken = '<your_session_token>'; // Replace with actual session token
-        const response = await fetch('/api/get-enquiries', {
+        // Ensure the session is available and contains the token
+        if (!session || !session.session.id) {
+          setError('Session not found. Please log in.');
+          return;
+        }
+
+        const sessionToken = session.session.id; // Extract token from session
+
+        const response = await fetch('/api/get-course', {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${sessionToken}`,
@@ -34,8 +45,11 @@ const FetchEnquiries = () => {
       }
     };
 
-    fetchEnquiries();
-  }, []);
+    // Only fetch enquiries if session exists
+    if (session?.session.id) {
+      fetchEnquiries();
+    }
+  }, [session]);
 
   if (error) {
     return <div>Error: {error}</div>;
