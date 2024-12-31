@@ -5,7 +5,7 @@ export async function POST(req: Request) {
   const { courseId, slotId } = await req.json();
 
   try {
-    const assignment = await prisma.assignment.findFirst({
+    const assignment = await prisma.assignment.findMany({
       where: { 
         courseId: parseInt(courseId), 
         slotId: parseInt(slotId) 
