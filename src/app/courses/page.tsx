@@ -133,7 +133,7 @@ function ProgramCard({ program, index }: { program: typeof programs[0], index: n
           objectFit="cover"
           className="absolute inset-0 z-0 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 to-white/50 dark:from-gray-800/70 dark:to-gray-800/50 group-hover:from-cyan-900/70 group-hover:to-cyan-900/50 transition-all duration-300 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/80 dark:from-gray-800/90 dark:to-gray-800/80 group-hover:from-cyan-900/90 group-hover:to-cyan-900/80 transition-all duration-300 z-10"></div>
         <CardHeader className="relative z-20 p-4">
           <motion.div
             className="w-10 h-10 rounded-xl bg-cyan-400/10 flex items-center justify-center mb-2"
@@ -142,14 +142,22 @@ function ProgramCard({ program, index }: { program: typeof programs[0], index: n
           >
             <program.icon className="w-6 h-6 text-cyan-400" />
           </motion.div>
-          <CardTitle className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-500 group-hover:text-white transition-colors duration-300">
+          <CardTitle className="text-lg font-bold text-cyan-600 dark:text-cyan-400 group-hover:text-white transition-colors duration-300">
             {program.title}
           </CardTitle>
         </CardHeader>
         <CardContent className="relative z-20 p-4">
-          <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300">
+          <p className="text-sm text-gray-700 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300">
             {program.description}
           </p>
+          <div className="mt-4">
+            <span className="inline-flex items-center text-sm font-medium text-cyan-600 dark:text-cyan-400 group-hover:text-white transition-colors duration-300">
+              Read More
+              <svg className="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </div>
         </CardContent>
       </MotionCard>
     </Link>
