@@ -48,7 +48,7 @@ const SignIn = () => {
           });
         },
         onSuccess: () => {
-          form.reset();
+          window.location.href = "/dashboard";
         },
         onError: async (ctx) => {
           if (ctx.error.status === 403) {
