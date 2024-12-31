@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useState } from 'react';
 import { useSession } from '@/lib/auth-client'; // Assuming useSession is correctly set up
 
