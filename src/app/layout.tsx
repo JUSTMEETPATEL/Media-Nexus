@@ -32,9 +32,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
-
         {children}
-        <BookEnquiryButton />
+        {!['/dashboard', '/faculty', '/admin'].some(path => window.location.pathname.startsWith(path)) && <BookEnquiryButton />}
         <Toaster />
       </body>
     </html>
