@@ -185,7 +185,7 @@ const Page = () => {
           ) : (
             <div>
               {programsMap[enquiries.courseId as keyof typeof programsMap] && (
-                <Link href={`/${enquiries.courseId}/${enquiries.slotId}`} passHref>
+                <Link href={`/dashboard/${enquiries.courseId}/${enquiries.slotId}`} passHref>
                   <MotionCard
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
