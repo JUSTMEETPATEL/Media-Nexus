@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/navbar';
 import { Toaster } from '@/components/ui/toaster';
-import { BookEnquiryButton } from '@/components/book-enquiry-button';
+import { EnquiryButtonWrapper } from '@/components/book-enquiry-button-wrapper';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -20,11 +20,12 @@ export const viewport: Viewport = {
   initialScale: 1.0,
   maximumScale: 1.0,
   userScalable: false,
-}
+};
 
 export const metadata: Metadata = {
   title: 'Media Nexus',
-  description: 'Welcome to MEDIA NEXUS, where we offer specialized Certificate Programs in Media Studies...',
+  description:
+    'Welcome to MEDIA NEXUS, where we offer specialized Certificate Programs in Media Studies...',
   keywords: [
     'Media Studies',
     'Certificate Programs',
@@ -50,8 +51,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://media-nexus.vercel.app',
   },
-}
-
+};
 
 export default function RootLayout({
   children,
@@ -65,9 +65,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
-        {!['/dashboard', '/faculty', '/admin'].some((path) =>
-          window.location.pathname.startsWith(path)
-        ) && <BookEnquiryButton />}
+        <EnquiryButtonWrapper />
         <Toaster />
       </body>
     </html>
