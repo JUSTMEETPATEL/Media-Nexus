@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/select';
 import { useSession } from '@/lib/auth-client';
 import { toast } from '@/hooks/use-toast';
+import { Loader } from '@/components/ui/loader';
 
 const programs = [
   { id: '1', title: '3D ANIMATION' },
@@ -35,7 +36,15 @@ export default function AssignmentPage() {
   const [description, setDescription] = useState('');
   const [deadline, setDeadline] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isSessionLoading, setIsSessionLoading] = useState(true);
   const session = useSession();
+
+  useEffect(() => {
+    if (!session.isPending) {
+      setIsSessionLoading(false);
+    }
+  }, [session.isPending]);
+
   const email = session.data?.user.email;
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -110,6 +119,10 @@ export default function AssignmentPage() {
       setIsLoading(false);
     }
   };
+
+  if (isSessionLoading) {
+    return <Loader />;
+  }
 
   if (!course) {
     return <div>Course not found</div>;
@@ -216,3 +229,4 @@ export default function AssignmentPage() {
     </div>
   );
 }
+

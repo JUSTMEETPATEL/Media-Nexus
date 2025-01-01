@@ -1,12 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSession } from '@/lib/auth-client';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Film, Camera, Video, Share2, CuboidIcon as Cube, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { Loader } from '@/components/ui/loader';
 
 const programs = [
   {
@@ -50,13 +51,17 @@ const MotionCard = motion(Card);
 
 export default function FacultyPage() {
   const session = useSession();
-  // const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Redirect to login page if the user is not authenticated
-  // if (session.data == null) {
-  //   router.push('/sign-in');
-  //   return null;
-  // }
+  useEffect(() => {
+    if (!session.isPending) {
+      setIsLoading(false);
+    }
+  }, [session.isPending]); 
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   console.log(session);
 

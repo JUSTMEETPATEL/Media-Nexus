@@ -5,9 +5,17 @@ import { useSession } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Film, Camera, Video, Share2, CuboidIcon as Cube, User } from 'lucide-react';
+import {
+  Film,
+  Camera,
+  Video,
+  Share2,
+  CuboidIcon as Cube,
+  User,
+} from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { Loader } from '@/components/ui/loader';
 
 type Enquiry = {
   courseId: number;
@@ -15,35 +23,40 @@ type Enquiry = {
 };
 
 const programsMap = {
-  1: { 
-    title: '3D Animation', 
-    icon: Cube, 
-    description: 'Master 3D animation, modeling, and motion graphics to create professional-quality content for film and gaming.',
-    backgroundImage: '/3d-animation.jpeg?height=400&width=600'
+  1: {
+    title: '3D Animation',
+    icon: Cube,
+    description:
+      'Master 3D animation, modeling, and motion graphics to create professional-quality content for film and gaming.',
+    backgroundImage: '/3d-animation.jpeg?height=400&width=600',
   },
-  2: { 
-    title: 'Short Film Making', 
-    icon: Film, 
-    description: 'This course will train you practically in the art of storytelling, cinematography, directing and basic editing from a concept to the final cut.',
-    backgroundImage: '/film.jpeg?height=400&width=600'
+  2: {
+    title: 'Short Film Making',
+    icon: Film,
+    description:
+      'This course will train you practically in the art of storytelling, cinematography, directing and basic editing from a concept to the final cut.',
+    backgroundImage: '/film.jpeg?height=400&width=600',
   },
-  3: { 
-    title: 'Digital Photography', 
-    icon: Camera, 
-    description: 'Through real-world applications and expert guidance, you will sharpen your skills in digital photography and editing techniques.',
-    backgroundImage: '/digital-photography.jpeg?height=400&width=600'
+  3: {
+    title: 'Digital Photography',
+    icon: Camera,
+    description:
+      'Through real-world applications and expert guidance, you will sharpen your skills in digital photography and editing techniques.',
+    backgroundImage: '/digital-photography.jpeg?height=400&width=600',
   },
-  4: { 
-    title: 'Editing Technique', 
-    icon: Video, 
-    description: 'This certificate course will explore film editing techniques and collaboration with industry-trained experts, offering insights into the creative process.',
-    backgroundImage: '/editing.jpg?height=400&width=600'
+  4: {
+    title: 'Editing Technique',
+    icon: Video,
+    description:
+      'This certificate course will explore film editing techniques and collaboration with industry-trained experts, offering insights into the creative process.',
+    backgroundImage: '/editing.jpg?height=400&width=600',
   },
-  5: { 
-    title: 'Social Media Design', 
-    icon: Share2, 
-    description: 'Learn to create impactful, visually appealing content through graphic design, branding, and hands-on projects for various social media platforms.',
-    backgroundImage: '/social-media.png?height=400&width=600'
+  5: {
+    title: 'Social Media Design',
+    icon: Share2,
+    description:
+      'Learn to create impactful, visually appealing content through graphic design, branding, and hands-on projects for various social media platforms.',
+    backgroundImage: '/social-media.png?height=400&width=600',
   },
 };
 
@@ -54,9 +67,13 @@ const Page = () => {
   const router = useRouter();
   const [enquiries, setEnquiries] = useState<Enquiry | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!session.data) return;
+    if (!session.data) {
+      setIsLoading(false);
+      return;
+    }
 
     const checkUserRole = async () => {
       try {
@@ -70,6 +87,7 @@ const Page = () => {
 
         if (!response.ok) {
           console.error('Error:', response.status, response.statusText);
+          setIsLoading(false);
           return;
         }
 
@@ -80,10 +98,12 @@ const Page = () => {
         } else if (role === 'faculty') {
           router.push('/faculty');
         } else if (role === 'user') {
-          fetchEnquiries();
+          await fetchEnquiries();
         }
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching role:', error);
+        setIsLoading(false);
       }
     };
 
@@ -116,6 +136,14 @@ const Page = () => {
     checkUserRole();
   }, [session.data, router]);
 
+  if (isLoading) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
+
   if (!session.data) {
     return (
       <div className="h-screen flex items-center justify-center">
@@ -141,7 +169,7 @@ const Page = () => {
             </span>
           </div>
         </div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -181,11 +209,16 @@ const Page = () => {
         <div className="w-full max-w-4xl mx-auto">
           {error && <div className="text-red-500 mb-4">Error: {error}</div>}
           {!enquiries ? (
-            <div className="text-center text-gray-600 dark:text-gray-300">Loading...</div>
+            <div className="flex justify-center items-center min-h-[200px]">
+              <Loader />
+            </div>
           ) : (
             <div>
               {programsMap[enquiries.courseId as keyof typeof programsMap] && (
-                <Link href={`/dashboard/${enquiries.courseId}/${enquiries.slotId}`} passHref>
+                <Link
+                  href={`/dashboard/${enquiries.courseId}/${enquiries.slotId}`}
+                  passHref
+                >
                   <MotionCard
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -197,8 +230,16 @@ const Page = () => {
                     className="group relative overflow-hidden border-0 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,255,0.3)] cursor-pointer"
                   >
                     <Image
-                      src={programsMap[enquiries.courseId as keyof typeof programsMap].backgroundImage}
-                      alt={programsMap[enquiries.courseId as keyof typeof programsMap].title}
+                      src={
+                        programsMap[
+                          enquiries.courseId as keyof typeof programsMap
+                        ].backgroundImage
+                      }
+                      alt={
+                        programsMap[
+                          enquiries.courseId as keyof typeof programsMap
+                        ].title
+                      }
                       layout="fill"
                       objectFit="cover"
                       className="absolute inset-0 z-0 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
@@ -206,16 +247,34 @@ const Page = () => {
                     <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/80 dark:from-gray-800/90 dark:to-gray-800/80 group-hover:from-cyan-900/90 group-hover:to-cyan-900/80 transition-all duration-300 z-10"></div>
                     <CardHeader className="relative z-20 p-6">
                       <CardTitle className="text-2xl font-bold text-cyan-600 dark:text-cyan-400 group-hover:text-white transition-colors duration-300 flex items-center">
-                        {React.createElement(programsMap[enquiries.courseId as keyof typeof programsMap].icon, { className: "w-8 h-8 mr-3" })}
-                        {programsMap[enquiries.courseId as keyof typeof programsMap].title}
+                        {React.createElement(
+                          programsMap[
+                            enquiries.courseId as keyof typeof programsMap
+                          ].icon,
+                          { className: 'w-8 h-8 mr-3' }
+                        )}
+                        {
+                          programsMap[
+                            enquiries.courseId as keyof typeof programsMap
+                          ].title
+                        }
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="relative z-20 p-6">
                       <p className="text-gray-700 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 mb-4">
-                        {programsMap[enquiries.courseId as keyof typeof programsMap].description}
+                        {
+                          programsMap[
+                            enquiries.courseId as keyof typeof programsMap
+                          ].description
+                        }
                       </p>
                       <p className="font-semibold text-cyan-600 dark:text-cyan-400 group-hover:text-white transition-colors duration-300">
-                        Slot: {enquiries.slotId === 1 ? 'Morning' : enquiries.slotId === 2 ? 'Evening' : 'Unknown'}
+                        Slot:{' '}
+                        {enquiries.slotId === 1
+                          ? 'Morning'
+                          : enquiries.slotId === 2
+                            ? 'Evening'
+                            : 'Unknown'}
                       </p>
                     </CardContent>
                   </MotionCard>
@@ -230,4 +289,3 @@ const Page = () => {
 };
 
 export default Page;
-

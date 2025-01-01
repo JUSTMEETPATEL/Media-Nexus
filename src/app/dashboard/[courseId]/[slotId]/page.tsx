@@ -1,42 +1,79 @@
-import React from 'react';
-import AssignmentAccordion from './components/assignment-accordion';
+'use client'
 
-interface Props {
-  params: Promise<{ courseId: string; slotId: string }>;
+import React, { useState, useEffect } from 'react'
+import AssignmentAccordion from './components/assignment-accordion'
+import { Loader } from '@/components/ui/loader'
+import { useParams } from 'next/navigation'
+
+interface Assignment {
+  // Define the structure of an assignment here
+  // This is a placeholder, adjust according to your actual data structure
+  id: string
+  title: string
+  description: string
+  deadline: string
 }
 
-const Page = async (props: Props) => {
-  const params = await props.params;
-  // console.log(params);
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_ORIGIN}/api/get-assignment`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        courseId: params.courseId,
-        slotId: params.slotId,
-      }),
+const Page = () => {
+  const [assignments, setAssignments] = useState<Assignment[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const params = useParams()
+
+  useEffect(() => {
+    const fetchAssignments = async () => {
+      setIsLoading(true)
+      setError(null)
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_ORIGIN}/api/get-assignment`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              courseId: params.courseId,
+              slotId: params.slotId,
+            }),
+          }
+        )
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} ${response.statusText}`)
+        }
+        const data = await response.json()
+        setAssignments(data.assignment)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An unknown error occurred')
+      } finally {
+        setIsLoading(false)
+      }
     }
-  );
-  if (!response.ok) {
-    console.error('Error:', response.status, response.statusText);
-    return;
+
+    fetchAssignments()
+  }, [params.courseId, params.slotId])
+
+  if (isLoading) {
+    return <Loader />
   }
 
-  const data = await response.json();
-  const assignment = data.assignment;
-  console.log(assignment);
-  // console.log(data); //Please check the console to see the data
-  
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-12 sm:py-16 md:py-32 max-w-3xl text-center">
+        <h1 className="text-4xl text-red-500 mb-4">Error</h1>
+        <p>{error}</p>
+      </div>
+    )
+  }
+
   return (
     <div className="container mx-auto px-4 py-12 sm:py-16 md:py-32 max-w-3xl">
-      <h1 className='text-6xl text-center mb-24'>Your<span className='text-cyan-400'> Assignments</span></h1>
-      <AssignmentAccordion assignment={assignment} />
+      <h1 className="text-6xl text-center mb-24">
+        Your<span className="text-cyan-400"> Assignments</span>
+      </h1>
+      <AssignmentAccordion assignment={assignments} />
     </div>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page
