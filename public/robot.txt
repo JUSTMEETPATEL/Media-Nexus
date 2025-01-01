@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /faculty/
+Disallow: /dashboard/
+Disallow: /booking/
+
+# Sitemap
+Sitemap: https://media-nexus.vercel.app/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 10
