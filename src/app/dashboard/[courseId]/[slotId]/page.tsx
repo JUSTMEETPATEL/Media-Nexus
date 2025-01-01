@@ -1,4 +1,5 @@
 import React from 'react';
+import AssignmentAccordion from './components/assignment-accordion';
 
 interface Props {
   params: Promise<{ courseId: string; slotId: string }>;
@@ -26,12 +27,14 @@ const Page = async (props: Props) => {
   }
 
   const data = await response.json();
-  console.log(data); //Please check the console to see the data
+  const assignment = data.assignment;
+  console.log(assignment);
+  // console.log(data); //Please check the console to see the data
   
   return (
     <div className="container mx-auto px-4 py-12 sm:py-16 md:py-32 max-w-3xl">
-      <h2>{params.courseId}</h2>
-      <h2>{params.slotId}</h2>
+      <h1 className='text-6xl text-center mb-24'>Your<span className='text-cyan-400'> Assignments</span></h1>
+      <AssignmentAccordion assignment={assignment} />
     </div>
   );
 };
