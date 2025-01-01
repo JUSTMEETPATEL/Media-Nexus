@@ -112,7 +112,7 @@ export default function RootLayout({
     "@type": "EducationalOrganization",
     "name": "Media Nexus",
     "url": "https://media-nexus.vercel.app",
-    "logo": "https://media-nexus.vercel.app/logo.png",
+    "logo": "https://media-nexus.vercel.app/Final Logo.png",
     "description": "Professional Media Studies Certification Programs",
     "address": {
       "@type": "PostalAddress",
