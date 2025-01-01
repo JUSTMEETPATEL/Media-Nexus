@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { motion, useAnimationControls } from 'framer-motion';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Link from 'next/link';
 
 interface Course {
   title: string;
@@ -11,11 +9,10 @@ interface Course {
 }
 
 interface InfiniteScrollCardsProps {
-  items: Course[];
+  children: React.ReactNode;
 }
 
-export function InfiniteScrollCards({ items }: InfiniteScrollCardsProps) {
-  const duplicatedItems = [...items, ...items];
+export function InfiniteScrollCards({ children }: InfiniteScrollCardsProps) {
   const controls = useAnimationControls();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -26,7 +23,7 @@ export function InfiniteScrollCards({ items }: InfiniteScrollCardsProps) {
       controls.start({
         x: '-50%',
         transition: {
-          duration: 20,
+          duration: 10,
           repeat: Infinity,
           ease: 'linear',
         },
@@ -43,26 +40,7 @@ export function InfiniteScrollCards({ items }: InfiniteScrollCardsProps) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {duplicatedItems.map((course, index) => (
-          <Link
-            href="/enquiry"
-            key={`${course.title}-${index}`}
-            className="no-underline"
-          >
-            <Card className="bg-white shrink-0 w-[300px] h-[300px] transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer flex flex-col">
-              <CardHeader>
-                <CardTitle className="text-xl sm:text-2xl mb-2">
-                  {course.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm sm:text-base text-gray-600">
-                  {course.description}
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
+        {children}
       </motion.div>
     </div>
   );

@@ -1,57 +1,107 @@
+import { InfiniteScrollCards } from '@/components/infinite-scroll-cards';
+import { Card, CardHeader } from '@/components/ui/card';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface TeamMember {
   name: string;
   role: string;
   image: string;
   section: 'academic' | 'industrial';
+  resumeUrl?: string;
 }
 
 export default function TeamShowcase() {
   const teamMembers: TeamMember[] = [
     {
       name: 'DR. M PRABHAKARAN',
-      role: 'TEAM LEADER',
+      role: 'Film Maker',
       image: '/Prabakaran.png',
       section: 'academic',
+      resumeUrl: '',
+    },
+    {
+      name: 'Mr. Akash',
+      role: 'Visual Storyteller',
+      image: '/akash.jpeg',
+      section: 'academic',
+      resumeUrl:
+        'https://drive.google.com/file/d/1nMH5GoIuZ-rQewFyS5oXoEVQdbDK-3Zw/view?usp=drive_link',
+    },
+    {
+      name: 'Mr. Akshej',
+      role: 'Visual Editor',
+      image: '/Akshej.jpg',
+      section: 'academic',
+      resumeUrl:
+        'https://drive.google.com/file/d/1w1CrrMvTKI8oX7WvDvfDhevFnfQnZgul/view?usp=drive_link',
     },
     {
       name: 'MS. YUVARANI',
-      role: 'FOUNDATION & DRAFTING',
+      role: 'Animation and Graphics',
       image: '/Yuvarani.jpg',
       section: 'academic',
+      resumeUrl: '',
     },
     {
-      name: 'DR. SHANMUGAMATHAI',
-      role: 'SYSTEM ANALYSIS',
+      name: 'Ms. Sinduja',
+      role: 'Visual Storyteller',
+      image: '/sinduja.jpg',
+      section: 'academic',
+      resumeUrl: '',
+    },
+    {
+      name: 'Ms. Padmavathy,',
+      role: 'Film Making',
+      image: '/padmavathy.jpg',
+      section: 'academic',
+      resumeUrl: '',
+    },
+    {
+      name: 'DR. Shanmuganathan',
+      role: 'Visual Editor',
       image: '/Shanmuga.jpg',
       section: 'academic',
+      resumeUrl:
+        'https://drive.google.com/file/d/1X1hvoG9r3TEoYcJ66dZjLnXmA_Kfw4AZ/view?usp=drive_link',
     },
     {
       name: 'MS KEERTHANA S',
-      role: 'FOUNDATION & DRAFTING',
+      role: 'Media Specialist',
       image: '/Keerthana.jpg',
       section: 'academic',
+      resumeUrl:
+        'https://drive.google.com/file/d/1wkWxCceUwJyYM9o8SA_WTT0YP8BiEMpQ/view?usp=drive_link',
     },
     {
       name: 'DHARANI R',
       role: 'DIRECTOR SCREENWRITER',
       image: '/dharani.png',
       section: 'industrial',
+      resumeUrl: '',
     },
     {
       name: 'AKHILESH M',
       role: 'CHOREOGRAPHER',
       image: '/akhilesh.png',
       section: 'industrial',
+      resumeUrl: '',
     },
     {
       name: 'V LSABU JOSEPH',
       role: 'VIDEO EDITOR',
       image: '/sabu.png',
       section: 'industrial',
+      resumeUrl: '',
     },
   ];
+
+  const academicMembers = teamMembers.filter(
+    (member) => member.section === 'academic'
+  );
+  const industrialMembers = teamMembers.filter(
+    (member) => member.section === 'industrial'
+  );
 
   return (
     <div className="container mx-auto p-4">
@@ -74,29 +124,39 @@ export default function TeamShowcase() {
         </div>
 
         <div className="flex justify-center gap-6 flex-wrap">
-          {teamMembers
-            .filter((member) => member.section === 'academic')
-            .map((member, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center transform transition-transform duration-300 hover:scale-105"
+          <InfiniteScrollCards>
+            {[...academicMembers, ...academicMembers].map((member, index) => (
+              <Link
+                href={member.resumeUrl || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <div className="p-1 shadow-lg">
-                  <div className="relative w-[250px] h-[300px]">
+                <Card
+                  key={index}
+                  className="bg-white shrink-0 transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer flex flex-col"
+                >
+                  <CardHeader className="flex w-[300px] h-[300px]">
                     <Image
                       src={member.image}
                       alt={member.name}
                       fill
                       className="object-cover"
+                      loading="lazy"
                     />
+                  </CardHeader>
+
+                  <div className="text-center z-10 bg-white text-black">
+                    <h1 className="text-md font-bold uppercase">
+                      {member.name}
+                    </h1>
+                    <p className="text-sm sm:text-base text-gray-600">
+                      {member.role}
+                    </p>
                   </div>
-                </div>
-                <div className="text-center mt-2 px-3 py-1 w-full shadow-lg">
-                  <h3 className="font-bold text-sm">{member.name}</h3>
-                  <p className="text-xs">{member.role}</p>
-                </div>
-              </div>
+                </Card>
+              </Link>
             ))}
+          </InfiniteScrollCards>
         </div>
       </div>
 
@@ -110,29 +170,33 @@ export default function TeamShowcase() {
         </div>
 
         <div className="flex justify-center gap-6 flex-wrap">
-          {teamMembers
-            .filter((member) => member.section === 'industrial')
-            .map((member, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center mb-8 transform transition-transform duration-300 hover:scale-105"
-              >
-                <div className="p-1 shadow-lg">
-                  <div className="relative w-[250px] h-[300px]">
+          <InfiniteScrollCards>
+            {[...industrialMembers, ...industrialMembers].map(
+              (member, index) => (
+                <Card
+                  key={index}
+                  className="bg-white shrink-0 transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer flex flex-col"
+                >
+                  <CardHeader className="flex w-[300px] h-[300px]">
                     <Image
                       src={member.image}
                       alt={member.name}
                       fill
                       className="object-cover"
+                      loading="lazy"
                     />
+                  </CardHeader>
+
+                  <div className="text-center z-10 bg-white text-black">
+                    <h1 className="text-md font-bold">{member.name}</h1>
+                    <p className="text-sm sm:text-base text-gray-600">
+                      {member.role}
+                    </p>
                   </div>
-                </div>
-                <div className="text-center mt-2 px-3 py-1 w-full shadow-lg">
-                  <h3 className="font-bold text-sm">{member.name}</h3>
-                  <p className="text-xs">{member.role}</p>
-                </div>
-              </div>
-            ))}
+                </Card>
+              )
+            )}
+          </InfiniteScrollCards>
         </div>
       </div>
     </div>

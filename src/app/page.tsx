@@ -55,7 +55,7 @@ const mediaNexus = {
       'The certificate courses by Media Nexus represent a significant step forward in democratizing media education. By providing non-media students with access to professional training, the program opens up new avenues for creativity and career exploration. Whether students aspire to work in the media industry, enhance their skill set, or simply pursue a creative passion, these courses offer the perfect starting point. With a versatile curriculum, expert faculty, and state-of-the-art infrastructure, Media Nexus is committed to nurturing the next generation of media professionals and enthusiasts.',
   },
 };
-
+const duplicatedItems = [...mediaNexus.courses, ...mediaNexus.courses];
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
@@ -206,7 +206,28 @@ export default function Home() {
               Programs Offered
             </h2>
             <div className="w-full" data-aos="fade-up">
-              <InfiniteScrollCards items={mediaNexus.courses} />
+              <InfiniteScrollCards>
+                {duplicatedItems.map((course, index) => (
+                  <Link
+                    href="/enquiry"
+                    key={`${course.title}-${index}`}
+                    className="no-underline"
+                  >
+                    <Card className="bg-white p-0 shrink-0 w-[300px] h-[300px] transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer flex flex-col">
+                      <CardHeader>
+                        <CardTitle className="text-xl sm:text-2xl mb-2">
+                          {course.title}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm sm:text-base text-gray-600">
+                          {course.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </InfiniteScrollCards>
             </div>
           </div>
         </section>

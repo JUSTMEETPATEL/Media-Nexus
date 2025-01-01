@@ -8,6 +8,7 @@ type Card = {
   content: JSX.Element | React.ReactNode | string;
   className: string;
   thumbnail: string;
+  title: string;
 };
 
 export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
@@ -29,10 +30,13 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   };
 
   return (
-    <div className="w-full min-h-screen p-4 md:p-10">
+    <div className="w-full min-h-screen  p-4 md:p-10">
       <div className="grid grid-cols-1 md:grid-cols-3 max-w-7xl mx-auto gap-4 md:gap-6">
         {cards.map((card, i) => (
-          <div key={i} className={cn(card.className, 'h-64 md:h-96')}>
+          <div
+            key={i}
+            className={cn(card.className, 'h-64 md:h-96 relative group')}
+          >
             <motion.div
               onClick={() => handleClick(card)}
               className={cn(
@@ -44,6 +48,15 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
               layoutId={`card-${card.id}`}
               onLayoutAnimationComplete={() => setIsAnimating(false)}
             >
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 z-10" />
+              {!selected && (
+                <div className="absolute inset-0 flex flex-col justify-end p-4 z-20">
+                  <p className="font-bold md:text-4xl text-xl text-white">
+                    {card.title}
+                  </p>
+                </div>
+              )}
+
               {selected?.id === card.id && <SelectedCard selected={selected} />}
               <ImageComponent card={card} />
             </motion.div>
