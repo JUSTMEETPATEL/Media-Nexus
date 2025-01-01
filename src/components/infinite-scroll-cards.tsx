@@ -3,11 +3,6 @@
 import { useEffect, useState } from 'react';
 import { motion, useAnimationControls } from 'framer-motion';
 
-interface Course {
-  title: string;
-  description: string;
-}
-
 interface InfiniteScrollCardsProps {
   children: React.ReactNode;
 }

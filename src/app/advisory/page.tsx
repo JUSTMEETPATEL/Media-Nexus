@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { InfiniteScrollCards } from '@/components/infinite-scroll-cards';
-import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader } from '@/components/ui/card';
 
 interface AdvisoryMember {
   name: string;

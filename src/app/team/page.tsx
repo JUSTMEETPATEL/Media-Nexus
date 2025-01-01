@@ -127,12 +127,12 @@ export default function TeamShowcase() {
           <InfiniteScrollCards>
             {[...academicMembers, ...academicMembers].map((member, index) => (
               <Link
+                key={index}
                 href={member.resumeUrl || '#'}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Card
-                  key={index}
                   className="bg-white shrink-0 transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer flex flex-col"
                 >
                   <CardHeader className="flex w-[300px] h-[300px]">
