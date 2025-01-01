@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/navbar';
@@ -15,10 +15,16 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
+  maximumScale: 1.0,
+  userScalable: false,
+}
+
 export const metadata: Metadata = {
   title: 'Media Nexus',
-  description:
-    'Welcome to MEDIA NEXUS, where we offer specialized Certificate Programs in Media Studies designed to empower the next generation of media professionals. Our courses are tailored to provide a deep understanding of key areas such as journalism, digital media, content creation, media production, and communication strategies. With a focus on practical learning, we ensure that our students gain hands-on experience and develop the necessary skills to excel in the fast-paced media industry.',
+  description: 'Welcome to MEDIA NEXUS, where we offer specialized Certificate Programs in Media Studies...',
   keywords: [
     'Media Studies',
     'Certificate Programs',
@@ -29,7 +35,6 @@ export const metadata: Metadata = {
     'Communication Strategies',
   ],
   authors: [{ name: 'Media Nexus Team' }],
-  viewport: 'width=device-width, initial-scale=1.0',
   robots: {
     index: true,
     follow: true,
@@ -42,13 +47,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  // verification: {
-  //   google: 'your-google-site-verification',
-  // },
   alternates: {
     canonical: 'https://media-nexus.vercel.app',
   },
-};
+}
+
 
 export default function RootLayout({
   children,
