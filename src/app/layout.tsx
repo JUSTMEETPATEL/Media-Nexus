@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     url: 'https://media-nexus.vercel.app',
     title: 'Media Nexus - Professional Media Studies Certification',
     description:
-      'Transform your media career with our professional certification programs. Expert-led courses in journalism, digital media, and content creation.',
+      'Transform your media career with our professional certification programs.',
     siteName: 'Media Nexus',
     images: [
       {
