@@ -17,20 +17,7 @@ const ROUTE_ACCESS: RouteAccess = {
 };
 
 // Update public routes to be more specific
-const PUBLIC_ROUTES = [
-  '/',
-  '/about',
-  '/facility',
-  '/sign-in',
-  '/Final Logo.png',
-  '/srm-logo.png',
-  '/3d-animation.jpeg',
-  '/film.jpeg',
-  '/digital-photography.jpeg',
-  '/editing.jpg',
-  '/social-media.png',
-  '/favicon.ico',
-];
+const PUBLIC_ROUTES = ['/', '/about', '/facility', '/sign-in', '/team'];
 
 export default async function authMiddleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -38,7 +25,7 @@ export default async function authMiddleware(request: NextRequest) {
 
   // Make public route check exact or for static assets
   if (
-    PUBLIC_ROUTES.includes(pathname) || 
+    PUBLIC_ROUTES.includes(pathname) ||
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api')
   ) {
@@ -48,12 +35,15 @@ export default async function authMiddleware(request: NextRequest) {
 
   try {
     // Get session using Better Auth
-    const { data: session } = await betterFetch<Session>('/api/auth/get-session', {
-      baseURL: request.nextUrl.origin,
-      headers: {
-        cookie: request.headers.get('cookie') || '',
-      },
-    });
+    const { data: session } = await betterFetch<Session>(
+      '/api/auth/get-session',
+      {
+        baseURL: request.nextUrl.origin,
+        headers: {
+          cookie: request.headers.get('cookie') || '',
+        },
+      }
+    );
 
     console.log('Session:', session);
 
