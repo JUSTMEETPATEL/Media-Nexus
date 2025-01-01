@@ -14,6 +14,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useSession } from '@/lib/auth-client';
+import { toast } from '@/hooks/use-toast';
 
 const programs = [
   { id: '1', title: '3D ANIMATION' },
@@ -32,11 +34,81 @@ export default function AssignmentPage() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [deadline, setDeadline] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const session = useSession();
+  const email = session.data?.user.email;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log({ slot, title, description, deadline });
+    setIsLoading(true);
+
+    // Validate required fields
+    if (!slot || !title || !deadline) {
+      toast({
+        title: 'Error',
+        description: 'Please fill in all required fields',
+        variant: 'destructive',
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    // Validate deadline is in the future
+    if (new Date(deadline) < new Date()) {
+      toast({
+        title: 'Error',
+        description: 'Deadline must be in the future',
+        variant: 'destructive',
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    const payload = {
+      slotId: parseInt(slot),
+      title,
+      description,
+      deadline,
+      email,
+      courseId: parseInt(courseId),
+    };
+
+    try {
+      const response = await fetch('/api/create-assignment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to create assignment');
+      }
+
+      toast({
+        title: 'Success',
+        description: 'Assignment created successfully',
+      });
+
+      // Reset form
+      setTitle('');
+      setDescription('');
+      setDeadline('');
+      setSlot('');
+    } catch (err) {
+      console.error('Error creating assignment:', err);
+      toast({
+        title: 'Error',
+        description:
+          err instanceof Error ? err.message : 'Failed to create assignment',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (!course) {
@@ -66,7 +138,10 @@ export default function AssignmentPage() {
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="slot" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label
+                  htmlFor="slot"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
                   Choose Slot
                 </label>
                 <Select onValueChange={setSlot}>
@@ -74,13 +149,16 @@ export default function AssignmentPage() {
                     <SelectValue placeholder="Select a slot" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="morning">Morning</SelectItem>
-                    <SelectItem value="evening">Evening</SelectItem>
+                    <SelectItem value="1">Morning</SelectItem>
+                    <SelectItem value="2">Evening</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div>
-                <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label
+                  htmlFor="title"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
                   Title of Task
                 </label>
                 <Input
@@ -93,7 +171,10 @@ export default function AssignmentPage() {
                 />
               </div>
               <div>
-                <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label
+                  htmlFor="description"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
                   Task Description
                 </label>
                 <Textarea
@@ -105,7 +186,10 @@ export default function AssignmentPage() {
                 />
               </div>
               <div>
-                <label htmlFor="deadline" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label
+                  htmlFor="deadline"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                >
                   Set Deadline
                 </label>
                 <Input
@@ -122,7 +206,7 @@ export default function AssignmentPage() {
                   type="submit"
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 transition-all duration-300 transform hover:scale-105"
                 >
-                  Submit
+                  {isLoading ? 'Creating...' : 'Create Assignment'}
                 </Button>
               </div>
             </form>
@@ -132,4 +216,3 @@ export default function AssignmentPage() {
     </div>
   );
 }
-

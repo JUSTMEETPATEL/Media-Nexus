@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { useSession } from '@/lib/auth-client';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Film, Camera, Video, Share2, CuboidIcon as Cube, Mail } from 'lucide-react';
@@ -51,13 +50,15 @@ const MotionCard = motion(Card);
 
 export default function FacultyPage() {
   const session = useSession();
-  const router = useRouter();
+  // const router = useRouter();
 
   // Redirect to login page if the user is not authenticated
-  if (!session.data) {
-    router.push('/sign-in');
-    return null;
-  }
+  // if (session.data == null) {
+  //   router.push('/sign-in');
+  //   return null;
+  // }
+
+  console.log(session);
 
   const email = session.data?.user?.email;
 
