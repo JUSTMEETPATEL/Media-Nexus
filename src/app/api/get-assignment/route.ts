@@ -13,7 +13,8 @@ export async function POST(req: Request) {
       select: {
         title: true,
         description: true,
-        deadline: true
+        deadline: true,
+        assignedBy: true
       }
     });
 
