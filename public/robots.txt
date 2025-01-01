@@ -10,4 +10,4 @@ Disallow: /booking/
 Sitemap: https://media-nexus.vercel.app/sitemap.xml
 
 # Crawl delay
-Crawl-delay: 11
+Crawl-delay: 10
