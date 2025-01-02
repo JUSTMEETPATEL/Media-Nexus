@@ -18,8 +18,8 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   const handleClick = (card: Card) => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setSelected(card);
-    document.body.style.overflow = 'hidden';
+    setSelected(selected?.id === card.id ? null : card);
+    document.body.style.overflow = selected?.id === card.id ? 'auto' : 'hidden';
   };
 
   const handleOutsideClick = () => {
@@ -96,7 +96,10 @@ const ImageComponent = ({ card }: { card: Card }) => {
 
 const SelectedCard = ({ selected }: { selected: Card | null }) => {
   return (
-    <div className="bg-transparent h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[60]">
+    <div 
+      className="bg-transparent h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[60]"
+      onClick={(e) => e.stopPropagation()}
+    >
       <motion.div
         initial={{
           opacity: 0,
@@ -131,3 +134,4 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
     </div>
   );
 };
+
