@@ -117,7 +117,6 @@ const cards = [
     thumbnail: '/infra-4.png',
     title: 'Visual Studio',
   },
-  
 ];
 
 export default function FacilityShowcase() {

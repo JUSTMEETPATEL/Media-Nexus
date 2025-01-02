@@ -96,7 +96,7 @@ const ImageComponent = ({ card }: { card: Card }) => {
 
 const SelectedCard = ({ selected }: { selected: Card | null }) => {
   return (
-    <div 
+    <div
       className="bg-transparent h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[60]"
       onClick={(e) => e.stopPropagation()}
     >
@@ -134,4 +134,3 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
     </div>
   );
 };
-

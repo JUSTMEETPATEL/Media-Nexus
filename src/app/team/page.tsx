@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { useState, useEffect } from 'react';
 import { Card, CardHeader } from '@/components/ui/card';
@@ -136,11 +136,16 @@ export default function TeamShowcase() {
   };
 
   const handleNext = (section: 'academic' | 'industrial') => {
-    const members = section === 'academic' ? academicMembers : industrialMembers;
+    const members =
+      section === 'academic' ? academicMembers : industrialMembers;
     if (section === 'academic') {
-      setAcademicStartIndex((prev) => Math.min(members.length - cardsToShow, prev + 1));
+      setAcademicStartIndex((prev) =>
+        Math.min(members.length - cardsToShow, prev + 1)
+      );
     } else {
-      setIndustrialStartIndex((prev) => Math.min(members.length - cardsToShow, prev + 1));
+      setIndustrialStartIndex((prev) =>
+        Math.min(members.length - cardsToShow, prev + 1)
+      );
     }
   };
 
@@ -172,16 +177,26 @@ export default function TeamShowcase() {
   );
 
   const renderMemberCards = (members: TeamMember[], startIndex: number) => {
-    return members.slice(startIndex, startIndex + cardsToShow).map((member, index) => (
-      <MemberCard key={`${member.name}-${index}`} member={member} />
-    ));
+    return members
+      .slice(startIndex, startIndex + cardsToShow)
+      .map((member, index) => (
+        <MemberCard key={`${member.name}-${index}`} member={member} />
+      ));
   };
 
-  const NavigationButton = ({ onClick, disabled, direction }: { onClick: () => void, disabled: boolean, direction: 'left' | 'right' }) => (
-    <Button 
-      onClick={onClick} 
-      variant="outline" 
-      size="icon" 
+  const NavigationButton = ({
+    onClick,
+    disabled,
+    direction,
+  }: {
+    onClick: () => void;
+    disabled: boolean;
+    direction: 'left' | 'right';
+  }) => (
+    <Button
+      onClick={onClick}
+      variant="outline"
+      size="icon"
       className="shrink-0 transition-all duration-300 hover:bg-blue-100 hover:text-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
       disabled={disabled}
     >
@@ -214,17 +229,19 @@ export default function TeamShowcase() {
         </div>
 
         <div className="flex items-center justify-center gap-6">
-          <NavigationButton 
-            onClick={() => handlePrev('academic')} 
+          <NavigationButton
+            onClick={() => handlePrev('academic')}
             disabled={academicStartIndex === 0}
             direction="left"
           />
           <div className="flex gap-6 overflow-hidden w-full sm:w-auto">
             {renderMemberCards(academicMembers, academicStartIndex)}
           </div>
-          <NavigationButton 
-            onClick={() => handleNext('academic')} 
-            disabled={academicStartIndex >= academicMembers.length - cardsToShow}
+          <NavigationButton
+            onClick={() => handleNext('academic')}
+            disabled={
+              academicStartIndex >= academicMembers.length - cardsToShow
+            }
             direction="right"
           />
         </div>
@@ -240,17 +257,19 @@ export default function TeamShowcase() {
         </div>
 
         <div className="flex items-center justify-center gap-6">
-          <NavigationButton 
-            onClick={() => handlePrev('industrial')} 
+          <NavigationButton
+            onClick={() => handlePrev('industrial')}
             disabled={industrialStartIndex === 0}
             direction="left"
           />
           <div className="flex gap-6 overflow-hidden w-full sm:w-auto">
             {renderMemberCards(industrialMembers, industrialStartIndex)}
           </div>
-          <NavigationButton 
-            onClick={() => handleNext('industrial')} 
-            disabled={industrialStartIndex >= industrialMembers.length - cardsToShow}
+          <NavigationButton
+            onClick={() => handleNext('industrial')}
+            disabled={
+              industrialStartIndex >= industrialMembers.length - cardsToShow
+            }
             direction="right"
           />
         </div>
@@ -258,4 +277,3 @@ export default function TeamShowcase() {
     </div>
   );
 }
-

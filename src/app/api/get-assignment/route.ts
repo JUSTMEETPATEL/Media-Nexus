@@ -6,16 +6,16 @@ export async function POST(req: Request) {
 
   try {
     const assignment = await prisma.assignment.findMany({
-      where: { 
-        courseId: parseInt(courseId), 
-        slotId: parseInt(slotId) 
+      where: {
+        courseId: parseInt(courseId),
+        slotId: parseInt(slotId),
       },
       select: {
         title: true,
         description: true,
         deadline: true,
-        assignedBy: true
-      }
+        assignedBy: true,
+      },
     });
 
     if (!assignment) {

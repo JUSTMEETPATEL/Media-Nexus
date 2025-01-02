@@ -13,9 +13,15 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    
+
     // Validate required fields
-    if (!body.email || !body.title || !body.deadline || !body.slotId || !body.courseId) {
+    if (
+      !body.email ||
+      !body.title ||
+      !body.deadline ||
+      !body.slotId ||
+      !body.courseId
+    ) {
       return NextResponse.json(
         { message: 'Missing required fields', success: false },
         { status: 400 }
@@ -25,7 +31,10 @@ export async function POST(req: Request) {
     const { email, title, description, deadline, slotId, courseId } = body;
 
     // Validate data types
-    if (!Number.isInteger(Number(courseId)) || !Number.isInteger(Number(slotId))) {
+    if (
+      !Number.isInteger(Number(courseId)) ||
+      !Number.isInteger(Number(slotId))
+    ) {
       return NextResponse.json(
         { message: 'Invalid courseId or slotId format', success: false },
         { status: 400 }
@@ -47,15 +56,17 @@ export async function POST(req: Request) {
     return NextResponse.json({
       message: 'Assignment created successfully',
       success: true,
-      data: assignment
+      data: assignment,
     });
-    
   } catch (error) {
     console.error('Error creating assignment:', error);
     return NextResponse.json(
-      { 
-        message: error instanceof Error ? error.message : 'Failed to create assignment', 
-        success: false 
+      {
+        message:
+          error instanceof Error
+            ? error.message
+            : 'Failed to create assignment',
+        success: false,
       },
       { status: 500 }
     );

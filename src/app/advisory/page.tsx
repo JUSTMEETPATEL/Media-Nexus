@@ -73,4 +73,3 @@ const AdvisoryBoard: React.FC = () => {
 };
 
 export default AdvisoryBoard;
-

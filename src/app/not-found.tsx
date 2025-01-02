@@ -19,7 +19,7 @@ export default function NotFound() {
         <p className="text-gray-400">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
-        <Link 
+        <Link
           href="/"
           className="inline-block px-6 py-3 bg-cyan-500 text-white rounded-md hover:bg-cyan-600 transition-colors duration-200"
         >

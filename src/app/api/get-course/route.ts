@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
 export async function POST(req: Request) {
-  try {    
-    const { email } = await req.json(); 
+  try {
+    const { email } = await req.json();
 
     if (!email) {
       console.log('Email missing in request');
@@ -14,8 +14,8 @@ export async function POST(req: Request) {
       where: { email },
       select: {
         courseId: true,
-        slotId: true
-      }
+        slotId: true,
+      },
     });
 
     if (!enquiry) {
@@ -27,12 +27,11 @@ export async function POST(req: Request) {
     }
     console.log('Sending successful response:', enquiry);
     return NextResponse.json(enquiry, { status: 200 });
-    
   } catch (error) {
     if (error instanceof Error) {
       console.error('Detailed error in API:', {
         message: error.message,
-        stack: error.stack
+        stack: error.stack,
       });
     } else {
       console.error('Unknown error in API:', error);

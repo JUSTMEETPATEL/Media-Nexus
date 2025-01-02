@@ -1,29 +1,29 @@
-'use client'
+'use client';
 
-import React, { useState, useEffect } from 'react'
-import AssignmentAccordion from './components/assignment-accordion'
-import { Loader } from '@/components/ui/loader'
-import { useParams } from 'next/navigation'
+import React, { useState, useEffect } from 'react';
+import AssignmentAccordion from './components/assignment-accordion';
+import { Loader } from '@/components/ui/loader';
+import { useParams } from 'next/navigation';
 
 interface Assignment {
   // Define the structure of an assignment here
   // This is a placeholder, adjust according to your actual data structure
-  id: string
-  title: string
-  description: string
-  deadline: string
+  id: string;
+  title: string;
+  description: string;
+  deadline: string;
 }
 
 const Page = () => {
-  const [assignments, setAssignments] = useState<Assignment[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const params = useParams()
+  const [assignments, setAssignments] = useState<Assignment[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const params = useParams();
 
   useEffect(() => {
     const fetchAssignments = async () => {
-      setIsLoading(true)
-      setError(null)
+      setIsLoading(true);
+      setError(null);
       try {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_ORIGIN}/api/get-assignment`,
@@ -37,24 +37,26 @@ const Page = () => {
               slotId: params.slotId,
             }),
           }
-        )
+        );
         if (!response.ok) {
-          throw new Error(`Error: ${response.status} ${response.statusText}`)
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
-        const data = await response.json()
-        setAssignments(data.assignment)
+        const data = await response.json();
+        setAssignments(data.assignment);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An unknown error occurred')
+        setError(
+          err instanceof Error ? err.message : 'An unknown error occurred'
+        );
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
+    };
 
-    fetchAssignments()
-  }, [params.courseId, params.slotId])
+    fetchAssignments();
+  }, [params.courseId, params.slotId]);
 
   if (isLoading) {
-    return <Loader />
+    return <Loader />;
   }
 
   if (error) {
@@ -63,7 +65,7 @@ const Page = () => {
         <h1 className="text-4xl text-red-500 mb-4">Error</h1>
         <p>{error}</p>
       </div>
-    )
+    );
   }
 
   return (
@@ -73,7 +75,7 @@ const Page = () => {
       </h1>
       <AssignmentAccordion assignment={assignments} />
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

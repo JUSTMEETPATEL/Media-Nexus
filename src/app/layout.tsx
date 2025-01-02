@@ -108,38 +108,37 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "Media Nexus",
-    "url": "https://media-nexus.vercel.app",
-    "logo": "https://media-nexus.vercel.app/Final Logo.png",
-    "description": "Professional Media Studies Certification Programs",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "IN"
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    name: 'Media Nexus',
+    url: 'https://media-nexus.vercel.app',
+    logo: 'https://media-nexus.vercel.app/Final Logo.png',
+    description: 'Professional Media Studies Certification Programs',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'IN',
     },
-    "offers": {
-      "@type": "Offer",
-      "category": "Media Studies Certification"
+    offers: {
+      '@type': 'Offer',
+      category: 'Media Studies Certification',
     },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Media Studies Programs",
-      "itemListElement": [
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Media Studies Programs',
+      itemListElement: [
         {
-          "@type": "Course",
-          "name": "Digital Media Production",
-          "description": "Comprehensive course in digital media production"
+          '@type': 'Course',
+          name: 'Digital Media Production',
+          description: 'Comprehensive course in digital media production',
         },
         {
-          "@type": "Course",
-          "name": "Modern Journalism",
-          "description": "Professional journalism training program"
-        }
-      ]
-    }
+          '@type': 'Course',
+          name: 'Modern Journalism',
+          description: 'Professional journalism training program',
+        },
+      ],
+    },
   };
-
 
   return (
     <html lang="en">

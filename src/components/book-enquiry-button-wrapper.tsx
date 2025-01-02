@@ -6,8 +6,8 @@ import { BookEnquiryButton } from './book-enquiry-button';
 export function EnquiryButtonWrapper() {
   const pathname = usePathname();
   const hiddenPaths = ['/dashboard', '/faculty', '/admin'];
-  
-  if (hiddenPaths.some(path => pathname?.startsWith(path))) {
+
+  if (hiddenPaths.some((path) => pathname?.startsWith(path))) {
     return null;
   }
 

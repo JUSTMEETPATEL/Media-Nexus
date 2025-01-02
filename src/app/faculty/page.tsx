@@ -4,7 +4,14 @@ import React, { useState, useEffect } from 'react';
 import { useSession } from '@/lib/auth-client';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Film, Camera, Video, Share2, CuboidIcon as Cube, Mail } from 'lucide-react';
+import {
+  Film,
+  Camera,
+  Video,
+  Share2,
+  CuboidIcon as Cube,
+  Mail,
+} from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Loader } from '@/components/ui/loader';
@@ -14,35 +21,40 @@ const programs = [
     id: 1,
     icon: Cube,
     title: '3D ANIMATION',
-    description: 'Master 3D animation, modeling, and motion graphics to create professional-quality content for film and gaming.',
+    description:
+      'Master 3D animation, modeling, and motion graphics to create professional-quality content for film and gaming.',
     backgroundImage: '/3d-animation.jpeg?height=400&width=600',
   },
   {
     id: 2,
     icon: Film,
     title: 'SHORT FILM MAKING',
-    description: 'This course will train the students practically in the art of storytelling, cinematography, directing and basic editing from a concept to the final cut.',
+    description:
+      'This course will train the students practically in the art of storytelling, cinematography, directing and basic editing from a concept to the final cut.',
     backgroundImage: '/film.jpeg?height=400&width=600',
   },
   {
     id: 3,
     icon: Camera,
     title: 'DIGITAL PHOTOGRAPHY',
-    description: 'Through real-world applications and expert guidance, they will sharpen their skills in film editing, gaining practical insights into the creative process.',
+    description:
+      'Through real-world applications and expert guidance, they will sharpen their skills in film editing, gaining practical insights into the creative process.',
     backgroundImage: '/digital-photography.jpeg?height=400&width=600',
   },
   {
     id: 4,
     icon: Video,
     title: 'EDITING TECHNIQUES',
-    description: "The certificate course will explore film director's editing techniques and their collaboration with Industry trained experts, offering insights into the creative process.",
+    description:
+      "The certificate course will explore film director's editing techniques and their collaboration with Industry trained experts, offering insights into the creative process.",
     backgroundImage: '/editing.jpg?height=400&width=600',
   },
   {
     id: 5,
     icon: Share2,
     title: 'SOCIAL MEDIA DESIGN',
-    description: 'Learn to create impactful, visually appealing content through graphic design, branding, and hands-on projects.',
+    description:
+      'Learn to create impactful, visually appealing content through graphic design, branding, and hands-on projects.',
     backgroundImage: '/social-media.png?height=400&width=600',
   },
 ];
@@ -57,7 +69,7 @@ export default function FacultyPage() {
     if (!session.isPending) {
       setIsLoading(false);
     }
-  }, [session.isPending]); 
+  }, [session.isPending]);
 
   if (isLoading) {
     return <Loader />;
@@ -197,4 +209,3 @@ function ProgramCard({
     </Link>
   );
 }
-

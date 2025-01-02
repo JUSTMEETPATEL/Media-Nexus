@@ -44,28 +44,31 @@ const AssignmentAccordion: React.FC<AssignmentAccordionProps> = ({
   };
 
   const handleFileUpload = (files: File[]) => {
-    setFormData(prev => ({ ...prev, files }));
+    setFormData((prev) => ({ ...prev, files }));
   };
 
   const handleLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({ ...prev, link: e.target.value }));
+    setFormData((prev) => ({ ...prev, link: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, assignmentIndex: number) => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+    assignmentIndex: number
+  ) => {
     e.preventDefault();
-    
+
     try {
       console.log('Submitting assignment:', {
         assignmentIndex,
         files: formData.files,
-        link: formData.link
+        link: formData.link,
       });
 
       toast({
         title: 'Assignment Submitted',
         description: 'Your assignment has been submitted successfully.',
-      })
-      
+      });
+
       // Here you can add your submission logic
       // For example:
       // const formDataToSend = new FormData();
@@ -74,7 +77,7 @@ const AssignmentAccordion: React.FC<AssignmentAccordionProps> = ({
       // });
       // formDataToSend.append('link', formData.link);
       // formDataToSend.append('assignmentIndex', String(assignmentIndex));
-      
+
       // await fetch('/api/submit-assignment', {
       //   method: 'POST',
       //   body: formDataToSend,
@@ -120,7 +123,7 @@ const AssignmentAccordion: React.FC<AssignmentAccordionProps> = ({
                   <p className="text-gray-700">{item.description}</p>
                 </div>
 
-                <form 
+                <form
                   onSubmit={(e) => handleSubmit(e, index)}
                   className="flex flex-col items-center justify-center py-6 space-y-4"
                 >
@@ -132,7 +135,7 @@ const AssignmentAccordion: React.FC<AssignmentAccordionProps> = ({
                     onChange={handleLinkChange}
                     className="px-4 py-2 border border-cyan-500 text-cyan-500 rounded-md hover:bg-cyan-50 transition-colors"
                   />
-                  <Button 
+                  <Button
                     type="submit"
                     className="px-4 py-2 bg-cyan-500 text-white rounded-md hover:bg-cyan-600 transition-colors"
                   >
