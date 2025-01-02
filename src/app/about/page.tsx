@@ -3,13 +3,16 @@
 import { Tag } from 'lucide-react';
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Feature({
   title,
   description,
+  link,
 }: {
   title: string;
   description: string;
+  link: string;
 }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -17,13 +20,15 @@ function Feature({
     <div className="space-y-3">
       <div className="flex items-center justify-between gap-4">
         <h2 className="text-black text-xl font-bold">{title}</h2>
-        <div
-          className="bg-white rounded-full p-2 hover:bg-opacity-90 transition-colors cursor-pointer"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <Tag className="w-5 h-5 text-cyan-500" />
-        </div>
+        <Link href={link}>
+          <div
+            className="bg-white rounded-full p-2 hover:bg-opacity-90 transition-colors cursor-pointer"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <Tag className="w-5 h-5 text-cyan-500" />
+          </div>
+        </Link>
       </div>
       {isHovered && <p className="text-black animate-fadeIn">{description}</p>}
     </div>
@@ -71,21 +76,25 @@ export default function Page() {
               <Feature
                 title="STATE-OF-THE-ART FACILITY"
                 description="State-of-the-art facilities, modern classrooms, advanced technology, comfortable study spaces, well-equipped labs, and vibrant campus."
+                link="/facility"
               />
 
               <Feature
                 title="EXPERIENCED FACULTY MEMBERS"
                 description="Expert faculty with industry experience, dedicated to providing personalized guidance, fostering creativity, and encouraging critical thinking."
+                link="/team"
               />
 
               <Feature
                 title="INDUSTRIAL EXPERT GUIDANCE"
                 description="Industry experts provide valuable insights, real-world knowledge, and mentorship, bridging theory with practical applications in media."
+                link="/advisory"
               />
 
               <Feature
                 title="INDUSTRY-RELEVANT CURRICULUM"
                 description="Comprehensive curriculum integrating industry trends, practical skills, creative tools, and real-world media applications."
+                link="/courses"
               />
             </div>
           </div>
@@ -94,3 +103,4 @@ export default function Page() {
     </div>
   );
 }
+
