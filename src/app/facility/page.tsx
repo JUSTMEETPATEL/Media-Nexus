@@ -4,7 +4,7 @@ import { LayoutGrid } from '@/components/ui/layout-grid';
 const SkeletonOne = () => {
   return (
     <div>
-      <p className="font-bold md:text-4xl text-xl text-white">Green Screen</p>
+      <p className="font-bold md:text-4xl text-xl text-white">Visual Studio</p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         Our green screen facility is equipped with the latest technology to
@@ -35,7 +35,7 @@ const SkeletonThree = () => {
   return (
     <div>
       <p className="font-bold md:text-4xl text-xl text-white">
-        Recoding studio
+        Recording studio
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
@@ -63,22 +63,7 @@ const SkeletonFour = () => {
     </div>
   );
 };
-const SkeletonFive = () => {
-  return (
-    <div>
-      <p className="font-bold md:text-4xl text-xl text-white">
-        Animation studio
-      </p>
-      <p className="font-normal text-base text-white"></p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Our animation studio is equipped with the latest technology and software
-        to provide a creative and professional environment for animators and
-        designers. Whether you&apos;re creating 2D or 3D animations, our studio
-        offers the perfect space to bring your ideas to life.
-      </p>
-    </div>
-  );
-};
+
 const SkeletonSix = () => {
   return (
     <div>
@@ -94,20 +79,6 @@ const SkeletonSix = () => {
     </div>
   );
 };
-const SkeletonSeven = () => {
-  return (
-    <div>
-      <p className="font-bold md:text-4xl text-xl text-white">Graphics lab</p>
-      <p className="font-normal text-base text-white"></p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Our graphics lab is equipped with high-end equipment and software to
-        provide a professional and creative environment for graphic designers
-        and artists. Whether you&apos;re creating logos, branding, or digital
-        art, our lab offers the perfect space to bring your ideas to life.
-      </p>
-    </div>
-  );
-};
 
 const cards = [
   {
@@ -115,7 +86,7 @@ const cards = [
     content: <SkeletonOne />,
     className: 'md:col-span-2',
     thumbnail: '/greenscreen.webp',
-    title: 'Green Screen',
+    title: 'Visual Studio',
   },
   {
     id: 2,
@@ -138,13 +109,7 @@ const cards = [
     thumbnail: '/photostudio.webp',
     title: 'Photo Studio',
   },
-  {
-    id: 5,
-    content: <SkeletonFive />,
-    className: 'md:col-span-2',
-    thumbnail: '/infra-2.png',
-    title: 'Animation Studio',
-  },
+
   {
     id: 6,
     content: <SkeletonSix />,
@@ -152,13 +117,7 @@ const cards = [
     thumbnail: '/infra-4.png',
     title: 'Visual Studio',
   },
-  {
-    id: 7,
-    content: <SkeletonSeven />,
-    className: 'md:col-span-3',
-    thumbnail: '/infra-8.png',
-    title: 'Graphics Lab',
-  },
+  
 ];
 
 export default function FacilityShowcase() {
