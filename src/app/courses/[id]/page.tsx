@@ -1,11 +1,11 @@
-
 import { notFound } from "next/navigation"
 import { CourseContent } from "./components/course-content"
-// import { BookingForm } from "@/components/booking-form" // Assuming this is where your booking form is
+import EnquiryForm from "@/components/enquiry-form"
 
 const specializationDetails = {
   shortFilmMaking: {
-    title: "Why Specialize in Short Film Making?",
+    id: 1,
+    title: "SHORT FILM MAKING",
     description:
       "The Certificate Course in Short Film Making is your gateway to mastering the art of storytelling and stepping into a rewarding career in the creative industry. Here's why this program is the perfect choice for aspiring filmmakers:",
     points: [
@@ -48,7 +48,8 @@ const specializationDetails = {
     ],
   },
   videoEditing: {
-    title: "Why Specialize in Video Editing?",
+    id: 2,
+    title: "EDITING TECHNIQUES",
     points: [
       "Essential for Storytelling: Video editing transforms raw footage into engaging narratives.",
       "High Demand Across Industries: From films to social media, video editors are needed everywhere.",
@@ -58,7 +59,8 @@ const specializationDetails = {
     ],
   },
   digitalPhotography: {
-    title: "Why Specialize in Digital Photography?",
+    id: 4,
+    title: "DIGITAL PHOTOGRAPHY",
     points: [
       "Master the Art of Visual Storytelling: Capture moments and tell compelling stories through powerful imagery.",
       "High Demand Across Industries: From advertising to e-commerce, photographers are highly sought after.",
@@ -68,7 +70,8 @@ const specializationDetails = {
     ],
   },
   socialMediaDesign: {
-    title: "Why Specialize in Social Media Design?",
+    id: 3,
+    title: "SOCIAL MEDIA DESIGN",
     points: [
       "Drive Engagement Through Visual Storytelling: Create visually striking content that drives interaction.",
       "High Demand Across Industries: Brands and influencers need impactful social media designs.",
@@ -78,7 +81,8 @@ const specializationDetails = {
     ],
   },
   threeDAnimation: {
-    title: "Why Specialize in 3D Animation?",
+    id: 5,
+    title: "3D ANIMATION",
     points: [
       "Master the Art of Storytelling Through Animation: Bring characters and worlds to life.",
       "High Demand Across Industries: Essential in gaming, films, AR/VR, and e-learning.",
@@ -89,11 +93,12 @@ const specializationDetails = {
   },
 } as const
 
-type CourseNames = keyof typeof specializationDetails
 
-export default function CoursePage({ params }: { params: { courseName: string } }) {
-  const courseName = params.courseName as CourseNames
-  const courseData = specializationDetails[courseName]
+export default function CoursePage({ params }: { params: { id: string } }) {
+  const { id } = params
+  const courseData = Object.values(specializationDetails).find(
+    (course) => course.id.toString() === id
+  )
 
   if (!courseData) {
     notFound()

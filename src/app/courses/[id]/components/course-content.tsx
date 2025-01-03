@@ -3,51 +3,23 @@
 import { motion } from "framer-motion"
 import { ChevronRight } from 'lucide-react'
 
+type CourseData = {
+  id: number
+  title: string
+  description?: string
+  points: Array<
+    | string
+    | {
+        title: string
+        description: string
+        subpoints?: string[]
+      }
+  >
+}
 
-
-type CourseContentProps = {
-
-
-
-  courseData: {
-
-
-
-    title: string;
-
-
-
-    description?: string;
-
-
-
-    points: readonly (string | {
-
-
-
-      title: string;
-
-
-
-      description: string;
-
-
-
-      subpoints?: readonly string[];
-
-
-
-    })[];
-
-
-
-  };
-
-
-
-};
-
-
+interface CourseContentProps {
+  courseData: CourseData
+}
 
 export function CourseContent({ courseData }: CourseContentProps) {
   const container = {

@@ -8,6 +8,7 @@ import Image from 'next/image';
 
 const programs = [
   {
+    id: 1,
     icon: Film,
     title: 'SHORT FILM MAKING',
     description:
@@ -15,6 +16,7 @@ const programs = [
     backgroundImage: '/film.jpeg?height=400&width=600',
   },
   {
+    id: 2,
     icon: Video,
     title: 'EDITING TECHNIQUES',
     description:
@@ -22,6 +24,7 @@ const programs = [
     backgroundImage: '/editing.jpg?height=400&width=600',
   },
   {
+    id: 3,
     icon: Share2,
     title: 'SOCIAL MEDIA DESIGN',
     description:
@@ -29,6 +32,7 @@ const programs = [
     backgroundImage: '/social-media.png?height=400&width=600',
   },
   {
+    id: 4,
     icon: Camera,
     title: 'DIGITAL PHOTOGRAPHY',
     description:
@@ -36,6 +40,7 @@ const programs = [
     backgroundImage: '/digital-photography.jpeg?height=400&width=600',
   },
   {
+    id: 5,
     icon: Cube,
     title: '3D ANIMATION',
     description:
@@ -122,7 +127,7 @@ function ProgramCard({
   index: number;
 }) {
   return (
-    <Link href="/enquiry" className="block">
+    <Link href={`/courses/${program.id}`} className="block">
       <MotionCard
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
