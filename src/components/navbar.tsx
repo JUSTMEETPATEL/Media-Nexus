@@ -196,6 +196,14 @@ export default function Navbar() {
             >
               Book Enquiry
             </Link>
+
+              {session.data?.user?.email ? <Button onClick={handleClick} className = {`block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md`}>
+                  Sign Out
+                </Button> : (
+                <Link href="/sign-in" className = {`block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md`}>
+                  Sign In
+                </Link>
+              )}
           </div>
         </div>
       )}
