@@ -1,9 +1,10 @@
 'use client';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { useState, useEffect, useRef } from 'react';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
+import { useSession } from '@/lib/auth-client';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,6 +36,7 @@ export default function Navbar() {
     };
   }, []);
 
+  const session = useSession();
   // const toggleDropdown = () => {
   //   setIsOpen((prev) => !prev);
   // };
@@ -115,6 +117,14 @@ export default function Navbar() {
                 className="w-48 h-14 object-contain"
               />
             </Link>
+          </div>
+
+          <div className='hidden md:flex items-center space-x-4'>
+              {session.data?.user?.email ? null : (
+                <Link href="/sign-in" className = {`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25`}>
+                  Sign In
+                </Link>
+              )}
           </div>
 
           {/* Mobile menu button */}
