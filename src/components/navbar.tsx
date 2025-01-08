@@ -1,10 +1,19 @@
 'use client';
 import Link from 'next/link';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { useState, useEffect, useRef } from 'react';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
-import { useSession } from '@/lib/auth-client';
+import { authClient, useSession } from '@/lib/auth-client';
+import { redirect } from 'next/navigation';
+
+
+const handleClick = () => {
+  authClient.signOut();
+  console.log('Sign out');
+  redirect('/sign-in');
+};
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -120,7 +129,9 @@ export default function Navbar() {
           </div>
 
           <div className='hidden md:flex items-center space-x-4'>
-              {session.data?.user?.email ? null : (
+              {session.data?.user?.email ? <Button onClick={handleClick} className = {`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25`}>
+                  Sign Out
+                </Button> : (
                 <Link href="/sign-in" className = {`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25`}>
                   Sign In
                 </Link>
