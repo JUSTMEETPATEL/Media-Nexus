@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useSession } from '@/lib/auth-client';
+import { authClient, useSession } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -16,6 +16,7 @@ import {
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Loader } from '@/components/ui/loader';
+import { Button } from '@/components/ui/button';
 
 type Enquiry = {
   courseId: number;
@@ -61,6 +62,11 @@ const programsMap = {
 };
 
 const MotionCard = motion(Card);
+
+const handleClick = () => {
+  authClient.signOut();
+  console.log('Sign out');
+};
 
 const Page = () => {
   const session = useSession();
@@ -153,138 +159,149 @@ const Page = () => {
   }
 
   return (
-    <motion.div
-      key="dashboard-page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 pt-16"
-    >
-      <div className="container mx-auto px-4 md:px-6 py-4 md:py-8">
-        <div className="flex justify-end items-center mb-8 pt-4">
-          <div className="flex items-center space-x-2">
-            <User className="w-6 h-6 text-cyan-500" />
-            <span className="text-base md:text-lg font-medium text-gray-600 dark:text-gray-300">
-              Welcome, {session.data?.user.email}
-            </span>
-          </div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-4"
-        >
-          <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-left mb-4 relative z-10"
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{
-              type: 'spring',
-              stiffness: 200,
-              damping: 15,
-              delay: 0.4,
-            }}
-          >
-            <motion.div
-              className="text-cyan-400 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-500"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              YOUR
-            </motion.div>
-            <motion.div
-              className="text-gray-600 dark:text-gray-300"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-            >
-              COURSE
-            </motion.div>
-          </motion.h1>
-        </motion.div>
-
-        <div className="w-full max-w-4xl mx-auto">
-          {error && <div className="text-red-500 mb-4">Error: {error}</div>}
-          {!enquiries ? (
-            <div className="flex justify-center items-center min-h-[200px]">
-              <Loader />
+    <>
+      <motion.div
+        key="dashboard-page"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 pt-16"
+      >
+        <div className="container mx-auto px-4 md:px-6 py-4 md:py-8">
+          <div className="flex justify-end items-center mb-8 pt-4">
+            <div className="flex items-center space-x-2">
+              <User className="w-6 h-6 text-cyan-500" />
+              <span className="text-base md:text-lg font-medium text-gray-600 dark:text-gray-300">
+                Welcome, {session.data?.user.email}
+              </span>
+              <Button
+                size="sm"
+                className="bg-cyan-400 hover:bg-cyan-600"
+                onClick={handleClick}
+              >
+                Sign Out
+              </Button>
             </div>
-          ) : (
-            <div>
-              {programsMap[enquiries.courseId as keyof typeof programsMap] && (
-                <Link
-                  href={`/dashboard/${enquiries.courseId}/${enquiries.slotId}`}
-                  passHref
-                >
-                  <MotionCard
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.8,
-                      ease: 'easeOut',
-                    }}
-                    className="group relative overflow-hidden border-0 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,255,0.3)] cursor-pointer"
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-4"
+          >
+            <motion.h1
+              className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-left mb-4 relative z-10"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{
+                type: 'spring',
+                stiffness: 200,
+                damping: 15,
+                delay: 0.4,
+              }}
+            >
+              <motion.div
+                className="text-cyan-400 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-cyan-500"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                YOUR
+              </motion.div>
+              <motion.div
+                className="text-gray-600 dark:text-gray-300"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                COURSE
+              </motion.div>
+            </motion.h1>
+          </motion.div>
+
+          <div className="w-full max-w-4xl mx-auto">
+            {error && <div className="text-red-500 mb-4">Error: {error}</div>}
+            {!enquiries ? (
+              <div className="flex justify-center items-center min-h-[200px]">
+                <Loader />
+              </div>
+            ) : (
+              <div>
+                {programsMap[
+                  enquiries.courseId as keyof typeof programsMap
+                ] && (
+                  <Link
+                    href={`/dashboard/${enquiries.courseId}/${enquiries.slotId}`}
+                    passHref
                   >
-                    <Image
-                      src={
-                        programsMap[
-                          enquiries.courseId as keyof typeof programsMap
-                        ].backgroundImage
-                      }
-                      alt={
-                        programsMap[
-                          enquiries.courseId as keyof typeof programsMap
-                        ].title
-                      }
-                      layout="fill"
-                      objectFit="cover"
-                      className="absolute inset-0 z-0 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/80 dark:from-gray-800/90 dark:to-gray-800/80 group-hover:from-cyan-900/90 group-hover:to-cyan-900/80 transition-all duration-300 z-10"></div>
-                    <CardHeader className="relative z-20 p-6">
-                      <CardTitle className="text-2xl font-bold text-cyan-600 dark:text-cyan-400 group-hover:text-white transition-colors duration-300 flex items-center">
-                        {React.createElement(
+                    <MotionCard
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.5,
+                        delay: 0.8,
+                        ease: 'easeOut',
+                      }}
+                      className="group relative overflow-hidden border-0 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,255,0.3)] cursor-pointer"
+                    >
+                      <Image
+                        src={
                           programsMap[
                             enquiries.courseId as keyof typeof programsMap
-                          ].icon,
-                          { className: 'w-8 h-8 mr-3' }
-                        )}
-                        {
+                          ].backgroundImage
+                        }
+                        alt={
                           programsMap[
                             enquiries.courseId as keyof typeof programsMap
                           ].title
                         }
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="relative z-20 p-6">
-                      <p className="text-gray-700 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 mb-4">
-                        {
-                          programsMap[
-                            enquiries.courseId as keyof typeof programsMap
-                          ].description
-                        }
-                      </p>
-                      <p className="font-semibold text-cyan-600 dark:text-cyan-400 group-hover:text-white transition-colors duration-300">
-                        Slot:{' '}
-                        {enquiries.slotId === 1
-                          ? 'Morning'
-                          : enquiries.slotId === 2
-                            ? 'Evening'
-                            : 'Unknown'}
-                      </p>
-                    </CardContent>
-                  </MotionCard>
-                </Link>
-              )}
-            </div>
-          )}
+                        layout="fill"
+                        objectFit="cover"
+                        className="absolute inset-0 z-0 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/80 dark:from-gray-800/90 dark:to-gray-800/80 group-hover:from-cyan-900/90 group-hover:to-cyan-900/80 transition-all duration-300 z-10"></div>
+                      <CardHeader className="relative z-20 p-6">
+                        <CardTitle className="text-2xl font-bold text-cyan-600 dark:text-cyan-400 group-hover:text-white transition-colors duration-300 flex items-center">
+                          {React.createElement(
+                            programsMap[
+                              enquiries.courseId as keyof typeof programsMap
+                            ].icon,
+                            { className: 'w-8 h-8 mr-3' }
+                          )}
+                          {
+                            programsMap[
+                              enquiries.courseId as keyof typeof programsMap
+                            ].title
+                          }
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="relative z-20 p-6">
+                        <p className="text-gray-700 dark:text-gray-200 group-hover:text-gray-100 transition-colors duration-300 mb-4">
+                          {
+                            programsMap[
+                              enquiries.courseId as keyof typeof programsMap
+                            ].description
+                          }
+                        </p>
+                        <p className="font-semibold text-cyan-600 dark:text-cyan-400 group-hover:text-white transition-colors duration-300">
+                          Slot:{' '}
+                          {enquiries.slotId === 1
+                            ? 'Morning'
+                            : enquiries.slotId === 2
+                              ? 'Evening'
+                              : 'Unknown'}
+                        </p>
+                      </CardContent>
+                    </MotionCard>
+                  </Link>
+                )}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 

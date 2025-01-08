@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useSession } from '@/lib/auth-client';
+import { authClient, useSession } from '@/lib/auth-client';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -15,6 +15,7 @@ import {
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Loader } from '@/components/ui/loader';
+import { Button } from '@/components/ui/button';
 
 const programs = [
   {
@@ -79,6 +80,12 @@ export default function FacultyPage() {
 
   const email = session.data?.user?.email;
 
+  const handleClick = () => {
+    authClient.signOut();
+    console.log('Sign out');
+  };
+  
+
   return (
     <motion.div
       key="faculty-page"
@@ -129,6 +136,13 @@ export default function FacultyPage() {
             <span className="text-base md:text-lg font-medium text-gray-600 dark:text-gray-300">
               Welcome, {email}
             </span>
+            <Button
+                size="sm"
+                className="bg-cyan-400 hover:bg-cyan-600"
+                onClick={handleClick}
+              >
+                Sign Out
+              </Button>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
