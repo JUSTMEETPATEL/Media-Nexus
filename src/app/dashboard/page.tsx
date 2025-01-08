@@ -17,6 +17,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Loader } from '@/components/ui/loader';
 import { Button } from '@/components/ui/button';
+import { redirect } from 'next/navigation';
 
 type Enquiry = {
   courseId: number;
@@ -66,6 +67,8 @@ const MotionCard = motion(Card);
 const handleClick = () => {
   authClient.signOut();
   console.log('Sign out');
+      redirect('/sign-in');
+  
 };
 
 const Page = () => {
