@@ -79,7 +79,7 @@ export default function Home() {
     { id: 4, src: '/photo4.jpg', alt: 'Photo 4' },
   ];
 
-  const videos = [{ id: 1, youtubeId: 'bh4MoEVW4Wc', title: 'Video 1' }];
+  const videos = [{ id: 1, youtubeId: 'obRsrjUG9YY', title: 'Video 1' }];
 
   return (
     <Suspense fallback={<Loader />}>
@@ -209,7 +209,7 @@ export default function Home() {
               <InfiniteScrollCards>
                 {duplicatedItems.map((course, index) => (
                   <Link
-                    href="/enquiry"
+                    href="/courses"
                     key={`${course.title}-${index}`}
                     className="no-underline"
                   >
