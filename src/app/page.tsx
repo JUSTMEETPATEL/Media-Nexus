@@ -6,7 +6,8 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader } from '@/components/loader';
 import { motion } from 'framer-motion';
-import { Lightbox } from '@/components/lightbox';
+import { Youtube } from 'lucide-react';
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { InfiniteScrollCards } from '@/components/infinite-scroll-cards';
@@ -58,7 +59,7 @@ const mediaNexus = {
 const duplicatedItems = [...mediaNexus.courses, ...mediaNexus.courses];
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
-  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  
 
   useEffect(() => {
     setIsClient(true);
@@ -73,13 +74,13 @@ export default function Home() {
   }
 
   const photos = [
-    { id: 1, src: '/photo1.jpg', alt: 'Photo 1' },
-    { id: 2, src: '/photo2.jpg', alt: 'Photo 2' },
-    { id: 3, src: '/photo3.jpg', alt: 'Photo 3' },
-    { id: 4, src: '/photo4.jpg', alt: 'Photo 4' },
+    { id: 1, src: '/gallery-1.jpeg', alt: 'Photo 1' },
+    { id: 2, src: '/gallery-2.jpeg', alt: 'Photo 2' },
+    { id: 3, src: '/gallery-3.jpeg', alt: 'Photo 3' },
+    { id: 4, src: '/gallery-4.jpeg', alt: 'Photo 4' },
   ];
 
-  const videos = [{ id: 1, youtubeId: 'obRsrjUG9YY', title: 'Video 1' }];
+  const videos = [{ id: 1, youtubeId: 'obRsrjUG9YY', title: 'Profile Video | School Of Media Studies' }];
 
   return (
     <Suspense fallback={<Loader />}>
@@ -243,6 +244,7 @@ export default function Home() {
                 <p className="mb-4" data-aos="fade-up" data-aos-delay="100">
                   Explore our collection of inspiring photos.
                 </p>
+                <Link href= "/photo-gallery">
                 <button
                   className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
                   data-aos="fade-up"
@@ -250,6 +252,7 @@ export default function Home() {
                 >
                   View All Photos
                 </button>
+                </Link>
               </div>
               <div
                 className="md:w-2/3 grid grid-cols-2 gap-4"
@@ -267,13 +270,9 @@ export default function Home() {
                       width={400}
                       height={300}
                       className="w-full h-48 object-cover transition duration-300 group-hover:scale-110"
-                      onClick={() => setLightboxImage(photo.src)}
+                     
                     />
-                    <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                      <span className="text-white text-lg font-semibold">
-                        View Photo
-                      </span>
-                    </div>
+                    
                   </div>
                 ))}
               </div>
@@ -302,41 +301,47 @@ export default function Home() {
                 </button>
                 </Link>
               </div>
-              <div className="md:w-2/3" data-aos="fade-up" data-aos-delay="300">
-                {videos.slice(0, 1).map((video) => (
-                  <div
-                    key={video.id}
-                    className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer"
-                  >
-                    <Image
-                      src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
-                      alt={video.title}
-                      width={640}
-                      height={360}
-                      className="w-full h-64 object-cover transition duration-300 group-hover:scale-110"
-                    />
-                    <Link
-                      href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <svg
-                          className="w-16 h-16 text-white opacity-80"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
+              <div className="md:w-1/2" data-aos="fade-up" data-aos-delay="300">
+              {videos.map((video) => (
+          <div
+            key={video.id}
+            className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer"
+          >
+            <Image
+              src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
+              alt={video.title}
+              width={640}
+              height={360}
+              className="w-full h-56 object-cover transition duration-300 group-hover:scale-110"
+            />
+            <div className="absolute top-2 left-2 bg-white rounded-full p-1">
+              <Youtube className="w-6 h-6 text-red-600" />
+            </div>
+            <Link
+              href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                <svg
+                  className="w-16 h-16 text-white opacity-80"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+            </Link>
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+              <h2 className="text-white font-semibold">{video.title}</h2>
+            </div>
+          </div>
+        ))}
               </div>
             </div>
           </div>
@@ -347,10 +352,10 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row gap-8">
               <div className="w-full md:w-1/2" data-aos="fade-up">
-                <Link href="/media">
+                <Link href="/team">
                   <div className="relative overflow-hidden rounded-lg shadow-lg group h-80">
                     <Image
-                      src="/media-coverage.jpg"
+                      src="/gallery-1.jpeg"
                       alt="Media Coverage"
                       fill
                       className="object-cover transition duration-300 group-hover:scale-110"
@@ -371,7 +376,7 @@ export default function Home() {
                 <Link href="/enquiry">
                   <div className="relative overflow-hidden rounded-lg shadow-lg group h-80">
                     <Image
-                      src="/tune-in-bg.jpg"
+                      src="/landing.jpeg"
                       alt="Tune In"
                       fill
                       className="object-cover transition duration-300 group-hover:scale-110"
@@ -389,13 +394,7 @@ export default function Home() {
           </div>
         </section>
 
-        {lightboxImage && (
-          <Lightbox
-            src={lightboxImage}
-            alt="Enlarged photo"
-            onClose={() => setLightboxImage(null)}
-          />
-        )}
+        
         <Footer />
       </main>
     </Suspense>
