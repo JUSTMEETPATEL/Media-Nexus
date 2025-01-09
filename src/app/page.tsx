@@ -292,6 +292,7 @@ export default function Home() {
                 <p className="mb-4" data-aos="fade-up" data-aos-delay="100">
                   Watch our collection of inspiring videos.
                 </p>
+                <Link href="/video-gallery"> 
                 <button
                   className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
                   data-aos="fade-up"
@@ -299,6 +300,7 @@ export default function Home() {
                 >
                   View All Videos
                 </button>
+                </Link>
               </div>
               <div className="md:w-2/3" data-aos="fade-up" data-aos-delay="300">
                 {videos.slice(0, 1).map((video) => (
