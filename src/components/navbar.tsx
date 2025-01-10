@@ -110,7 +110,7 @@ export default function Navbar() {
                 href="/enquiry"
                 className={`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25`}
               >
-                Book Enquiry
+                Register Now
               </Link>
             </div>
           </div>
@@ -194,7 +194,7 @@ export default function Navbar() {
               href="/enquiry"
               className={`block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md`}
             >
-              Book Enquiry
+              Register Now
             </Link>
 
               {session.data?.user?.email ? <Button onClick={handleClick} className = {`block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md`}>

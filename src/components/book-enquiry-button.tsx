@@ -14,7 +14,7 @@ export function BookEnquiryButton() {
           focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-opacity-50
         "
       >
-        Book an Enquiry
+        Register Now
       </Button>
     </Link>
   );
