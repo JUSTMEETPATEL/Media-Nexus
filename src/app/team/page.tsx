@@ -156,7 +156,7 @@ export default function TeamShowcase() {
       rel="noopener noreferrer"
       className="w-full sm:w-[250px]"
     >
-      <Card className="bg-white shrink-0 transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer flex flex-col h-full hover:border-cyan-400 hover:border-2 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+      <Card className="bg-white shrink-0 transform transition-all duration-300 hover:scale-105 cursor-pointer flex flex-col h-full hover:border-cyan-400 hover:border-2 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]">
         <CardHeader className="flex-grow p-0">
           <div className="relative w-full pt-[100%]">
             <Image
