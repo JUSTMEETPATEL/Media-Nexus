@@ -1,76 +1,65 @@
-'use client';
+"use client"
 
-import * as React from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-import { format } from 'date-fns';
-import { CalendarIcon, Clock } from 'lucide-react';
+import * as React from "react"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
 
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar';
+import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from '@/components/ui/form';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
+} from "@/components/ui/form"
+import { Card, CardContent } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { toast } from '@/hooks/use-toast';
+} from "@/components/ui/select"
+import { toast } from "@/hooks/use-toast"
 
 const formSchema = z.object({
   name: z.string().min(2, {
-    message: 'Name must be at least 2 characters.',
+    message: "Name must be at least 2 characters.",
   }),
   whatsappNumber: z.string().regex(/^\+?[1-9]\d{1,14}$/, {
-    message: 'Please enter a valid WhatsApp number.',
+    message: "Please enter a valid WhatsApp number.",
   }),
   email: z.string().email({
-    message: 'Please enter a valid email address.',
+    message: "Please enter a valid email address.",
   }),
   courseId: z.string({
-    required_error: 'Please select a course.',
+    required_error: "Please select a course.",
   }),
   slotId: z.string({
-    required_error: 'Please select a slot.',
+    required_error: "Please select a slot.",
   }),
-  date: z.date({
-    required_error: 'Please select a date.',
+  preferredDateTime: z.string().refine((val) => !isNaN(Date.parse(val)), {
+    message: "Please select a valid date and time.",
   }),
-  time: z.string({
-    required_error: 'Please select a time.',
-  }),
-});
+})
 
 export function EnhancedForm() {
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      whatsappNumber: '',
-      email: '',
+      name: "",
+      whatsappNumber: "",
+      email: "",
+      preferredDateTime: "",
     },
-  });
+  })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true);
+    setIsLoading(true)
     try {
       const response = await fetch('/api/send-confirmation', {
         method: 'POST',
@@ -78,28 +67,27 @@ export function EnhancedForm() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(values),
-      });
+      })
 
       if (!response.ok) {
-        throw new Error('Failed to send confirmation email');
+        throw new Error('Failed to send confirmation email')
       }
 
       // Show success message to the user
-      alert('Registration successful! Check your email for confirmation.');
-      form.reset(); // Reset the form after successful submission
+      alert('Registration successful! Check your email for confirmation.')
+      form.reset() // Reset the form after successful submission
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error:', error)
       toast({
-        title: 'Registration unsuccessfull!',
-        description: 'Please try again later.',
-      });
+        title: 'Error',
+        description: 'Failed to submit the form. Please try again later.',
+      })
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
       toast({
-        title: 'Registration successful!',
-        description:
-          'Check your email for confirmation and our team will contact you at your preferred time.',
-      });
+        title: 'Success',
+        description: `Registration successful! Check your email for confirmation and our team will contact you at ${values.preferredDateTime}.` 
+      })
     }
   }
 
@@ -222,72 +210,20 @@ export function EnhancedForm() {
               />
               <FormField
                 control={form.control}
-                name="date"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col">
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant={'outline'}
-                            className={cn(
-                              'w-full pl-3 text-left font-normal',
-                              !field.value && 'text-muted-foreground'
-                            )}
-                          >
-                            {field.value ? (
-                              format(field.value, 'PPP')
-                            ) : (
-                              <span>Pick a date</span>
-                            )}
-                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                          </Button>
-                        </FormControl>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar
-                          mode="single"
-                          selected={field.value}
-                          onSelect={field.onChange}
-                          disabled={(date) =>
-                            date < new Date() || date > new Date('2025-01-01')
-                          }
-                          initialFocus
-                        />
-                      </PopoverContent>
-                    </Popover>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="time"
+                name="preferredDateTime"
                 render={({ field }) => (
                   <FormItem>
-                    <Select onValueChange={field.onChange} value={field.value}>
-                      <FormControl>
-                        <SelectTrigger
-                          className="w-full border-2 rounded-lg p-3 transition-all duration-200 
-                                focus:ring-2 focus:ring-cyan-400 focus:border-transparent
-                                hover:border-cyan-300 transform hover:-translate-y-0.5
-                                bg-gray-50 hover:bg-white"
-                        >
-                          <SelectValue placeholder="Select Time" />
-                          <Clock className="ml-auto h-4 w-4 opacity-50" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {Array.from({ length: 24 }, (_, i) => i).map((hour) => (
-                          <SelectItem
-                            key={hour}
-                            value={`${hour.toString().padStart(2, '0')}:00`}
-                          >
-                            {`${hour.toString().padStart(2, '0')}:00`}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    <FormControl>
+                      <Input
+                        type="datetime-local"
+                        required
+                        className="border-2 rounded-lg p-3 w-full transition-all duration-200 
+                              focus:ring-2 focus:ring-cyan-400 focus:border-transparent
+                              hover:border-cyan-300 transform hover:-translate-y-0.5
+                              bg-gray-50 hover:bg-white"
+                        {...field}
+                      />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -311,5 +247,6 @@ export function EnhancedForm() {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }
+
