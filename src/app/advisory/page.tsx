@@ -29,6 +29,11 @@ const advisoryMembers: AdvisoryMember[] = [
     role: 'Indian Director',
     imageUrl: '/vasu.png',
   },
+  {
+    name: 'Vishnuvardhan',
+    role: 'Indian Director',
+    imageUrl: '/Vishnu.jpg',
+  }
 ];
 
 const AdvisoryBoard: React.FC = () => {
