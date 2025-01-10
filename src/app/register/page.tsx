@@ -6,8 +6,6 @@ import { motion } from 'framer-motion';
 import EnquiryForm from '@/components/enquiry-form';
 
 export default function Page() {
-  
-
   return (
     <>
       <Script

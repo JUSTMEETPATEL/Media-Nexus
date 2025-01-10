@@ -7,13 +7,11 @@ import Image from 'next/image';
 import { authClient, useSession } from '@/lib/auth-client';
 import { redirect } from 'next/navigation';
 
-
 const handleClick = () => {
   authClient.signOut();
   console.log('Sign out');
   redirect('/sign-in');
 };
-
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -107,7 +105,7 @@ export default function Navbar() {
                 Contact Us
               </Link>
               <Link
-                href="/enquiry"
+                href="/register"
                 className={`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25`}
               >
                 Register Now
@@ -128,14 +126,22 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className='hidden md:flex items-center space-x-4'>
-              {session.data?.user?.email ? <Button onClick={handleClick} className = {`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25`}>
-                  Sign Out
-                </Button> : (
-                <Link href="/sign-in" className = {`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25`}>
-                  Sign In
-                </Link>
-              )}
+          <div className="hidden md:flex items-center space-x-4">
+            {session.data?.user?.email ? (
+              <Button
+                onClick={handleClick}
+                className={`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25`}
+              >
+                Sign Out
+              </Button>
+            ) : (
+              <Link
+                href="/sign-in"
+                className={`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25`}
+              >
+                Sign In
+              </Link>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -191,19 +197,27 @@ export default function Navbar() {
               Contact Us
             </Link>
             <Link
-              href="/enquiry"
+              href="/register"
               className={`block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md`}
             >
               Register Now
             </Link>
 
-              {session.data?.user?.email ? <Button onClick={handleClick} className = {`block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md`}>
-                  Sign Out
-                </Button> : (
-                <Link href="/sign-in" className = {`block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md`}>
-                  Sign In
-                </Link>
-              )}
+            {session.data?.user?.email ? (
+              <Button
+                onClick={handleClick}
+                className={`block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md`}
+              >
+                Sign Out
+              </Button>
+            ) : (
+              <Link
+                href="/sign-in"
+                className={`block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md`}
+              >
+                Sign In
+              </Link>
+            )}
           </div>
         </div>
       )}

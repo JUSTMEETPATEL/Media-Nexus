@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { Specialization } from "../types/specializations";
-import { motion } from "framer-motion";
+import { Specialization } from '../types/specializations';
+import { motion } from 'framer-motion';
 import { CheckCircle, Book } from 'lucide-react';
 
 interface CourseContentProps {
@@ -11,13 +11,15 @@ interface CourseContentProps {
 export function CourseContent({ specialization }: CourseContentProps) {
   return (
     <div className="space-y-8 p-6">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="space-y-4"
       >
-        <h2 className="text-3xl font-bold tracking-tight text-gray-800">{specialization.title}</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-gray-800">
+          {specialization.title}
+        </h2>
         {specialization.description && (
           <p className="text-lg text-gray-600">{specialization.description}</p>
         )}
@@ -30,7 +32,7 @@ export function CourseContent({ specialization }: CourseContentProps) {
         </h3>
         <div className="grid gap-6">
           {specialization.reasons.map((reason, index) => (
-            <motion.div 
+            <motion.div
               key={reason.id}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -57,4 +59,3 @@ export function CourseContent({ specialization }: CourseContentProps) {
     </div>
   );
 }
-

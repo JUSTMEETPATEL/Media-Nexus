@@ -67,8 +67,7 @@ const MotionCard = motion(Card);
 const handleClick = () => {
   authClient.signOut();
   console.log('Sign out');
-      redirect('/sign-in');
-  
+  redirect('/sign-in');
 };
 
 const Page = () => {
