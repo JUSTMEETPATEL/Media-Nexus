@@ -59,7 +59,7 @@ const mediaNexus = {
 const duplicatedItems = [...mediaNexus.courses, ...mediaNexus.courses];
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
-  
+
 
   useEffect(() => {
     setIsClient(true);
@@ -244,14 +244,14 @@ export default function Home() {
                 <p className="mb-4" data-aos="fade-up" data-aos-delay="100">
                   Explore our collection of inspiring photos.
                 </p>
-                <Link href= "/photo-gallery">
-                <button
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
-                  View All Photos
-                </button>
+                <Link href="/photo-gallery">
+                  <button
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    View All Photos
+                  </button>
                 </Link>
               </div>
               <div
@@ -270,9 +270,9 @@ export default function Home() {
                       width={400}
                       height={300}
                       className="w-full h-48 object-cover transition duration-300 group-hover:scale-110"
-                     
+
                     />
-                    
+
                   </div>
                 ))}
               </div>
@@ -291,57 +291,57 @@ export default function Home() {
                 <p className="mb-4" data-aos="fade-up" data-aos-delay="100">
                   Watch our collection of inspiring videos.
                 </p>
-                <Link href="/video-gallery"> 
-                <button
-                  className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
-                  View All Videos
-                </button>
+                <Link href="/video-gallery">
+                  <button
+                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    View All Videos
+                  </button>
                 </Link>
               </div>
               <div className="md:w-1/2" data-aos="fade-up" data-aos-delay="300">
-              {videos.map((video) => (
-          <div
-            key={video.id}
-            className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer"
-          >
-            <Image
-              src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
-              alt={video.title}
-              width={640}
-              height={360}
-              className="w-full h-56 object-cover transition duration-300 group-hover:scale-110"
-            />
-            <div className="absolute top-2 left-2 bg-white rounded-full p-1">
-              <Youtube className="w-6 h-6 text-red-600" />
-            </div>
-            <Link
-              href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                <svg
-                  className="w-16 h-16 text-white opacity-80"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-            </Link>
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-              <h2 className="text-white font-semibold">{video.title}</h2>
-            </div>
-          </div>
-        ))}
+                {videos.map((video) => (
+                  <div
+                    key={video.id}
+                    className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer"
+                  >
+                    <Image
+                      src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
+                      alt={video.title}
+                      width={640}
+                      height={360}
+                      className="w-full h-56 object-cover transition duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute top-2 left-2 bg-white rounded-full p-1">
+                      <Youtube className="w-6 h-6 text-red-600" />
+                    </div>
+                    <Link
+                      href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <svg
+                          className="w-16 h-16 text-white opacity-80"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                    </Link>
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                      <h2 className="text-white font-semibold">{video.title}</h2>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -394,7 +394,7 @@ export default function Home() {
           </div>
         </section>
 
-        
+
         <Footer />
       </main>
     </Suspense>

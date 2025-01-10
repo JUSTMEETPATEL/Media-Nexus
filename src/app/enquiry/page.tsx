@@ -105,7 +105,7 @@ export default function Page() {
                   <FormItem>
                     <FormControl>
                       <Input
-                        placeholder="NAME"
+                        placeholder="Name"
                         {...field}
                         className="border-2 rounded-lg p-3 w-full transition-all duration-200 
                               focus:ring-2 focus:ring-cyan-400 focus:border-transparent
@@ -217,6 +217,7 @@ export default function Page() {
                       <Input
                         type="datetime-local"
                         required
+                        placeholder="Preferred DateTime"
                         className="border-2 rounded-lg p-3 w-full transition-all duration-200 
                               focus:ring-2 focus:ring-cyan-400 focus:border-transparent
                               hover:border-cyan-300 transform hover:-translate-y-0.5
