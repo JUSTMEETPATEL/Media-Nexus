@@ -18,9 +18,9 @@ const InfiniteScrollCards = ({ children }: { children: ReactNode }) => {
         x: [-clientWidth, -scrollWidth],
         transition: {
           x: {
-            repeat: Infinity,
+            repeat: 1000000,
             repeatType: 'loop',
-            duration: 30,
+            duration: 100,
             ease: 'linear',
           },
         },
