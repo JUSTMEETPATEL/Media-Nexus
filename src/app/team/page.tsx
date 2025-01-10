@@ -18,22 +18,51 @@ interface TeamMember {
 export default function TeamShowcase() {
   const teamMembers: TeamMember[] = [
     {
-      name: 'DR. M PRABHAKARAN',
-      role: 'Film Maker',
+      name: 'DR. PRABHAKARAN V',
+      role: 'Film Making and Film Studies',
       image: '/Prabakaran.png',
       section: 'academic',
       resumeUrl: '',
     },
     {
-      name: 'Mr. Akash',
-      role: 'Visual Storyteller',
+      name: 'Dr. SHANMUGA NATHAN S',
+      role: 'Visual Editing and Photography',
+      image: '/Shanmuga.jpg',
+      section: 'academic',
+      resumeUrl:
+        'https://drive.google.com/file/d/1X1hvoG9r3TEoYcJ66dZjLnXmA_Kfw4AZ/view?usp=drive_link',
+    },
+    {
+      name: 'Ms. YUVARANI P',
+      role: 'Graphics and Animation',
+      image: '/Yuvarani.jpg',
+      section: 'academic',
+      resumeUrl: '',
+    },
+    {
+      name: 'Mr. ARUNKUMAR S',
+      role: 'Graphics and Animation',
+      image: '', // Provide image path if available
+      section: 'academic',
+      resumeUrl: '',
+    },
+    {
+      name: 'Ms. PADMAVATHY PS',
+      role: 'Film Making and Script Writing',
+      image: '/padmavathy.jpg',
+      section: 'academic',
+      resumeUrl: '',
+    },
+    {
+      name: 'Dr. AKASH J.H',
+      role: 'Visual Editing and Photography',
       image: '/akash.jpeg',
       section: 'academic',
       resumeUrl:
         'https://drive.google.com/file/d/1nMH5GoIuZ-rQewFyS5oXoEVQdbDK-3Zw/view?usp=drive_link',
     },
     {
-      name: 'Mr. Akshej',
+      name: 'Mr. AKSHEJ S',
       role: 'Visual Editor',
       image: '/Akshej.jpg',
       section: 'academic',
@@ -41,41 +70,34 @@ export default function TeamShowcase() {
         'https://drive.google.com/file/d/1w1CrrMvTKI8oX7WvDvfDhevFnfQnZgul/view?usp=drive_link',
     },
     {
-      name: 'MS. YUVARANI',
-      role: 'Animation and Graphics',
-      image: '/Yuvarani.jpg',
-      section: 'academic',
-      resumeUrl: '',
-    },
-    {
-      name: 'Ms. Sinduja',
-      role: 'Visual Storyteller',
+      name: 'Ms. SINDHUJA M.S',
+      role: 'Visual Storytelling',
       image: '/sinduja.jpg',
       section: 'academic',
       resumeUrl: '',
     },
     {
-      name: 'Ms. Padmavathy,',
-      role: 'Film Making',
-      image: '/padmavathy.jpg',
-      section: 'academic',
-      resumeUrl: '',
-    },
-    {
-      name: 'DR. Shanmuganathan',
-      role: 'Visual Editor',
-      image: '/Shanmuga.jpg',
+      name: 'Mr. AKASH M',
+      role: 'Visual Storytelling',
+      image: '/akash.jpeg',
       section: 'academic',
       resumeUrl:
-        'https://drive.google.com/file/d/1X1hvoG9r3TEoYcJ66dZjLnXmA_Kfw4AZ/view?usp=drive_link',
+        'https://drive.google.com/file/d/1nMH5GoIuZ-rQewFyS5oXoEVQdbDK-3Zw/view?usp=drive_link',
     },
     {
-      name: 'MS KEERTHANA S',
-      role: 'Media Specialist',
+      name: 'Ms. KEERTHANA S',
+      role: 'UI/UX Designer and Graphics Designer',
       image: '/Keerthana.jpg',
       section: 'academic',
       resumeUrl:
         'https://drive.google.com/file/d/1wkWxCceUwJyYM9o8SA_WTT0YP8BiEMpQ/view?usp=drive_link',
+    },
+    {
+      name: 'Ms. SUGANYA S',
+      role: 'Graphics Designer',
+      image: '', // Provide image path if available
+      section: 'academic',
+      resumeUrl: '',
     },
     {
       name: 'DHARANI R',
