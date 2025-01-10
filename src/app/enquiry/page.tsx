@@ -45,7 +45,7 @@ const formSchema = z.object({
   }),
 })
 
-export function EnhancedForm() {
+export default function Page() {
   const [isLoading, setIsLoading] = React.useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
