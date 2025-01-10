@@ -13,7 +13,13 @@ const transporter = nodemailer.createTransport({
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, whatsappNumber, courseId, slotId, date, time } = body;
+    const { name, email, whatsappNumber, courseId, slotId, preferredDateTime } = body;
+
+    // Format the datetime
+    const formattedDateTime = new Date(preferredDateTime).toLocaleString('en-US', {
+      dateStyle: 'full',
+      timeStyle: 'short',
+    });
 
     // Create email content
     const mailOptions = {
@@ -29,8 +35,7 @@ export async function POST(req: Request) {
           <li><strong>WhatsApp Number:</strong> ${whatsappNumber}</li>
           <li><strong>Course:</strong> ${getCourseNameById(courseId)}</li>
           <li><strong>Preferred Slot:</strong> ${getSlotNameById(slotId)}</li>
-          <li><strong>Preferred Date:</strong> ${date}</li>
-          <li><strong>Preferred Time:</strong> ${time}</li>
+          <li><strong>Preferred Date and Time:</strong> ${formattedDateTime}</li>
         </ul>
         <p>If you need to make any changes, please contact our support team.</p>
         <p>We look forward to helping you on your learning journey!</p>
@@ -71,3 +76,4 @@ function getSlotNameById(id: string): string {
   };
   return slots[id] || 'Unknown Slot';
 }
+
