@@ -86,7 +86,7 @@ export default function TeamShowcase() {
     },
     {
       name: 'AKHILESH M',
-      role: 'CHOREOGRAPHER',
+      role: 'CINEMATOGRAPHER',
       image: '/akhilesh.png',
       section: 'industrial',
       resumeUrl: '',
