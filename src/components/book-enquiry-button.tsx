@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 
 export function BookEnquiryButton() {
   return (
-    <Link href="/enquiry" passHref>
+    <Link href="/register" passHref>
       <Button
         className="
           fixed right-4 top-1/3 -translate-y-1/3 -rotate-90 origin-right z-50

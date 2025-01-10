@@ -5,6 +5,7 @@ import Navbar from '@/components/navbar';
 import { Toaster } from '@/components/ui/toaster';
 import JsonLd from '@/components/JSON-LD';
 import { EnquiryButtonWrapper } from '@/components/book-enquiry-button-wrapper';
+import { ContactButtonWrapper } from '@/components/contact-enquiry-button-wrapper';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -151,6 +152,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <EnquiryButtonWrapper />
+        <ContactButtonWrapper />
         <Toaster />
       </body>
     </html>

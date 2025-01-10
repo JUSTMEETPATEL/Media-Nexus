@@ -92,7 +92,7 @@ export default function Page() {
   }
 
   return (
-    <div className="relative group">
+    <div className="relative group pt-44">
       <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-cyan-300 rounded-lg blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
       <Card className="relative bg-white p-8 rounded-lg shadow-xl transition-all duration-300 ease-in-out hover:shadow-2xl hover:transform hover:-translate-y-1 w-full md:min-w-[400px]">
         <CardContent>
