@@ -26,26 +26,31 @@ const mediaNexus = {
     'The Media Nexus, a new venture of SRMIST-Ramapuram, is set to revolutionize learning opportunities for non-media students with the introduction of dynamic certificate courses. Recognizing the increasing interest in creative and technical media skills, these programs aim to provide hands-on training and foundational knowledge in diverse media arts disciplines. Designed specifically for students of Easwari Engineering College, the courses also extend an invitation to other interested learners, subject to availability.',
   courses: [
     {
+      id: 1,
       title: 'Short Film Making',
       description:
         'This course introduces students to the art of crafting compelling narratives and mastering visual storytelling. From scripting to filming and post-production, participants will gain a holistic understanding of short film creation.',
     },
     {
+      id: 4,
       title: 'Photography',
       description:
         'Designed for those passionate about capturing moments, this course delves into both the technical and artistic aspects of photography. Students will learn to use cameras effectively, understand lighting, and develop their unique creative vision.',
     },
     {
+      id: 2,
       title: 'Editing Techniques',
       description:
         'This course focuses on video editing, teaching students how to assemble footage, apply effects, and create seamless transitions to produce professional-quality videos.',
     },
     {
+      id: 3,
       title: 'Social Media Design',
       description:
         "In today's digital age, the ability to create engaging content for social platforms is invaluable. This course covers the essentials of graphic design, content strategy, and platform-specific techniques to help students excel in the realm of social media.",
     },
     {
+      id: 5,
       title: '3D Animation',
       description:
         'For those interested in bringing ideas to life, this course introduces the fundamentals of 3D animation, including modeling, texturing, and rendering.',
@@ -210,7 +215,7 @@ export default function Home() {
               <InfiniteScrollCards>
                 {duplicatedItems.map((course, index) => (
                   <Link
-                    href="/courses"
+                    href={`/courses/${course.id}`}
                     key={`${course.title}-${index}`}
                     className="no-underline"
                   >
