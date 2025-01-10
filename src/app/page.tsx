@@ -10,7 +10,7 @@ import { Youtube } from 'lucide-react';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { InfiniteScrollCards } from '@/components/infinite-scroll-cards';
+import InfiniteScrollCards  from '@/components/infinite-scroll-cards';
 import { Footer } from '@/components/footer';
 
 const mediaNexus = {

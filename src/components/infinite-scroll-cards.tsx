@@ -1,42 +1,49 @@
-'use client';
-
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, ReactNode } from 'react';
 import { motion, useAnimationControls } from 'framer-motion';
 
-interface InfiniteScrollCardsProps {
-  children: React.ReactNode;
-}
-
-export function InfiniteScrollCards({ children }: InfiniteScrollCardsProps) {
-  const controls = useAnimationControls();
+const InfiniteScrollCards = ({ children }: { children: ReactNode }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const controls = useAnimationControls();
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isHovered) {
-      controls.stop();
-    } else {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const scrollWidth = container.scrollWidth;
+    const clientWidth = container.clientWidth;
+
+    if (!isHovered) {
       controls.start({
-        x: '-50%',
+        x: [-clientWidth, -scrollWidth],
         transition: {
-          duration: 10,
-          repeat: Infinity,
-          ease: 'linear',
+          x: {
+            repeat: Infinity,
+            repeatType: 'loop',
+            duration: 30,
+            ease: 'linear',
+          },
         },
       });
+    } else {
+      controls.stop();
     }
   }, [isHovered, controls]);
 
   return (
     <div className="relative w-full overflow-hidden">
       <motion.div
+        ref={containerRef}
         className="flex gap-6"
-        initial={{ x: '0%' }}
         animate={controls}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         {children}
+        {children}
       </motion.div>
     </div>
   );
-}
+};
+
+export default InfiniteScrollCards;
