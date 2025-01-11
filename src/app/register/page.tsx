@@ -33,7 +33,7 @@ export default function Page() {
               </span>
             </h1>
             <p className="text-gray-600">
-              Reister now for more information on our programs, admissions, and
+              Register now for more information on our programs, admissions, and
               opportunities to advance your career.
             </p>
           </motion.div>
