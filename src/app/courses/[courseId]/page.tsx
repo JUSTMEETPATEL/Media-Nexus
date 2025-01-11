@@ -40,6 +40,9 @@ export default async function CoursePage({ params }: CoursePageProps) {
           </div>
         </div>
         <div className="lg:sticky lg:top-8 lg:self-start">
+          <h1 className="mb-10 text-xl font-bold text-gray-800">
+            Register Now
+          </h1>
           <EnquiryForm />
         </div>
       </div>
