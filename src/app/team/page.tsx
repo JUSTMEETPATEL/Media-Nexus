@@ -22,7 +22,7 @@ export default function TeamShowcase() {
       role: 'Film Making and Film Studies',
       image: '/Prabakaran.png',
       section: 'academic',
-      resumeUrl: '',
+      resumeUrl: '/placeholder',
     },
     {
       name: 'Dr. SHANMUGA NATHAN S',
@@ -37,21 +37,21 @@ export default function TeamShowcase() {
       role: 'Graphics and Animation',
       image: '/Yuvarani.jpg',
       section: 'academic',
-      resumeUrl: '',
+      resumeUrl: '/placeholder',
     },
     {
       name: 'Mr. ARUNKUMAR S',
       role: 'Graphics and Animation',
       image: '', // Provide image path if available
       section: 'academic',
-      resumeUrl: '',
+      resumeUrl: '/placeholder',
     },
     {
       name: 'Ms. PADMAVATHY PS',
       role: 'Film Making and Script Writing',
       image: '/padmavathy.jpg',
       section: 'academic',
-      resumeUrl: '',
+      resumeUrl: '/placeholder',
     },
     {
       name: 'Dr. AKASH J.H',
@@ -59,7 +59,7 @@ export default function TeamShowcase() {
       image: '/akash.jpeg',
       section: 'academic',
       resumeUrl:
-        'https://drive.google.com/file/d/1nMH5GoIuZ-rQewFyS5oXoEVQdbDK-3Zw/view?usp=drive_link',
+        'https://drive.google.com/file/d/1kya_fywVK6qjOu9oKtChy_ko5rbnx-tv/view?usp=sharing',
     },
     {
       name: 'Mr. AKSHEJ S',
@@ -74,7 +74,7 @@ export default function TeamShowcase() {
       role: 'Visual Storytelling',
       image: '/sinduja.jpg',
       section: 'academic',
-      resumeUrl: '',
+      resumeUrl: '/placeholder',
     },
     {
       name: 'Mr. AKASH M',
@@ -97,28 +97,28 @@ export default function TeamShowcase() {
       role: 'Graphics Designer',
       image: '', // Provide image path if available
       section: 'academic',
-      resumeUrl: '',
+      resumeUrl: '/placeholder',
     },
     {
       name: 'DHARANI R',
       role: 'DIRECTOR SCREENWRITER',
-      image: '/dharani.png',
+      image: '/Dharani R.png',
       section: 'industrial',
-      resumeUrl: '',
+      resumeUrl: '/placeholder',
     },
     {
       name: 'AKHILESH M',
       role: 'CINEMATOGRAPHER',
-      image: '/akhilesh.png',
+      image: '/Akilesh Kathamuthu.png',
       section: 'industrial',
-      resumeUrl: '',
+      resumeUrl: '/placeholder',
     },
     {
       name: 'V LSABU JOSEPH',
       role: 'VIDEO EDITOR',
-      image: '/sabu.png',
+      image: '/sabu.jpg',
       section: 'industrial',
-      resumeUrl: '',
+      resumeUrl: '/placeholder',
     },
   ];
 
