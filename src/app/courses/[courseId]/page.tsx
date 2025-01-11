@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { specializations } from './data/specialization';
 import { CourseContent } from './components/course-content';
-import EnquiryForm from '../../../components/enquiry-form';
+import EnquiryForm from '@/components/enquiry-form';
 import { GraduationCap } from 'lucide-react';
 
 interface CoursePageProps {
