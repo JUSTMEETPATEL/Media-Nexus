@@ -29,7 +29,7 @@ export function EnquiryButton() {
             Enquire Now <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </Link>
-        <Link href="https://wa.me/919999999999" passHref target="_blank" rel="noopener noreferrer">
+        <Link href="https://wa.me/919384088566" passHref target="_blank" rel="noopener noreferrer">
           <Button 
             variant="default" 
             className="bg-green-500 hover:bg-green-600 text-white shadow-lg"
