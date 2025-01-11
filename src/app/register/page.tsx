@@ -27,13 +27,13 @@ export default function Page() {
             className="space-y-6 mt-12 col-span-1 md:col-span-1"
           >
             <h1 className="text-5xl font-bold">
-              ENQUIRE{' '}
+              REGISTER{' '}
               <span className="text-cyan-400 inline-block hover:scale-105 transition-transform">
                 NOW!!!
               </span>
             </h1>
             <p className="text-gray-600">
-              Enquire now for more information on our programs, admissions, and
+              Reister now for more information on our programs, admissions, and
               opportunities to advance your career.
             </p>
           </motion.div>
