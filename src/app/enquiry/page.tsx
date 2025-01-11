@@ -1,65 +1,65 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
+import * as React from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from "@/components/ui/form"
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
+} from '@/components/ui/form';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { toast } from "@/hooks/use-toast"
+} from '@/components/ui/select';
+import { toast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
   name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
+    message: 'Name must be at least 2 characters.',
   }),
   whatsappNumber: z.string().regex(/^\+?[1-9]\d{1,14}$/, {
-    message: "Please enter a valid WhatsApp number.",
+    message: 'Please enter a valid WhatsApp number.',
   }),
   email: z.string().email({
-    message: "Please enter a valid email address.",
+    message: 'Please enter a valid email address.',
   }),
   courseId: z.string({
-    required_error: "Please select a course.",
+    required_error: 'Please select a course.',
   }),
   slotId: z.string({
-    required_error: "Please select a slot.",
+    required_error: 'Please select a slot.',
   }),
   preferredDateTime: z.string().refine((val) => !isNaN(Date.parse(val)), {
-    message: "Please select a valid date and time.",
+    message: 'Please select a valid date and time.',
   }),
-})
+});
 
 export default function Page() {
-  const [isLoading, setIsLoading] = React.useState(false)
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      whatsappNumber: "",
-      email: "",
-      preferredDateTime: "",
+      name: '',
+      whatsappNumber: '',
+      email: '',
+      preferredDateTime: '',
     },
-  })
+  });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
       const response = await fetch('/api/send-confirmation', {
         method: 'POST',
@@ -67,27 +67,27 @@ export default function Page() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(values),
-      })
+      });
 
       if (!response.ok) {
-        throw new Error('Failed to send confirmation email')
+        throw new Error('Failed to send confirmation email');
       }
 
       // Show success message to the user
-      alert('Registration successful! Check your email for confirmation.')
-      form.reset() // Reset the form after successful submission
+      alert('Registration successful! Check your email for confirmation.');
+      form.reset(); // Reset the form after successful submission
     } catch (error) {
-      console.error('Error:', error)
+      console.error('Error:', error);
       toast({
         title: 'Error',
         description: 'Failed to submit the form. Please try again later.',
-      })
+      });
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
       toast({
         title: 'Success',
-        description: `Registration successful! Check your email for confirmation and our team will contact you at ${values.preferredDateTime}.` 
-      })
+        description: `Registration successful! Check your email for confirmation and our team will contact you at ${values.preferredDateTime}.`,
+      });
     }
   }
 
@@ -248,6 +248,5 @@ export default function Page() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
-
