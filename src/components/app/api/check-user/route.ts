@@ -6,7 +6,6 @@ interface CheckUserRequest {
   email: string;
 }
 
-// Define the response types
 interface CheckUserResponse {
   exists: boolean;
   message: string;
