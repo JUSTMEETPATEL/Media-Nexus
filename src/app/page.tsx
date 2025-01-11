@@ -10,7 +10,7 @@ import { Youtube } from 'lucide-react';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import InfiniteScrollCards  from '@/components/infinite-scroll-cards';
+import InfiniteScrollCards from '@/components/infinite-scroll-cards';
 import { Footer } from '@/components/footer';
 
 const mediaNexus = {
@@ -65,7 +65,6 @@ const duplicatedItems = [...mediaNexus.courses, ...mediaNexus.courses];
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
 
-
   useEffect(() => {
     setIsClient(true);
     AOS.init({
@@ -85,7 +84,13 @@ export default function Home() {
     { id: 4, src: '/gallery-4.jpeg', alt: 'Photo 4' },
   ];
 
-  const videos = [{ id: 1, youtubeId: 'obRsrjUG9YY', title: 'Profile Video | School Of Media Studies' }];
+  const videos = [
+    {
+      id: 1,
+      youtubeId: 'obRsrjUG9YY',
+      title: 'Profile Video | School Of Media Studies',
+    },
+  ];
 
   return (
     <Suspense fallback={<Loader />}>
@@ -275,9 +280,7 @@ export default function Home() {
                       width={400}
                       height={300}
                       className="w-full h-48 object-cover transition duration-300 group-hover:scale-110"
-
                     />
-
                   </div>
                 ))}
               </div>
@@ -343,7 +346,9 @@ export default function Home() {
                       </div>
                     </Link>
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                      <h2 className="text-white font-semibold">{video.title}</h2>
+                      <h2 className="text-white font-semibold">
+                        {video.title}
+                      </h2>
                     </div>
                   </div>
                 ))}
@@ -398,7 +403,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
 
         <Footer />
       </main>

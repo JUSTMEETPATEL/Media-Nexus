@@ -71,8 +71,10 @@ export const specializations: Specialization[] = [
       },
       {
         id: 4,
-        text: "Creative and Technological Mastery",
-        details: ["Learn to combine artistic vision with technical skills using tools like DaVinci Resolve to create professional-quality edits."]
+        text: 'Creative and Technological Mastery',
+        details: [
+          'Learn to combine artistic vision with technical skills using tools like DaVinci Resolve to create professional-quality edits.',
+        ],
       },
       {
         id: 5,
@@ -110,8 +112,10 @@ export const specializations: Specialization[] = [
       },
       {
         id: 4,
-        text: "Creative and Technical Expertise",
-        details: ["Learn to use advanced cameras, lighting techniques, and post-processing tools to produce stunning visuals."]
+        text: 'Creative and Technical Expertise',
+        details: [
+          'Learn to use advanced cameras, lighting techniques, and post-processing tools to produce stunning visuals.',
+        ],
       },
       {
         id: 5,
@@ -149,8 +153,10 @@ export const specializations: Specialization[] = [
       },
       {
         id: 4,
-        text: "Master Design Tools and Trends",
-        details: ["Gain expertise in Graphics tools while staying ahead with evolving trends like motion graphics and AI-powered design."]
+        text: 'Master Design Tools and Trends',
+        details: [
+          'Gain expertise in Graphics tools while staying ahead with evolving trends like motion graphics and AI-powered design.',
+        ],
       },
       {
         id: 5,
@@ -188,8 +194,10 @@ export const specializations: Specialization[] = [
       },
       {
         id: 4,
-        text: "Expertise in Advanced Tools and Techniques",
-        details: ["Learn the full animation pipeline, including modeling, texturing, rigging, and rendering, using industry-standard software Blender."]
+        text: 'Expertise in Advanced Tools and Techniques',
+        details: [
+          'Learn the full animation pipeline, including modeling, texturing, rigging, and rendering, using industry-standard software Blender.',
+        ],
       },
       {
         id: 5,

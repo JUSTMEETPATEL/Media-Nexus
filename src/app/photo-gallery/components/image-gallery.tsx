@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Image from 'next/image'
+import { useState } from 'react';
+import Image from 'next/image';
 
 const images = [
   '/gallery-1.jpeg',
@@ -13,18 +13,18 @@ const images = [
   '/gallery-7.jpeg',
   '/gallery-8.jpeg',
   '/gallery-9.jpeg',
-]
+];
 
 export default function ImageGallery() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleImageClick = (image: string) => {
-    setSelectedImage(image)
-  }
+    setSelectedImage(image);
+  };
 
   const handleCloseImage = () => {
-    setSelectedImage(null)
-  }
+    setSelectedImage(null);
+  };
 
   return (
     <div className="relative">
@@ -62,6 +62,5 @@ export default function ImageGallery() {
         </div>
       )}
     </div>
-  )
+  );
 }
-

@@ -84,7 +84,6 @@ export default function FacultyPage() {
     console.log('Sign out');
     redirect('/sign-in');
   };
-  
 
   return (
     <motion.div
@@ -137,12 +136,12 @@ export default function FacultyPage() {
               Welcome, {email}
             </span>
             <Button
-                size="sm"
-                className="bg-cyan-400 hover:bg-cyan-600"
-                onClick={handleClick}
-              >
-                Sign Out
-              </Button>
+              size="sm"
+              className="bg-cyan-400 hover:bg-cyan-600"
+              onClick={handleClick}
+            >
+              Sign Out
+            </Button>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

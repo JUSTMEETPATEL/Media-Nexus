@@ -13,13 +13,17 @@ const transporter = nodemailer.createTransport({
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, whatsappNumber, courseId, slotId, preferredDateTime } = body;
+    const { name, email, whatsappNumber, courseId, slotId, preferredDateTime } =
+      body;
 
     // Format the datetime
-    const formattedDateTime = new Date(preferredDateTime).toLocaleString('en-US', {
-      dateStyle: 'full',
-      timeStyle: 'short',
-    });
+    const formattedDateTime = new Date(preferredDateTime).toLocaleString(
+      'en-US',
+      {
+        dateStyle: 'full',
+        timeStyle: 'short',
+      }
+    );
 
     // Create email content
     const mailOptions = {
@@ -76,4 +80,3 @@ function getSlotNameById(id: string): string {
   };
   return slots[id] || 'Unknown Slot';
 }
-

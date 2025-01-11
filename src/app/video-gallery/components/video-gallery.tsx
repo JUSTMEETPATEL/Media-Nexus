@@ -1,28 +1,60 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { Youtube } from 'lucide-react'
+import Image from 'next/image';
+import Link from 'next/link';
+import { Youtube } from 'lucide-react';
 
 const videos = [
-  { id: 1, youtubeId: 'obRsrjUG9YY', title: 'Profile Video | School Of Media Studies' },
-  { id: 2, youtubeId: 'nYSqgpijkT0', title: 'Rise And Vote | Election Anthem | A Music video' },
-  { id: 3, youtubeId: 'H432NTlSFNI', title: 'ONAM 24 - Post AV | SRM Ramapuram ' },
-  { id: 4, youtubeId: 'HUAsI3zrt8E', title: 'Onam 22 | Celebration | SRM Ramapuram' },
-  { id: 5, youtubeId: 'Irkcg_43Zwo', title: 'SRM Ramapuram VISCOM INFRASTRUCTURE PHOTO GALLERY - 2022' },
-  { id: 6, youtubeId: 'E15LA46I8mw', title: 'Master class with Mari selvaraj | SRM Ramapuram' },
-  { id: 7, youtubeId: 'iqh0rSlBeRI', title: 'Script to screen- A masterclass with K.G. Balasubraman' },
+  {
+    id: 1,
+    youtubeId: 'obRsrjUG9YY',
+    title: 'Profile Video | School Of Media Studies',
+  },
+  {
+    id: 2,
+    youtubeId: 'nYSqgpijkT0',
+    title: 'Rise And Vote | Election Anthem | A Music video',
+  },
+  {
+    id: 3,
+    youtubeId: 'H432NTlSFNI',
+    title: 'ONAM 24 - Post AV | SRM Ramapuram ',
+  },
+  {
+    id: 4,
+    youtubeId: 'HUAsI3zrt8E',
+    title: 'Onam 22 | Celebration | SRM Ramapuram',
+  },
+  {
+    id: 5,
+    youtubeId: 'Irkcg_43Zwo',
+    title: 'SRM Ramapuram VISCOM INFRASTRUCTURE PHOTO GALLERY - 2022',
+  },
+  {
+    id: 6,
+    youtubeId: 'E15LA46I8mw',
+    title: 'Master class with Mari selvaraj | SRM Ramapuram',
+  },
+  {
+    id: 7,
+    youtubeId: 'iqh0rSlBeRI',
+    title: 'Script to screen- A masterclass with K.G. Balasubraman',
+  },
   { id: 8, youtubeId: 'nzJuu2OJ6Xo', title: 'Bomb- Team Introduction AV ' },
-  { id: 9, youtubeId: 'kfSCy07Ok7w', title: 'Manjummel Boys team interaction - INTRODUCTION AV' },
-]
+  {
+    id: 9,
+    youtubeId: 'kfSCy07Ok7w',
+    title: 'Manjummel Boys team interaction - INTRODUCTION AV',
+  },
+];
 
 export function VideoGallery() {
   return (
     <div className="container mx-auto px-8 py-16 ">
       <h1 className="text-5xl font-bold mt-24 pb-12 text-center">
-              Video{' '}
-              <span className="text-cyan-400 inline-block hover:scale-105 transition-transform">
-                Gallery
-              </span>
-            </h1>
+        Video{' '}
+        <span className="text-cyan-400 inline-block hover:scale-105 transition-transform">
+          Gallery
+        </span>
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
         {videos.map((video) => (
           <div
@@ -66,6 +98,5 @@ export function VideoGallery() {
         ))}
       </div>
     </div>
-  )
+  );
 }
-
