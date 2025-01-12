@@ -113,7 +113,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="relative z-10 text-white text-center px-4 sm:px-6"
           >
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-3 sm:mb-4 tracking-tight">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-3 sm:mb-4 tracking-tight pt-12">
               MEDIA <span className="text-cyan-400">NEXUS</span>
             </h1>
             <p className="text-gray-300 text-base sm:text-xl md:text-2xl max-w-2xl mx-auto mb-4 sm:mb-6 px-4 sm:px-0">
@@ -122,6 +122,12 @@ export default function Home() {
           </motion.div>
 
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-[1]"></div>
+
+          <div className="absolute bottom-4 left-4 z-20 text-white text-left pl-24">
+            <h3 className="text-xl font-semibold">R. Parthiban</h3>
+            <p className="text-sm">Indian actor and film director</p>
+            <p className="text-sm">For Event Script to Screen</p>
+          </div>
         </section>
 
         {/* About Section */}
@@ -409,3 +415,4 @@ export default function Home() {
     </Suspense>
   );
 }
+

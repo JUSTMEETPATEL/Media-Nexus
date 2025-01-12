@@ -56,7 +56,7 @@ export default function TeamShowcase() {
     {
       name: 'Dr. AKASH J.H',
       role: 'Visual Editing and Photography',
-      image: '/akash.jpeg',
+      image: '/akash-jh.jpg',
       section: 'academic',
       resumeUrl:
         'https://drive.google.com/file/d/1kya_fywVK6qjOu9oKtChy_ko5rbnx-tv/view?usp=sharing',
@@ -77,7 +77,7 @@ export default function TeamShowcase() {
       resumeUrl: '/placeholder',
     },
     {
-      name: 'Mr. AKASH M',
+      name: 'Mr. AKASH K',
       role: 'Visual Storytelling',
       image: '/akash.jpeg',
       section: 'academic',
@@ -107,7 +107,7 @@ export default function TeamShowcase() {
       resumeUrl: '/placeholder',
     },
     {
-      name: 'AKHILESH M',
+      name: 'AKHILESH Kathamuthu',
       role: 'CINEMATOGRAPHER',
       image: '/Akilesh Kathamuthu.png',
       section: 'industrial',
