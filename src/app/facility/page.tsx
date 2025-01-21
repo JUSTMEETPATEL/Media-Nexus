@@ -80,6 +80,24 @@ const SkeletonSix = () => {
   );
 };
 
+const SkeletonFive = () => {
+  return (
+    <div>
+      <div className="max-w-2xl"></div>
+        <p className="font-bold md:text-4xl text-xl text-white">Visual studio</p>
+        <p className="font-normal text-base text-white"></p>
+        <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
+          Our visual studio is equipped with high-end equipment and facilities to
+          provide a professional and creative environment for visual artists and
+          designers. Whether you&apos;re creating digital art, illustrations, or
+          graphics, our studio offers the perfect space to unleash your
+          creativity.
+        </p>
+      </div>
+    
+  );
+};
+
 const cards = [
   {
     id: 1,
@@ -115,7 +133,14 @@ const cards = [
     content: <SkeletonSix />,
     className: 'md:col-span-1',
     thumbnail: '/infra-4.png',
-    title: 'Visual Studio',
+    title: 'Music Studio',
+  },
+  {
+    id: 5,
+    content: <SkeletonFive />,
+    className: 'md:col-span-1',
+    thumbnail: '/2d-lab .png',
+    title: '2D-Lab',
   },
 ];
 

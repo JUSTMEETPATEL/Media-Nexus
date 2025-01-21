@@ -1,20 +1,20 @@
-'use client';
+"use client"
 
-import { Tag } from 'lucide-react';
-import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Tag } from "lucide-react"
+import { useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
 
 function Feature({
   title,
   description,
   link,
 }: {
-  title: string;
-  description: string;
-  link: string;
+  title: string
+  description: string
+  link: string
 }) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false)
 
   return (
     <div className="space-y-3">
@@ -32,7 +32,19 @@ function Feature({
       </div>
       {isHovered && <p className="text-black animate-fadeIn">{description}</p>}
     </div>
-  );
+  )
+}
+
+function LeadershipCard({ imageSrc, name, designation }: { imageSrc: string; name: string; designation: string }) {
+  return (
+    <div className="flex flex-col items-center">
+      <div className="relative w-64 h-64 mb-4">
+        <Image src={imageSrc || "/placeholder.svg"} alt={name} layout="fill" objectFit="cover" className="rounded-lg" />
+      </div>
+      <h3 className="text-2xl font-semibold text-black mt-4">{name}</h3>
+      <p className="text-gray-600 text-lg">{designation}</p>
+    </div>
+  )
 }
 
 export default function Page() {
@@ -52,14 +64,11 @@ export default function Page() {
             </h1>
 
             <p className="text-slate-900 mt-20 font-normal leading-relaxed">
-              Welcome to MEDIA NEXUS, where we offer specialized Certificate
-              Programs in Media Studies designed to empower the next generation
-              of media professionals. Our courses are tailored to provide a deep
-              understanding of key areas such as journalism, digital media,
-              content creation, media production, and communication strategies.
-              With a focus on practical learning, we ensure that our students
-              gain hands-on experience and develop the necessary skills to excel
-              in the fast-paced media industry.
+              Welcome to MEDIA NEXUS, where we offer specialized Certificate Programs in Media Studies designed to
+              empower the next generation of media professionals. Our courses are tailored to provide a deep
+              understanding of key areas such as journalism, digital media, content creation, media production, and
+              communication strategies. With a focus on practical learning, we ensure that our students gain hands-on
+              experience and develop the necessary skills to excel in the fast-paced media industry.
             </p>
           </div>
 
@@ -99,7 +108,26 @@ export default function Page() {
             </div>
           </div>
         </div>
+
+        {/* New Leadership Section */}
+        <section className="max-w-5xl mx-auto mt-20 p-4 md:p-6">
+          <h2 className="text-4xl font-bold text-black mb-16 text-center">Our Leadership</h2>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-24">
+            <LeadershipCard imageSrc="/chairman.png" name="Dr. R. Shivakumar" designation="Chairman" />
+            <LeadershipCard
+              imageSrc="/Co-chairman.png"
+              name="Mr. S. Niranjan"
+              designation="Co-chairman"
+            />
+          </div>
+        <style jsx>{`
+          .leadership-card:hover .image-container {
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.6);
+          }
+        `}</style>
+        </section>
       </main>
     </div>
-  );
+  )
 }
+

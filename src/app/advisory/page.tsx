@@ -15,7 +15,7 @@ const advisoryMembers: AdvisoryMember[] = [
     imageUrl: '/chinni.png',
   },
   {
-    name: 'Ms. Shobana Ravi',
+    name: 'Dr. Shobana Ravi',
     role: 'Indian Vocalist and Former Actor',
     imageUrl: '/fac-6.png',
   },
