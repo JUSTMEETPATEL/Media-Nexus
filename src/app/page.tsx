@@ -123,11 +123,11 @@ export default function Home() {
 
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-[1]"></div>
 
-          <div className="absolute bottom-4 left-4 z-20 text-white text-left pl-24">
+          {/* <div className="absolute bottom-4 left-4 z-20 text-white text-left pl-24">
             <h3 className="text-xl font-semibold">R. Parthiban</h3>
             <p className="text-sm">Indian actor and film director</p>
             <p className="text-sm">For Event Script to Screen</p>
-          </div>
+          </div> */}
         </section>
 
         {/* About Section */}
