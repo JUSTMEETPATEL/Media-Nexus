@@ -99,7 +99,7 @@ export default function Home() {
         <section className="relative h-[90vh] sm:h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image
-              src="/landing.jpeg"
+              src="/landing-page.png"
               alt="Studio background"
               fill
               className="object-cover brightness-50"
