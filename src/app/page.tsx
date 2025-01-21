@@ -10,7 +10,7 @@ import { Youtube } from 'lucide-react';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import InfiniteScrollCards  from '@/components/infinite-scroll-cards';
+import InfiniteScrollCards from '@/components/infinite-scroll-cards';
 import { Footer } from '@/components/footer';
 
 const mediaNexus = {
@@ -65,7 +65,6 @@ const duplicatedItems = [...mediaNexus.courses, ...mediaNexus.courses];
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
 
-
   useEffect(() => {
     setIsClient(true);
     AOS.init({
@@ -85,7 +84,13 @@ export default function Home() {
     { id: 4, src: '/gallery-4.jpeg', alt: 'Photo 4' },
   ];
 
-  const videos = [{ id: 1, youtubeId: 'obRsrjUG9YY', title: 'Profile Video | School Of Media Studies' }];
+  const videos = [
+    {
+      id: 1,
+      youtubeId: 'obRsrjUG9YY',
+      title: 'Profile Video | School Of Media Studies',
+    },
+  ];
 
   return (
     <Suspense fallback={<Loader />}>
@@ -108,7 +113,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="relative z-10 text-white text-center px-4 sm:px-6"
           >
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-3 sm:mb-4 tracking-tight">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-3 sm:mb-4 tracking-tight pt-12">
               MEDIA <span className="text-cyan-400">NEXUS</span>
             </h1>
             <p className="text-gray-300 text-base sm:text-xl md:text-2xl max-w-2xl mx-auto mb-4 sm:mb-6 px-4 sm:px-0">
@@ -117,6 +122,12 @@ export default function Home() {
           </motion.div>
 
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-[1]"></div>
+
+          <div className="absolute bottom-4 left-4 z-20 text-white text-left pl-24">
+            <h3 className="text-xl font-semibold">R. Parthiban</h3>
+            <p className="text-sm">Indian actor and film director</p>
+            <p className="text-sm">For Event Script to Screen</p>
+          </div>
         </section>
 
         {/* About Section */}
@@ -275,9 +286,7 @@ export default function Home() {
                       width={400}
                       height={300}
                       className="w-full h-48 object-cover transition duration-300 group-hover:scale-110"
-
                     />
-
                   </div>
                 ))}
               </div>
@@ -343,7 +352,9 @@ export default function Home() {
                       </div>
                     </Link>
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                      <h2 className="text-white font-semibold">{video.title}</h2>
+                      <h2 className="text-white font-semibold">
+                        {video.title}
+                      </h2>
                     </div>
                   </div>
                 ))}
@@ -399,9 +410,9 @@ export default function Home() {
           </div>
         </section>
 
-
         <Footer />
       </main>
     </Suspense>
   );
 }
+
