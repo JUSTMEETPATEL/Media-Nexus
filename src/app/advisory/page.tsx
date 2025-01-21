@@ -30,7 +30,7 @@ const advisoryMembers: AdvisoryMember[] = [
     imageUrl: '/vasu.png',
   },
   {
-    name: 'Vishnuvardhan',
+    name: 'Mr.Vishnuvardhan',
     role: 'Indian Director',
     imageUrl: '/Vishnu.jpg',
   },
