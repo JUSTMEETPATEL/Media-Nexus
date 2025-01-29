@@ -16,25 +16,23 @@ const ROUTE_ACCESS: RouteAccess = {
   admin: ['/admin'],
 };
 
-// Update public routes to be more specific
 const PUBLIC_ROUTES = ['/', '/about', '/facility', '/sign-in', '/team'];
+const AUTH_ROUTES = ['/sign-in', '/sign-up'];
 
 export default async function authMiddleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  console.log('Middleware running for path:', pathname);
 
-  // Make public route check exact or for static assets
-  if (
-    PUBLIC_ROUTES.includes(pathname) ||
-    pathname.startsWith('/_next') ||
-    pathname.startsWith('/api')
-  ) {
-    console.log('Public route accessed:', pathname);
+  // Allow static assets and API routes
+  if (pathname.startsWith('/_next') || pathname.startsWith('/api')) {
     return NextResponse.next();
   }
 
+  // Check if current path is public
+  const isPublicRoute = PUBLIC_ROUTES.includes(pathname);
+  const isAuthRoute = AUTH_ROUTES.includes(pathname);
+
   try {
-    // Get session using Better Auth
+    // Fetch session
     const { data: session } = await betterFetch<Session>(
       '/api/auth/get-session',
       {
@@ -45,40 +43,45 @@ export default async function authMiddleware(request: NextRequest) {
       }
     );
 
-    console.log('Session:', session);
+    // Redirect authenticated users from auth routes to their dashboard
+    if (session && isAuthRoute) {
+      const response = await fetch(`${request.nextUrl.origin}/api/check-role`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: session.user.email }),
+      });
+      const roleData = await response.json();
+      const role = roleData?.role as Role;
+      const defaultRoute = ROUTE_ACCESS[role]?.[0] || '/';
+      return NextResponse.redirect(new URL(defaultRoute, request.url));
+    }
 
+    // Allow public route access
+    if (isPublicRoute) return NextResponse.next();
+
+    // Redirect unauthenticated users to sign-in
     if (!session) {
-      console.log('No session found, redirecting to sign-in');
       return NextResponse.redirect(new URL('/sign-in', request.url));
     }
 
-    // Fetch user role using your API
+    // Fetch user role
     const response = await fetch(`${request.nextUrl.origin}/api/check-role`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: session.user.email }),
     });
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch role');
-    }
-
+    if (!response.ok) throw new Error('Failed to fetch role');
     const roleData = await response.json();
-    console.log('Role data:', roleData);
-
     const role = roleData?.role as Role;
-    const hasAccess = ROUTE_ACCESS[role]?.some((route) =>
+
+    // Check route access
+    const hasAccess = ROUTE_ACCESS[role]?.some(route => 
       pathname.startsWith(route)
     );
 
-    console.log('Role:', role);
-    console.log('Has access:', hasAccess);
-
+    // Redirect if no access
     if (!hasAccess) {
       const defaultRoute = ROUTE_ACCESS[role]?.[0] || '/';
-      console.log('Access denied, redirecting to:', defaultRoute);
       return NextResponse.redirect(new URL(defaultRoute, request.url));
     }
 
@@ -90,12 +93,5 @@ export default async function authMiddleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/dashboard/:path*',
-    '/faculty/:path*',
-    '/admin/:path*',
-    '/dashboard',
-    '/faculty',
-    '/admin',
-  ],
+  matcher: ['/((?!_next|api|favicon.ico).*)'],
 };
