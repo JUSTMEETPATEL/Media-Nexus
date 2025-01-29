@@ -1,6 +1,6 @@
-import React from 'react';
-import Image from 'next/image';
 import { Card, CardHeader } from '@/components/ui/card';
+import Image from 'next/image';
+import React from 'react';
 
 interface AdvisoryMember {
   name: string;
@@ -46,8 +46,8 @@ const AdvisoryBoard: React.FC = () => {
     <div className="py-12 bg-white">
       <div className="container mx-auto text-center pt-16">
         <h2 className="text-6xl font-bold mb-16">
-          <span className="text-cyan-500">Advisory</span>{' '}
-          <span className="text-black">Board</span>
+          <span className="text-cyan-500">Honorary</span>{' '}
+          <span className="text-black">Advisory Board</span>
         </h2>
         <div className="flex justify-center gap-6 flex-wrap">
           {advisoryMembers.map((member, index) => (
@@ -64,7 +64,6 @@ const AdvisoryBoard: React.FC = () => {
                   alt={member.name}
                   fill
                   className="object-cover rounded-t-lg"
-                  loading="lazy"
                 />
               </CardHeader>
 
