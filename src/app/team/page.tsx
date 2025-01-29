@@ -42,7 +42,7 @@ export default function TeamShowcase() {
     {
       name: 'Mr. ARUNKUMAR S',
       role: 'Graphics and Animation',
-      image: '', // Provide image path if available
+      image: '/arunkumar.jpg',
       section: 'academic',
       resumeUrl: '/placeholder',
     },
@@ -95,7 +95,7 @@ export default function TeamShowcase() {
     {
       name: 'Ms. SUGANYA S',
       role: 'Graphics Designer',
-      image: '', // Provide image path if available
+      image: '/suganya.jpeg',
       section: 'academic',
       resumeUrl: '/placeholder',
     },
