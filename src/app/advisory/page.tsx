@@ -11,28 +11,33 @@ interface AdvisoryMember {
 const advisoryMembers: AdvisoryMember[] = [
   {
     name: 'Mr. Chinni Jayanth',
-    role: 'Indian Actor and Director',
+    role: 'Actor and Filmmaker',
     imageUrl: '/chinni.png',
   },
   {
-    name: 'Dr. Shobana Ravi',
+    name: 'Dr. Shobana',
     role: 'Indian Vocalist and Former Actor',
     imageUrl: '/fac-6.png',
   },
   {
     name: 'Ms. Revathi',
-    role: 'Indian Actress and Director',
+    role: 'Actor and Filmmaker',
     imageUrl: '/revathi.png',
   },
   {
     name: 'Mr. P.Vasu',
-    role: 'Indian Director',
+    role: 'Veteran Filmmaker',
     imageUrl: '/vasu.png',
   },
   {
     name: 'Mr.Vishnuvardhan',
-    role: 'Indian Director',
+    role: 'Filmmaker',
     imageUrl: '/Vishnu.jpg',
+  },
+  {
+    name: 'Dr. Sridhar Krishnaswami',
+    role: 'Editor-in-Chief, New India Abroad',
+    imageUrl: '/sridhar.png',
   },
 ];
 
