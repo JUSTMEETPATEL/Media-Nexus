@@ -35,7 +35,7 @@ export default function TeamShowcase() {
     {
       name: 'Ms. YUVARANI P',
       role: 'Graphics and Animation',
-      image: '/Yuvarani.jpg',
+      image: '/yuvarani.jpeg',
       section: 'academic',
       resumeUrl: '/placeholder',
     },
