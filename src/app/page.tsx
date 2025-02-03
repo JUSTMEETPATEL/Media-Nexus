@@ -131,7 +131,7 @@ export default function Home() {
         </section>
 
         {/* About Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-b from-slate-100 to-white text-black">
+        <section className="py-16 md:py-24 bg-orange-300-100 text-black">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2
               className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8"
@@ -150,7 +150,16 @@ export default function Home() {
         </section>
 
         {/* Empowerment Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
+        <section className="relative py-16 md:py-24 bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/Infra.JPG"
+              alt="Infra Photo"
+              fill
+              className="object-cover brightness-50"
+              priority
+            />
+          </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2
               className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8"
@@ -178,37 +187,55 @@ export default function Home() {
               Our Vision & Mission
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12">
-              <Card
-                className="bg-gradient-to-br from-cyan-500 to-blue-600 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                <Card
+                className="relative text-white transform transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
                 data-aos="fade-up"
-              >
-                <CardHeader>
+                >
+                <div className="absolute inset-0">
+                  <Image
+                  src="/vision.JPG"
+                  alt="Vision Photo"
+                  fill
+                  className="object-cover opacity-85 brightness-50"
+                  priority
+                  />
+                </div>
+                <CardHeader className="relative z-10">
                   <CardTitle className="text-2xl sm:text-3xl mb-2 sm:mb-4">
-                    Vision
+                  Vision
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="relative z-10">
                   <p className="text-base sm:text-lg">{mediaNexus.vision}</p>
                 </CardContent>
-              </Card>
-              <Card
-                className="bg-gradient-to-br from-purple-500 to-pink-600 text-white transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                </Card>
+                <Card
+                className="relative text-white transform transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
                 data-aos="fade-up"
                 data-aos-delay="100"
-              >
-                <CardHeader>
+                >
+                <div className="absolute inset-0">
+                  <Image
+                  src="/mission.JPG"
+                  alt="Mission Photo"
+                  fill
+                  className="object-cover opacity-85 brightness-50"
+                  priority
+                  />
+                </div>
+                <CardHeader className="relative z-10">
                   <CardTitle className="text-2xl sm:text-3xl mb-2 sm:mb-4">
-                    Mission
+                  Mission
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="relative z-10">
                   <ul className="list-disc pl-5 space-y-2 text-base sm:text-lg">
-                    {mediaNexus.mission.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
+                  {mediaNexus.mission.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                   </ul>
                 </CardContent>
-              </Card>
+                </Card>
             </div>
           </div>
         </section>
@@ -415,4 +442,3 @@ export default function Home() {
     </Suspense>
   );
 }
-
