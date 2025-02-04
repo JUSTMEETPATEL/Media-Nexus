@@ -109,7 +109,7 @@ const cards = [
     id: 4,
     content: <SkeletonFour />,
     className: 'md:col-span-2',
-    thumbnail: '/home-gallery.JPG',
+    thumbnail: '/home-gallery.jpg',
     title: 'Photo Studio',
   },
 
