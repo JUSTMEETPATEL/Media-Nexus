@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Loader } from "@/components/loader"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { Youtube } from "lucide-react"
 
 import AOS from "aos"
@@ -69,6 +69,8 @@ const mediaNexus = {
 const duplicatedItems = [...mediaNexus.courses, ...mediaNexus.courses]
 export default function Home() {
   const [isClient, setIsClient] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const images = ["/landing-page.png", "/infra-1.png", "/infra-2.png", "/infra-3.png"]
 
   useEffect(() => {
     setIsClient(true)
@@ -77,6 +79,14 @@ export default function Home() {
       once: true,
     })
   }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [images.length])
 
   if (!isClient) {
     return null
@@ -98,19 +108,28 @@ export default function Home() {
   ]
 
   return (
-    <Suspense fallback={<Loader />}>
-      <main className="min-h-screen bg-white ">
+    <Suspense fallback={<div>Loading...</div>}>
+      <main className="min-h-screen bg-white">
         {/* Hero Section */}
         <section className="relative h-[90vh] sm:h-screen flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/landing-page.png"
-              alt="Studio background"
-              fill
-              className="object-cover brightness-50"
-              priority
-            />
-          </div>
+          <AnimatePresence>
+            <motion.div
+              key={currentImageIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              className="absolute inset-0 z-0"
+            >
+              <Image
+                src={images[currentImageIndex] || "/placeholder.svg"}
+                alt={`Hero background ${currentImageIndex + 1}`}
+                fill
+                className="object-cover brightness-50"
+                priority
+              />
+            </motion.div>
+          </AnimatePresence>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
