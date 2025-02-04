@@ -118,9 +118,19 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="relative z-10 text-white text-center px-4 sm:px-6"
           >
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-3 sm:mb-4 tracking-tight pt-12">
+            <motion.h1
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+                duration: 1.5,
+              }}
+              className="text-4xl sm:text-6xl md:text-8xl font-bold mb-3 sm:mb-4 tracking-tight pt-12"
+            >
               MEDIA <span className="text-cyan-400">NEXUS</span>
-            </h1>
+            </motion.h1>
             <p className="text-gray-300 text-base sm:text-xl md:text-2xl max-w-2xl mx-auto mb-4 sm:mb-6 px-4 sm:px-0">
               Empowering the next generation of media professionals
             </p>
