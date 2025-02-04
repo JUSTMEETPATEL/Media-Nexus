@@ -61,7 +61,7 @@ export default function Page() {
             <h1 className="text-6xl font-bold mb-6">
               <span className="text-black">ABOUT</span>
               <br />
-              <span className="text-cyan-400">MEDIA</span>
+              <span className="text-black">MEDIA</span>
               <br />
               <span className="text-black">NEXUS</span>
             </h1>
