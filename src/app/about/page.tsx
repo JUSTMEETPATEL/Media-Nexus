@@ -49,9 +49,12 @@ function LeadershipCard({ imageSrc, name, designation }: { imageSrc: string; nam
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100 relative overflow-hidden">
+      <div className="absolute inset-0 z-0 opacity-20">
+        <Image src="/media-background.jpg" alt="Media Background" layout="fill" objectFit="cover" />
+      </div>
       {/* pt-16 accounts for the fixed navbar height */}
-      <main className="pt-16">
+      <main className="pt-16 relative z-10">
         <div className="flex flex-col md:flex-row min-h-[calc(100vh-4rem)] max-w-5xl mx-auto p-4 md:p-6 gap-10">
           {/* Left Column */}
           <div className="md:w-1/2 pr-4 md:pr-6 pt-12">
@@ -109,22 +112,13 @@ export default function Page() {
           </div>
         </div>
 
-        {/* New Leadership Section */}
+        {/* Leadership Section */}
         <section className="max-w-5xl mx-auto mt-20 p-4 md:p-6">
           <h2 className="text-4xl font-bold text-black mb-16 text-center">Our Leadership</h2>
           <div className="flex flex-col md:flex-row justify-center items-center gap-24">
             <LeadershipCard imageSrc="/chairman.png" name="Dr. R. Shivakumar" designation="Chairman" />
-            <LeadershipCard
-              imageSrc="/Co-chairman.png"
-              name="Mr. S. Niranjan"
-              designation="Co-chairman"
-            />
+            <LeadershipCard imageSrc="/Co-chairman.png" name="Mr. S. Niranjan" designation="Co-chairman" />
           </div>
-        <style jsx>{`
-          .leadership-card:hover .image-container {
-            box-shadow: 0 0 20px rgba(0, 123, 255, 0.6);
-          }
-        `}</style>
         </section>
       </main>
     </div>
