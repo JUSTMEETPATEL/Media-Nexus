@@ -4,7 +4,6 @@ import { Suspense, useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Loader } from "@/components/loader"
 import { motion, AnimatePresence } from "framer-motion"
 import { Youtube } from "lucide-react"
 
