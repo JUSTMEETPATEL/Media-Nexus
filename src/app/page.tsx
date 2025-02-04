@@ -70,7 +70,7 @@ const duplicatedItems = [...mediaNexus.courses, ...mediaNexus.courses]
 export default function Home() {
   const [isClient, setIsClient] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const images = ["/landing-page.png", "/infra-1.png", "/infra-2.png", "/infra-3.png"]
+  const images = ["/hero-4.jpg", "/hero-1.jpg", "/hero-2.jpg", "/hero-3.jpg"]
 
   useEffect(() => {
     setIsClient(true)
