@@ -1,96 +1,101 @@
-'use client';
+"use client"
 
-import { Suspense, useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Loader } from '@/components/loader';
-import { motion } from 'framer-motion';
-import { Youtube } from 'lucide-react';
+import { Suspense, useEffect, useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Loader } from "@/components/loader"
+import { motion } from "framer-motion"
+import { Youtube } from "lucide-react"
 
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import InfiniteScrollCards from '@/components/infinite-scroll-cards';
-import { Footer } from '@/components/footer';
+import AOS from "aos"
+import "aos/dist/aos.css"
+import InfiniteScrollCards from "@/components/infinite-scroll-cards"
+import { Footer } from "@/components/footer"
 
 const mediaNexus = {
   vision:
-    'To empower aspiring media professionals with cutting-edge skills and creative expertise, fostering innovation and excellence in the ever-evolving digital landscape.',
+    "To empower aspiring media professionals with cutting-edge skills and creative expertise, fostering innovation and excellence in the ever-evolving digital landscape.",
   mission: [
-    'To deliver industry-focused, hands-on training in media studies through innovative teaching methods and real-world projects.',
-    'To nurture creativity, technical proficiency, and storytelling abilities in students for successful media careers.',
-    'To provide a dynamic learning environment that bridges the gap between education and industry demands.',
-    'To inspire a passion for continuous learning and adaptability in the rapidly changing media industry.',
+    "To deliver industry-focused, hands-on training in media studies through innovative teaching methods and real-world projects.",
+    "To nurture creativity, technical proficiency, and storytelling abilities in students for successful media careers.",
+    "To provide a dynamic learning environment that bridges the gap between education and industry demands.",
+    "To inspire a passion for continuous learning and adaptability in the rapidly changing media industry.",
   ],
   about:
-    'The Media Nexus, a new venture of SRMIST-Ramapuram, is set to revolutionize learning opportunities for non-media students with the introduction of dynamic certificate courses. Recognizing the increasing interest in creative and technical media skills, these programs aim to provide hands-on training and foundational knowledge in diverse media arts disciplines. Designed specifically for students of Easwari Engineering College, the courses also extend an invitation to other interested learners, subject to availability.',
+    "The Media Nexus, a new venture of SRMIST-Ramapuram, is set to revolutionize learning opportunities for non-media students with the introduction of dynamic certificate courses. Recognizing the increasing interest in creative and technical media skills, these programs aim to provide hands-on training and foundational knowledge in diverse media arts disciplines. Designed specifically for students of Easwari Engineering College, the courses also extend an invitation to other interested learners, subject to availability.",
   courses: [
     {
       id: 1,
-      title: 'Short Film Making',
+      title: "Short Film Making",
       description:
-        'This course introduces students to the art of crafting compelling narratives and mastering visual storytelling. From scripting to filming and post-production, participants will gain a holistic understanding of short film creation.',
+        "This course introduces students to the art of crafting compelling narratives and mastering visual storytelling. From scripting to filming and post-production, participants will gain a holistic understanding of short film creation.",
+      backgroundImage: "/film.jpeg",
     },
     {
       id: 4,
-      title: 'Photography',
+      title: "Photography",
       description:
-        'Designed for those passionate about capturing moments, this course delves into both the technical and artistic aspects of photography. Students will learn to use cameras effectively, understand lighting, and develop their unique creative vision.',
+        "Designed for those passionate about capturing moments, this course delves into both the technical and artistic aspects of photography. Students will learn to use cameras effectively, understand lighting, and develop their unique creative vision.",
+      backgroundImage: "/digital-photography.jpeg",
     },
     {
       id: 2,
-      title: 'Editing Techniques',
+      title: "Editing Techniques",
       description:
-        'This course focuses on video editing, teaching students how to assemble footage, apply effects, and create seamless transitions to produce professional-quality videos.',
+        "This course focuses on video editing, teaching students how to assemble footage, apply effects, and create seamless transitions to produce professional-quality videos.",
+      backgroundImage: "/editing.jpg",
     },
     {
       id: 3,
-      title: 'Social Media Design',
+      title: "Social Media Design",
       description:
         "In today's digital age, the ability to create engaging content for social platforms is invaluable. This course covers the essentials of graphic design, content strategy, and platform-specific techniques to help students excel in the realm of social media.",
+      backgroundImage: "/social-media.png",
     },
     {
       id: 5,
-      title: '3D Animation',
+      title: "3D Animation",
       description:
-        'For those interested in bringing ideas to life, this course introduces the fundamentals of 3D animation, including modeling, texturing, and rendering.',
+        "For those interested in bringing ideas to life, this course introduces the fundamentals of 3D animation, including modeling, texturing, and rendering.",
+      backgroundImage: "/3d-animation.jpeg",
     },
   ],
   empowerment: {
     description:
-      'The certificate courses by Media Nexus represent a significant step forward in democratizing media education. By providing non-media students with access to professional training, the program opens up new avenues for creativity and career exploration. Whether students aspire to work in the media industry, enhance their skill set, or simply pursue a creative passion, these courses offer the perfect starting point. With a versatile curriculum, expert faculty, and state-of-the-art infrastructure, Media Nexus is committed to nurturing the next generation of media professionals and enthusiasts.',
+      "The certificate courses by Media Nexus represent a significant step forward in democratizing media education. By providing non-media students with access to professional training, the program opens up new avenues for creativity and career exploration. Whether students aspire to work in the media industry, enhance their skill set, or simply pursue a creative passion, these courses offer the perfect starting point. With a versatile curriculum, expert faculty, and state-of-the-art infrastructure, Media Nexus is committed to nurturing the next generation of media professionals and enthusiasts.",
   },
-};
-const duplicatedItems = [...mediaNexus.courses, ...mediaNexus.courses];
+}
+const duplicatedItems = [...mediaNexus.courses, ...mediaNexus.courses]
 export default function Home() {
-  const [isClient, setIsClient] = useState(false);
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    setIsClient(true);
+    setIsClient(true)
     AOS.init({
       duration: 1000,
       once: true,
-    });
-  }, []);
+    })
+  }, [])
 
   if (!isClient) {
-    return null;
+    return null
   }
 
   const photos = [
-    { id: 1, src: '/gallery-1.jpeg', alt: 'Photo 1' },
-    { id: 2, src: '/gallery-2.jpeg', alt: 'Photo 2' },
-    { id: 3, src: '/gallery-3.jpeg', alt: 'Photo 3' },
-    { id: 4, src: '/gallery-4.jpeg', alt: 'Photo 4' },
-  ];
+    { id: 1, src: "/gallery-1.jpeg", alt: "Photo 1" },
+    { id: 2, src: "/gallery-2.jpeg", alt: "Photo 2" },
+    { id: 3, src: "/gallery-3.jpeg", alt: "Photo 3" },
+    { id: 4, src: "/gallery-4.jpeg", alt: "Photo 4" },
+  ]
 
   const videos = [
     {
       id: 1,
-      youtubeId: 'obRsrjUG9YY',
-      title: 'Profile Video | School Of Media Studies',
+      youtubeId: "obRsrjUG9YY",
+      title: "Profile Video | School Of Media Studies",
     },
-  ];
+  ]
 
   return (
     <Suspense fallback={<Loader />}>
@@ -133,10 +138,7 @@ export default function Home() {
         {/* About Section */}
         <section className="py-16 md:py-24 bg-orange-300-100 text-black">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8"
-              data-aos="fade-up"
-            >
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8" data-aos="fade-up">
               About Media Nexus
             </h2>
             <p
@@ -152,19 +154,10 @@ export default function Home() {
         {/* Empowerment Section */}
         <section className="relative py-16 md:py-24 bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
           <div className="absolute inset-0 z-0">
-            <Image
-              src="/Infra.JPG"
-              alt="Infra Photo"
-              fill
-              className="object-cover brightness-50"
-              priority
-            />
+            <Image src="/Infra.JPG" alt="Infra Photo" fill className="object-cover brightness-50" priority />
           </div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8"
-              data-aos="fade-up"
-            >
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8" data-aos="fade-up">
               Empowering the Next Generation
             </h2>
             <p
@@ -180,62 +173,55 @@ export default function Home() {
         {/* Vision and Mission Section */}
         <section className="py-16 md:py-24 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16"
-              data-aos="fade-up"
-            >
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16" data-aos="fade-up">
               Our Vision & Mission
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12">
-                <Card
+              <Card
                 className="relative text-white transform transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
                 data-aos="fade-up"
-                >
+              >
                 <div className="absolute inset-0">
                   <Image
-                  src="/vision.JPG"
-                  alt="Vision Photo"
-                  fill
-                  className="object-cover opacity-85 brightness-50"
-                  priority
+                    src="/vision.JPG"
+                    alt="Vision Photo"
+                    fill
+                    className="object-cover opacity-85 brightness-50"
+                    priority
                   />
                 </div>
                 <CardHeader className="relative z-10">
-                  <CardTitle className="text-2xl sm:text-3xl mb-2 sm:mb-4">
-                  Vision
-                  </CardTitle>
+                  <CardTitle className="text-2xl sm:text-3xl mb-2 sm:mb-4">Vision</CardTitle>
                 </CardHeader>
                 <CardContent className="relative z-10">
                   <p className="text-base sm:text-lg">{mediaNexus.vision}</p>
                 </CardContent>
-                </Card>
-                <Card
+              </Card>
+              <Card
                 className="relative text-white transform transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
                 data-aos="fade-up"
                 data-aos-delay="100"
-                >
+              >
                 <div className="absolute inset-0">
                   <Image
-                  src="/mission.JPG"
-                  alt="Mission Photo"
-                  fill
-                  className="object-cover opacity-85 brightness-50"
-                  priority
+                    src="/mission.JPG"
+                    alt="Mission Photo"
+                    fill
+                    className="object-cover opacity-85 brightness-50"
+                    priority
                   />
                 </div>
                 <CardHeader className="relative z-10">
-                  <CardTitle className="text-2xl sm:text-3xl mb-2 sm:mb-4">
-                  Mission
-                  </CardTitle>
+                  <CardTitle className="text-2xl sm:text-3xl mb-2 sm:mb-4">Mission</CardTitle>
                 </CardHeader>
                 <CardContent className="relative z-10">
                   <ul className="list-disc pl-5 space-y-2 text-base sm:text-lg">
-                  {mediaNexus.mission.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
+                    {mediaNexus.mission.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
                   </ul>
                 </CardContent>
-                </Card>
+              </Card>
             </div>
           </div>
         </section>
@@ -243,30 +229,28 @@ export default function Home() {
         {/* Programs Offered Section */}
         <section className="py-16 md:py-24 bg-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16"
-              data-aos="fade-up"
-            >
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16" data-aos="fade-up">
               Programs Offered
             </h2>
             <div className="w-full" data-aos="fade-up">
               <InfiniteScrollCards>
                 {duplicatedItems.map((course, index) => (
-                  <Link
-                    href={`/courses/${course.id}`}
-                    key={`${course.title}-${index}`}
-                    className="no-underline"
-                  >
-                    <Card className="bg-white p-0 shrink-0 w-[300px] h-[300px] transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer flex flex-col">
-                      <CardHeader>
-                        <CardTitle className="text-xl sm:text-2xl mb-2">
-                          {course.title}
-                        </CardTitle>
+                  <Link href={`/courses/${course.id}`} key={`${course.title}-${index}`} className="no-underline">
+                    <Card className="relative bg-white p-0 shrink-0 w-[300px] h-[300px] transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer flex flex-col overflow-hidden">
+                      <div className="absolute inset-0">
+                        <Image
+                          src={course.backgroundImage || "/placeholder.svg"}
+                          alt={course.title}
+                          fill
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                      </div>
+                      <CardHeader className="relative z-10">
+                        <CardTitle className="text-xl sm:text-2xl mb-2 text-white">{course.title}</CardTitle>
                       </CardHeader>
-                      <CardContent>
-                        <p className="text-sm sm:text-base text-gray-600">
-                          {course.description}
-                        </p>
+                      <CardContent className="relative z-10">
+                        <p className="text-sm sm:text-base text-gray-200">{course.description}</p>
                       </CardContent>
                     </Card>
                   </Link>
@@ -297,18 +281,11 @@ export default function Home() {
                   </button>
                 </Link>
               </div>
-              <div
-                className="md:w-2/3 grid grid-cols-2 gap-4"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
+              <div className="md:w-2/3 grid grid-cols-2 gap-4" data-aos="fade-up" data-aos-delay="300">
                 {photos.map((photo) => (
-                  <div
-                    key={photo.id}
-                    className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer"
-                  >
+                  <div key={photo.id} className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer">
                     <Image
-                      src={photo.src}
+                      src={photo.src || "/placeholder.svg"}
                       alt={photo.alt}
                       width={400}
                       height={300}
@@ -344,10 +321,7 @@ export default function Home() {
               </div>
               <div className="md:w-1/2" data-aos="fade-up" data-aos-delay="300">
                 {videos.map((video) => (
-                  <div
-                    key={video.id}
-                    className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer"
-                  >
+                  <div key={video.id} className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer">
                     <Image
                       src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
                       alt={video.title}
@@ -379,9 +353,7 @@ export default function Home() {
                       </div>
                     </Link>
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                      <h2 className="text-white font-semibold">
-                        {video.title}
-                      </h2>
+                      <h2 className="text-white font-semibold">{video.title}</h2>
                     </div>
                   </div>
                 ))}
@@ -395,7 +367,7 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row gap-8">
               <div className="w-full md:w-1/2" data-aos="fade-up">
-                <Link href="/team">
+                <Link href="/photo-gallery">
                   <div className="relative overflow-hidden rounded-lg shadow-lg group h-80">
                     <Image
                       src="/gallery-1.jpeg"
@@ -404,19 +376,13 @@ export default function Home() {
                       className="object-cover transition duration-300 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                      <h3 className="text-white text-2xl font-bold">
-                        Media Coverage
-                      </h3>
+                      <h3 className="text-white text-2xl font-bold">Media Coverage</h3>
                     </div>
                   </div>
                 </Link>
               </div>
-              <div
-                className="w-full md:w-1/2"
-                data-aos="fade-up"
-                data-aos-delay="100"
-              >
-                <Link href="/enquiry">
+              <div className="w-full md:w-1/2" data-aos="fade-up" data-aos-delay="100">
+                <Link href="/register">
                   <div className="relative overflow-hidden rounded-lg shadow-lg group h-80">
                     <Image
                       src="/landing.jpeg"
@@ -426,9 +392,7 @@ export default function Home() {
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white">
                       <h3 className="text-2xl font-bold mb-2">Tune In</h3>
-                      <p className="text-center px-4">
-                        Stay updated with our latest news and events
-                      </p>
+                      <p className="text-center px-4">Stay updated with our latest news and events</p>
                     </div>
                   </div>
                 </Link>
@@ -440,5 +404,6 @@ export default function Home() {
         <Footer />
       </main>
     </Suspense>
-  );
+  )
 }
+
