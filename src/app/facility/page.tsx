@@ -103,7 +103,7 @@ const cards = [
     id: 1,
     content: <SkeletonOne />,
     className: 'md:col-span-2',
-    thumbnail: '/greenscreen.webp',
+    thumbnail: '/visual-studio.jpeg',
     title: 'Visual Studio',
   },
   {
@@ -124,23 +124,17 @@ const cards = [
     id: 4,
     content: <SkeletonFour />,
     className: 'md:col-span-2',
-    thumbnail: '/photostudio.webp',
+    thumbnail: '/home-gallery.JPG',
     title: 'Photo Studio',
   },
 
-  {
-    id: 6,
-    content: <SkeletonSix />,
-    className: 'md:col-span-1',
-    thumbnail: '/infra-4.png',
-    title: 'Music Studio',
-  },
+ 
   {
     id: 5,
     content: <SkeletonFive />,
     className: 'md:col-span-1',
-    thumbnail: '/2d-lab .png',
-    title: '2D-Lab',
+    thumbnail: '/3d-lab.JPG',
+    title: '3D-Lab',
   },
 ];
 
