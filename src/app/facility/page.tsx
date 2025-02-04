@@ -64,21 +64,6 @@ const SkeletonFour = () => {
   );
 };
 
-const SkeletonSix = () => {
-  return (
-    <div>
-      <p className="font-bold md:text-4xl text-xl text-white">Visual studio</p>
-      <p className="font-normal text-base text-white"></p>
-      <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Our visual studio is equipped with high-end equipment and facilities to
-        provide a professional and creative environment for visual artists and
-        designers. Whether you&apos;re creating digital art, illustrations, or
-        graphics, our studio offers the perfect space to unleash your
-        creativity.
-      </p>
-    </div>
-  );
-};
 
 const SkeletonFive = () => {
   return (
