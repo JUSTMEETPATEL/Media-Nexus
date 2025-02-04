@@ -42,7 +42,7 @@ function LeadershipCard({ imageSrc, name, designation }: { imageSrc: string; nam
         <Image src={imageSrc || "/placeholder.svg"} alt={name} layout="fill" objectFit="cover" className="rounded-lg" />
       </div>
       <h3 className="text-2xl font-semibold text-black mt-4">{name}</h3>
-      <p className="text-gray-600 text-lg">{designation}</p>
+      <p className="text-gray-900 text-lg">{designation}</p>
     </div>
   )
 }
@@ -50,8 +50,8 @@ function LeadershipCard({ imageSrc, name, designation }: { imageSrc: string; nam
 export default function Page() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100 relative overflow-hidden">
-      <div className="absolute inset-0 z-0 opacity-20">
-        <Image src="/media-background.jpg" alt="Media Background" layout="fill" objectFit="cover" />
+      <div className="absolute inset-0 z-0 opacity-80">
+        <Image src="/about.jpg" alt="Media Background" layout="fill" objectFit="cover" />
       </div>
       {/* pt-16 accounts for the fixed navbar height */}
       <main className="pt-16 relative z-10">

@@ -30,7 +30,7 @@ const mediaNexus = {
       title: "Short Film Making",
       description:
         "This course introduces students to the art of crafting compelling narratives and mastering visual storytelling. From scripting to filming and post-production, participants will gain a holistic understanding of short film creation.",
-      backgroundImage: "/film.jpeg",
+      backgroundImage: "/film.jpg",
     },
     {
       id: 4,
@@ -99,7 +99,7 @@ export default function Home() {
 
   return (
     <Suspense fallback={<Loader />}>
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-white ">
         {/* Hero Section */}
         <section className="relative h-[90vh] sm:h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
@@ -136,18 +136,11 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-[1]"></div>
-
-          {/* <div className="absolute bottom-4 left-4 z-20 text-white text-left pl-24">
-            <h3 className="text-xl font-semibold">R. Parthiban</h3>
-            <p className="text-sm">Indian actor and film director</p>
-            <p className="text-sm">For Event Script to Screen</p>
-          </div> */}
         </section>
-
         {/* About Section */}
-        <section className="py-16 md:py-24 bg-orange-300-100 text-black">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-16 md:py-24 ">
+  
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8" data-aos="fade-up">
               About Media Nexus
             </h2>
@@ -163,6 +156,7 @@ export default function Home() {
 
         {/* Empowerment Section */}
         <section className="relative py-16 md:py-24 bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
+          
           <div className="absolute inset-0 z-0">
             <Image src="/Infra.JPG" alt="Infra Photo" fill className="object-cover brightness-50" priority />
           </div>
@@ -271,38 +265,47 @@ export default function Home() {
         </section>
 
         {/* Photo Gallery Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-r from-cyan-100 to-cyan-300">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-16 md:py-24">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/home-gallery.jpg"
+              alt="Gallery Background"
+              fill
+              className="object-cover brightness-50"
+              priority
+            />
+          </div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col md:flex-row items-start justify-between">
               <div className="md:w-1/3 mb-8 md:mb-0">
-                <h2 className="text-3xl font-bold mb-4" data-aos="fade-up">
-                  Photo Gallery
-                </h2>
-                <p className="mb-4" data-aos="fade-up" data-aos-delay="100">
-                  Explore our collection of inspiring photos.
-                </p>
-                <Link href="/photo-gallery">
-                  <button
-                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                  >
-                    View All Photos
-                  </button>
-                </Link>
+          <h2 className="text-3xl font-bold mb-4 text-white" data-aos="fade-up">
+            Photo Gallery
+          </h2>
+          <p className="mb-4 text-gray-200" data-aos="fade-up" data-aos-delay="100">
+            Explore our collection of inspiring photos.
+          </p>
+          <Link href="/photo-gallery">
+            <button
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              View All Photos
+            </button>
+          </Link>
               </div>
               <div className="md:w-2/3 grid grid-cols-2 gap-4" data-aos="fade-up" data-aos-delay="300">
-                {photos.map((photo) => (
-                  <div key={photo.id} className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer">
-                    <Image
-                      src={photo.src || "/placeholder.svg"}
-                      alt={photo.alt}
-                      width={400}
-                      height={300}
-                      className="w-full h-48 object-cover transition duration-300 group-hover:scale-110"
-                    />
-                  </div>
-                ))}
+          {photos.map((photo) => (
+            <div key={photo.id} className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer">
+              <Image
+                src={photo.src || "/placeholder.svg"}
+                alt={photo.alt}
+                width={400}
+                height={300}
+                className="w-full h-48 object-cover transition duration-300 group-hover:scale-110"
+              />
+            </div>
+          ))}
               </div>
             </div>
           </div>

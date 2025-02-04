@@ -13,7 +13,7 @@ const programs = [
     title: "SHORT FILM MAKING",
     description:
       "This course will train the students practically in the art of storytelling, cinematography, directing and basic editing from a concept to the final cut.",
-    backgroundImage: "/film.jpeg?height=400&width=600",
+    backgroundImage: "/film.jpg?height=400&width=600",
   },
   {
     id: 2,

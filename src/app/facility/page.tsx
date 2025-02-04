@@ -110,7 +110,7 @@ const cards = [
     id: 2,
     content: <SkeletonTwo />,
     className: 'col-span-1',
-    thumbnail: '/editsuite.jpg',
+    thumbnail: '/edit-suite.jpg',
     title: 'Edit Suite',
   },
   {
