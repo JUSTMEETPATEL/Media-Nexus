@@ -56,13 +56,16 @@ export default function Page() {
               <span className="text-black">NEXUS</span>
             </h1>
 
-            <p className="text-black mt-20 font-medium leading-relaxed">
+            <div className="relative mt-20">
+              
+              <p className="text-black font-medium leading-relaxed bg-cyan-400 bg-opacity-60 p-6 relative z-10">
               Welcome to MEDIA NEXUS, where we offer specialized Certificate Programs in Media Studies designed to
               empower the next generation of media professionals. Our courses are tailored to provide a deep
               understanding of key areas such as journalism, digital media, content creation, media production, and
               communication strategies. With a focus on practical learning, we ensure that our students gain hands-on
               experience and develop the necessary skills to excel in the fast-paced media industry.
-            </p>
+              </p>
+            </div>
           </div>
 
           {/* Right Column */}
@@ -101,8 +104,6 @@ export default function Page() {
             </div>
           </div>
         </div>
-
-        
       </main>
     </div>
   )
