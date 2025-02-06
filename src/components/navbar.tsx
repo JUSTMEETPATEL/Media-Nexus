@@ -123,11 +123,11 @@ export default function Navbar() {
           <div className="hidden md:block w-48">
             <Link href="https://srmrmp.edu.in/">
               <Image
-                src="/srm-logo.png"
-                alt="SRM Logo"
-                width={194}
-                height={56}
-                className="w-48 h-14 object-contain"
+              src="/srm-1.png"
+              alt="SRM Logo"
+              width={150}
+              height={56}
+              className="w-42 h-14 object-contain bg-white bg-opacity-80 p-2 rounded-md"
               />
             </Link>
           </div>
