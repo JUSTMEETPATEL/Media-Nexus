@@ -56,7 +56,7 @@ export default function Page() {
               <span className="text-black">NEXUS</span>
             </h1>
 
-            <p className="text-grey-900 mt-20 font-medium leading-relaxed">
+            <p className="text-black mt-20 font-medium leading-relaxed">
               Welcome to MEDIA NEXUS, where we offer specialized Certificate Programs in Media Studies designed to
               empower the next generation of media professionals. Our courses are tailored to provide a deep
               understanding of key areas such as journalism, digital media, content creation, media production, and
