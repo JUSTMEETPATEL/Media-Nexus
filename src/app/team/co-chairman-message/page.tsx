@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Card, CardContent } from '@/components/ui/card';
+import { motion } from 'framer-motion';
+import { Quote } from 'lucide-react';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function DirectorMessage() {
   const [isMounted, setIsMounted] = useState(false);
@@ -19,7 +20,7 @@ export default function DirectorMessage() {
       y: 0,
       transition: {
         duration: 0.5,
-        when: "beforeChildren",
+        when: 'beforeChildren',
         staggerChildren: 0.1,
       },
     },
@@ -36,7 +37,10 @@ export default function DirectorMessage() {
 
   return (
     <section className="py-20 flex items-center justify-center">
-      <div className="container px-4 mx-auto flex items-center justify-center" suppressHydrationWarning>
+      <div
+        className="container px-4 mx-auto flex items-center justify-center"
+        suppressHydrationWarning
+      >
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -55,19 +59,50 @@ export default function DirectorMessage() {
                 Message from the Co-Chairman
               </motion.h2>
               <div className="prose prose-lg">
+                <div className="flex items-center justify-end mr-10 mb-6">
+                  <Image
+                    src="/Co-chairman.png"
+                    alt="Chairman"
+                    width={200}
+                    height={200}
+                    className=""
+                  />
+                </div>
                 <motion.div
                   variants={itemVariants}
                   initial="hidden"
                   animate="visible"
                 >
                   <p className="mb-4">
-                  The ever-evolving media landscape provides professionals with varied experiences in niche domains. A surge in keen interest for media related subjects among non-media students is perceived and they wish to delve deep into the manifold creative media domain.
+                    The ever-evolving media landscape provides professionals
+                    with varied experiences in niche domains. A surge in keen
+                    interest for media related subjects among non-media students
+                    is perceived and they wish to delve deep into the manifold
+                    creative media domain.
                   </p>
                   <p className="mb-4">
-                  A paradigm shift is envisaged in the manner of media consumption and hence learners need to fathom how to leverage cutting edge technology. Looking ahead, the key to success in the emerging media platforms is to espouse innovation, stay agile and adapt to changing consumer behaviours. Due to the rapidly changing media climate, it is vital to weave layers of strategic content to overcome the new disruptions being contemplated. This needs comprehensive exposure and top-of-the-line credentials.
+                    A paradigm shift is envisaged in the manner of media
+                    consumption and hence learners need to fathom how to
+                    leverage cutting edge technology. Looking ahead, the key to
+                    success in the emerging media platforms is to espouse
+                    innovation, stay agile and adapt to changing consumer
+                    behaviours. Due to the rapidly changing media climate, it is
+                    vital to weave layers of strategic content to overcome the
+                    new disruptions being contemplated. This needs comprehensive
+                    exposure and top-of-the-line credentials.
                   </p>
                   <p className="mb-4">
-                  To develop a critical engagement with media and to equip learners, Media Nexus, a new venture of SRM Group of Institutions, Ramapuram, Chennai offers certificate courses in Short Film Making, Photography, Editing Techniques, Social Media Design and 3D Animation. Aspiring students are nurtured to explore and experience the power of media. The courses are crafted to make learners' dextrous to traverse the latest trends in the media industry. The top-notch curriculum and mentorship by connoisseurs from the media industry will guide students to contemporize with media functions.
+                    To develop a critical engagement with media and to equip
+                    learners, Media Nexus, a new venture of SRM Group of
+                    Institutions, Ramapuram, Chennai offers certificate courses
+                    in Short Film Making, Photography, Editing Techniques,
+                    Social Media Design and 3D Animation. Aspiring students are
+                    nurtured to explore and experience the power of media. The
+                    courses are crafted to make learners&rsquo; dextrous to traverse
+                    the latest trends in the media industry. The top-notch
+                    curriculum and mentorship by connoisseurs from the media
+                    industry will guide students to contemporize with media
+                    functions.
                   </p>
                   <p>Best wishes to Media Nexus and our learners!</p>
                 </motion.div>
