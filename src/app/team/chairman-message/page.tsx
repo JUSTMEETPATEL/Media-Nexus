@@ -36,7 +36,7 @@ export default function DirectorMessage() {
   }
 
   return (
-    <section className="py-20 flex items-center justify-center">
+    <section className="flex items-center justify-center">
       <div
         className="container px-4 mx-auto flex items-center justify-center"
         suppressHydrationWarning
@@ -47,7 +47,7 @@ export default function DirectorMessage() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <Card className="overflow-hidden hover:shadow-xl mt-52 transition-shadow duration-300">
+          <Card className="overflow-hidden hover:shadow-xl mt-32 transition-shadow duration-300">
             <CardContent className="p-6 md:p-10">
               <motion.div variants={itemVariants}>
                 <Quote className="w-12 h-12 text-blue-600 mb-6 animate-pulse" />
