@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+//
 
 interface TeamMember {
   name: string;
@@ -278,6 +279,7 @@ export default function TeamShowcase() {
               designation="Co-chairman"
             />
           </Link>
+          
         </div>
       </section>
 
