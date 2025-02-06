@@ -35,17 +35,7 @@ function Feature({
   )
 }
 
-function LeadershipCard({ imageSrc, name, designation }: { imageSrc: string; name: string; designation: string }) {
-  return (
-    <div className="flex flex-col items-center">
-      <div className="relative w-64 h-64 mb-4">
-        <Image src={imageSrc || "/placeholder.svg"} alt={name} layout="fill" objectFit="cover" className="rounded-lg" />
-      </div>
-      <h3 className="text-2xl font-semibold text-black mt-4">{name}</h3>
-      <p className="text-gray-900 text-lg">{designation}</p>
-    </div>
-  )
-}
+
 
 export default function Page() {
   return (
@@ -112,14 +102,7 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Leadership Section */}
-        <section className="max-w-5xl mx-auto mt-20 p-4 md:p-6">
-          <h2 className="text-4xl font-bold text-black mb-16 text-center">Our Leadership</h2>
-          <div className="flex flex-col md:flex-row justify-center items-center gap-24">
-            <LeadershipCard imageSrc="/chairman.png" name="Dr. R. Shivakumar" designation="Chairman" />
-            <LeadershipCard imageSrc="/Co-chairman.png" name="Mr. S. Niranjan" designation="Co-chairman" />
-          </div>
-        </section>
+        
       </main>
     </div>
   )
