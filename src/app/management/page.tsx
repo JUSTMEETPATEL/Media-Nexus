@@ -51,7 +51,7 @@ export default function Management() {
             name="Dr. R. Shivakumar"
             designation="Chairman"
           />
-          <p className="text-center text-black mt-2 hover:underline bg-gray-400 p-2 rounded font-extrabold">
+          <p className="text-center text-cyan-500 mt-2 hover:underline bg-black p-2 rounded font-extrabold">
             Our Chairman&apos;s Message
           </p>
             </div>
@@ -64,7 +64,7 @@ export default function Management() {
           name="Mr. S. Niranjan"
           designation="Co-chairman"
         />
-        <p className="text-center text-black mt-2 hover:underline bg-gray-400 p-2 rounded font-extrabold">
+        <p className="text-center text-cyan-500 mt-2 hover:underline bg-black p-2 rounded font-extrabold">
           Our Co-Chairman&apos;s Message
         </p>
           </div>
