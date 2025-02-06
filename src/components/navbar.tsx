@@ -50,30 +50,30 @@ export default function Navbar() {
 
   return (
     <nav className="fixed w-full z-50 bg-gradient-to-r from-black via-gray-900 to-black border-b border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-24">
-          {/* Logo and brand */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/Final Logo.png"
-                alt="Media Nexus Logo"
-                width={300}
-                height={100}
-                className="h-20 w-auto object-contain"
-              />
-            </Link>
-          </div>
+      <div className="max-w-full mx-auto px-6 sm:px-4 lg:px-6">
+      <div className="flex justify-between items-center h-24">
+        {/* Logo and brand */}
+        <div className="flex-shrink-0">
+        <Link href="/" className="flex items-center">
+          <Image
+          src="/Final Logo.png"
+          alt="Media Nexus Logo"
+          width={300}
+          height={100}
+          className="h-20 w-auto object-contain"
+          />
+        </Link>
+        </div>
 
-          {/* Desktop navigation */}
-          <div className="hidden md:flex items-center justify-center flex-1">
-            <div className="flex items-center space-x-8">
-              <Link
-                href="/about"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
-                About Us
-              </Link>
+        {/* Desktop navigation */}
+        <div className="hidden md:flex items-center justify-center flex-1">
+        <div className="flex items-center space-x-8">
+          <Link
+          href="/about"
+          className="text-gray-300 hover:text-white transition-colors"
+          >
+          About Us
+          </Link>
               <Link
                 href="/courses"
                 className="text-gray-300 hover:text-white transition-colors"
@@ -85,6 +85,12 @@ export default function Navbar() {
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 Facilities
+              </Link>
+              <Link
+                href="/management"
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Our Management
               </Link>
               <Link
                 href="/team"
