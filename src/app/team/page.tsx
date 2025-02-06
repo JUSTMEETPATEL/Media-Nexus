@@ -265,19 +265,24 @@ export default function TeamShowcase() {
           Our Leadership
         </h2>
         <div className="flex flex-col md:flex-row justify-center items-center gap-24">
-          <Link href="/team/chairman-message">
-            <LeadershipCard
-              imageSrc="/chairman.png"
-              name="Dr. R. Shivakumar"
-              designation="Chairman"
-            />
-          </Link>
+          
+            <Link href="/team/chairman-message">
+              <LeadershipCard
+                imageSrc="/chairman.png"
+                name="Dr. R. Shivakumar"
+                designation="Chairman"
+              />
+              <p className="text-center text-cyan-400 mt-2 hover:underline">Read Chairman&apos;s Message</p>
+            </Link>
+          
+            
           <Link href="/team/co-chairman-message">
             <LeadershipCard
               imageSrc="/Co-chairman.png"
               name="Mr. S. Niranjan"
               designation="Co-chairman"
             />
+            <p className="text-center text-cyan-400 mt-2 hover:underline">Read Co-Chairman&apos;s Message</p>
           </Link>
           
         </div>

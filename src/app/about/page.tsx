@@ -40,7 +40,7 @@ function Feature({
 export default function Page() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100 relative overflow-hidden">
-      <div className="absolute inset-0 z-0 opacity-80">
+      <div className="absolute inset-0 z-0 opacity-50">
         <Image src="/about.jpg" alt="Media Background" layout="fill" objectFit="cover" />
       </div>
       {/* pt-16 accounts for the fixed navbar height */}
