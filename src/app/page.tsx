@@ -92,7 +92,7 @@ export default function Home() {
   }
 
   const photos = [
-    { id: 1, src: "/gallery-1.jpeg", alt: "Photo 1" },
+    { id: 1, src: "/gallery-1.jpg", alt: "Photo 1" },
     { id: 2, src: "/gallery-2.jpeg", alt: "Photo 2" },
     { id: 3, src: "/gallery-3.jpeg", alt: "Photo 3" },
     { id: 4, src: "/gallery-4.jpeg", alt: "Photo 4" },
