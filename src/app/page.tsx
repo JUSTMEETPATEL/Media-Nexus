@@ -124,7 +124,7 @@ export default function Home() {
                 src={images[currentImageIndex] || "/placeholder.svg"}
                 alt={`Hero background ${currentImageIndex + 1}`}
                 fill
-                className="object-cover brightness-50"
+                className="object-cover"
                 priority
               />
             </motion.div>
@@ -153,11 +153,9 @@ export default function Home() {
               Empowering the next generation of media professionals
             </p>
           </motion.div>
-
         </section>
         {/* About Section */}
         <section className="relative py-16 md:py-24 ">
-  
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4 sm:mb-8" data-aos="fade-up">
               About Media Nexus
@@ -174,7 +172,6 @@ export default function Home() {
 
         {/* Empowerment Section */}
         <section className="relative py-16 md:py-24 bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
-          
           <div className="absolute inset-0 z-0">
             <Image src="/Infra.JPG" alt="Infra Photo" fill className="object-cover brightness-50" priority />
           </div>
@@ -296,34 +293,34 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col md:flex-row items-start justify-between">
               <div className="md:w-1/3 mb-8 md:mb-0">
-          <h2 className="text-3xl font-bold mb-4 text-white" data-aos="fade-up">
-            Photo Gallery
-          </h2>
-          <p className="mb-4 text-gray-200" data-aos="fade-up" data-aos-delay="100">
-            Explore our collection of inspiring photos.
-          </p>
-          <Link href="/photo-gallery">
-            <button
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              View All Photos
-            </button>
-          </Link>
+                <h2 className="text-3xl font-bold mb-4 text-white" data-aos="fade-up">
+                  Photo Gallery
+                </h2>
+                <p className="mb-4 text-gray-200" data-aos="fade-up" data-aos-delay="100">
+                  Explore our collection of inspiring photos.
+                </p>
+                <Link href="/photo-gallery">
+                  <button
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    View All Photos
+                  </button>
+                </Link>
               </div>
               <div className="md:w-2/3 grid grid-cols-2 gap-4" data-aos="fade-up" data-aos-delay="300">
-          {photos.map((photo) => (
-            <div key={photo.id} className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer">
-              <Image
-                src={photo.src || "/placeholder.svg"}
-                alt={photo.alt}
-                width={400}
-                height={300}
-                className="w-full h-48 object-cover transition duration-300 group-hover:scale-110"
-              />
-            </div>
-          ))}
+                {photos.map((photo) => (
+                  <div key={photo.id} className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer">
+                    <Image
+                      src={photo.src || "/placeholder.svg"}
+                      alt={photo.alt}
+                      width={400}
+                      height={300}
+                      className="w-full h-48 object-cover transition duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>

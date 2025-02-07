@@ -25,8 +25,8 @@ function LeadershipCard({
       </div>
 
       {/* Name and Designation */}
-      <h3 className="text-2xl font-semibold text-cyan-100 mt-4">{name}</h3>
-      <p className="text-black-100 text-lg">{designation}</p>
+      <h3 className="text-2xl font-bold text-black mt-4">{name}</h3>
+      <p className="text-black text-lg font-semibold">{designation}</p>
     </div>
   );
 }

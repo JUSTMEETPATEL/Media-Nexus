@@ -15,31 +15,6 @@ interface TeamMember {
   section: 'academic' | 'industrial';
   resumeUrl?: string;
 }
-function LeadershipCard({
-  imageSrc,
-  name,
-  designation,
-}: {
-  imageSrc: string;
-  name: string;
-  designation: string;
-}) {
-  return (
-    <div className="flex flex-col items-center">
-      <div className="relative w-64 h-64 mb-4">
-        <Image
-          src={imageSrc || '/placeholder.svg'}
-          alt={name}
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
-        />
-      </div>
-      <h3 className="text-2xl font-semibold text-black mt-4">{name}</h3>
-      <p className="text-gray-900 text-lg">{designation}</p>
-    </div>
-  );
-}
 
 export default function TeamShowcase() {
   const teamMembers: TeamMember[] = [
@@ -259,36 +234,8 @@ export default function TeamShowcase() {
   return (
     <div className="container mx-auto p-4">
       {/* Main Title */}
-      {/* Leadership Section */}
       <section className="max-w-5xl mx-auto mt-20 p-4 md:p-6">
-        <h2 className="text-4xl font-bold text-black mb-16 text-center">
-          Our Leadership
-        </h2>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-24">
-          
-            <Link href="/team/chairman-message">
-              <LeadershipCard
-                imageSrc="/chairman.png"
-                name="Dr. R. Shivakumar"
-                designation="Chairman"
-              />
-              <p className="text-center text-cyan-400 mt-2 hover:underline">Read Chairman&apos;s Message</p>
-            </Link>
-          
-            
-          <Link href="/team/co-chairman-message">
-            <LeadershipCard
-              imageSrc="/Co-chairman.png"
-              name="Mr. S. Niranjan"
-              designation="Co-chairman"
-            />
-            <p className="text-center text-cyan-400 mt-2 hover:underline">Read Co-Chairman&apos;s Message</p>
-          </Link>
-          
-        </div>
-      </section>
-
-      {/* Academic Expert Section */}
+        {/* Academic Expert Section */}
       <div className="space-y-6 mb-16">
         <div className="text-center mb-6">
           <div className="text-2xl sm:text-3xl md:text-4xl font-semibold inline-block px-4 py-1">
@@ -343,6 +290,7 @@ export default function TeamShowcase() {
           />
         </div>
       </div>
+      </section>      
     </div>
   );
 }
