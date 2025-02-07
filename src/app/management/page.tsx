@@ -58,7 +58,7 @@ export default function Management() {
               designation="Chairman"
             />
             <p className="text-center text-cyan-500 mt-2 hover:underline bg-black p-2 rounded font-extrabold">
-              Our Hon'ble Chairman&apos;s Message
+              Our Hon&apos;ble Chairman&apos;s Message
             </p>
           </div>
         </Link>
@@ -70,8 +70,8 @@ export default function Management() {
               name="Mr. S. Niranjan"
               designation="Co-chairman"
             />
-            <p className="text-center text-cyan-600 mt-2 hover:underline bg-black p-2 rounded font-extrabold">
-              Our Hon'ble Co-Chairman&apos;s Message
+            <p className="text-center text-cyan-500 mt-2 hover:underline bg-black p-2 rounded font-extrabold">
+              Our Hon&apos;ble Co-Chairman&apos;s Message
             </p>
           </div>
         </Link>
