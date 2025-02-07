@@ -41,8 +41,9 @@ export default function Management() {
           alt="Media Background"
           layout="fill"
           objectFit="cover"
+          className="opacity-60" // Reduced opacity of the image
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/40 via-cyan-400/30 to-cyan-600/40" />
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-700/40 via-cyan-400/30 to-cyan-600/40" />
       </div>
 
       <h2 className="text-4xl font-bold text-white mb-16 mt-28 text-center relative z-10">
@@ -58,7 +59,7 @@ export default function Management() {
               designation="Chairman"
             />
             <p className="text-center text-cyan-500 mt-2 hover:underline bg-black p-2 rounded font-extrabold">
-              Our Hon&apos;ble Chairman&apos;s Message
+              Message from our Hon&apos;ble Chairman
             </p>
           </div>
         </Link>
@@ -68,10 +69,10 @@ export default function Management() {
             <LeadershipCard
               imageSrc="/Co-chairman.png"
               name="Mr. S. Niranjan"
-              designation="Co-chairman"
+              designation="Co-Chairman"
             />
             <p className="text-center text-cyan-500 mt-2 hover:underline bg-black p-2 rounded font-extrabold">
-              Our Hon&apos;ble Co-Chairman&apos;s Message
+              Message from our Hon&apos;ble Co-Chairman
             </p>
           </div>
         </Link>

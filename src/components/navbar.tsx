@@ -107,11 +107,11 @@ export default function Navbar() {
           <div className="hidden xl:block w-48 ml-10"> {/* Added ml-10 for margin-left */}
             <Link href="https://srmrmp.edu.in/">
               <Image
-                src="/srm-1.png"
+                src="/srm-logo-2.png"
                 alt="SRM Logo"
                 width={150}
                 height={56}
-                className="w-42 h-18 object-contain bg-transparent p-2 rounded-md"
+                className="w-30 h-20 object-contain bg-transparent p-2 rounded-md"
               />
             </Link>
           </div>

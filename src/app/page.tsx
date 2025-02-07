@@ -147,7 +147,7 @@ export default function Home() {
               }}
               className="text-4xl sm:text-6xl md:text-8xl font-bold mb-3 sm:mb-4 tracking-tight pt-12"
             >
-              MEDIA <span className="text-cyan-400">NEXUS</span>
+              <span className="text-cyan-400"> MEDIA NEXUS</span>
             </motion.h1>
             <p className="text-gray-300 text-base sm:text-xl md:text-2xl max-w-2xl mx-auto mb-4 sm:mb-6 px-4 sm:px-0">
               Empowering the next generation of media professionals

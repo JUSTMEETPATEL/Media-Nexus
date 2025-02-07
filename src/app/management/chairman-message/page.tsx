@@ -2,7 +2,6 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
-import { Quote } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
@@ -50,22 +49,33 @@ export default function DirectorMessage() {
           <Card className="overflow-hidden hover:shadow-xl mt-32 transition-shadow duration-300">
             <CardContent className="p-6 md:p-10">
               <motion.div variants={itemVariants}>
-                <Quote className="w-12 h-12 text-blue-600 mb-6 animate-pulse" />
+                {/* Replacing the quotation icon with the Media Nexus Logo */}
+                <div className="flex justify-center mb-6">
+                  <Image
+                    src="/Final Logo.png"
+                    alt="Media Nexus Logo"
+                    width={150} // Adjust the size as needed
+                    height={50} // Adjust the size as needed
+                    className="object-contain"
+                  />
+                </div>
               </motion.div>
+
               <motion.h2
                 variants={itemVariants}
-                className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600"
+                className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-4"
               >
                 Message from the Chairman
               </motion.h2>
               <div className="prose prose-lg">
-                <div className="flex items-center justify-end mr-10 mb-6">
+                <div className="flex items-center justify-center mb-6">
+                  {/* Increased image size */}
                   <Image
-                    src="/chairman.png"
+                    src="/chairman.jpg"
                     alt="Chairman"
-                    width={200}
-                    height={200}
-                    className=""
+                    width={300} // Increased size
+                    height={300} // Increased size
+                    className="rounded-full"
                   />
                 </div>
                 <motion.div
@@ -73,7 +83,7 @@ export default function DirectorMessage() {
                   initial="hidden"
                   animate="visible"
                 >
-                  <p className="mb-4">
+                  <p className="mb-4 text-justify">
                     It is heartening to note that Media Nexus, a new venture of
                     SRM Group, Ramapuram, Chennai is being established. Media
                     Nexus is embarking on providing innovative certificate
@@ -81,7 +91,7 @@ export default function DirectorMessage() {
                     to providing advanced and comprehensive education that will
                     catapult you to a leader in the media domain.
                   </p>
-                  <p className="mb-4">
+                  <p className="mb-4 text-justify">
                     Today&apos;s students are diverse, collaborative and
                     breaking stereotypes. A sizeable majority of millennial
                     engineering students have a passion for media studies.
@@ -91,7 +101,7 @@ export default function DirectorMessage() {
                     Hence, it is pertinent to be equipped with appropriate niche
                     skills for this.
                   </p>
-                  <p className="mb-4">
+                  <p className="mb-4 text-justify">
                     Media Nexus has envisaged certificate courses in Short Film
                     Making, Photography, Editing Techniques, Social Media Design
                     and 3D Animation to cater to this growing interest in
@@ -103,15 +113,9 @@ export default function DirectorMessage() {
                     media will share their expertise as well as mentor the
                     students.
                   </p>
-                  <p>Best wishes to Media Nexus on the pioneering endeavour.</p>
+                  <p className="text-justify">Best wishes to Media Nexus on the pioneering endeavour.</p>
                 </motion.div>
               </div>
-              {/* <motion.div variants={itemVariants} className="mt-6">
-                <p className="font-semibold">Anand Kannan</p>
-                <p className="text-muted-foreground">
-                  National Director, IFIA Bharat
-                </p>
-              </motion.div> */}
             </CardContent>
           </Card>
         </motion.div>
