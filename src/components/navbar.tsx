@@ -49,7 +49,7 @@ export default function Navbar() {
   // };
 
   return (
-    <nav className="fixed w-full z-50 bg-gradient-to-r from-black via-gray-900 to-black border-b border-gray-800">
+    <nav className="fixed w-full z-50 bg-gray-900 to-black border-b border-gray-800">
       <div className="max-w-full mx-auto px-6 sm:px-4 lg:px-6">
       <div className="flex justify-between items-center h-24">
         {/* Logo and brand */}
@@ -110,27 +110,9 @@ export default function Navbar() {
               >
                 Contact Us
               </Link>
-              <Link
-                href="/register"
-                className={`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25`}
-              >
-                Register Now
-              </Link>
             </div>
           </div>
 
-          {/* Logo (Desktop) */}
-          <div className="hidden md:block w-48">
-            <Link href="https://srmrmp.edu.in/">
-              <Image
-              src="/srm-1.png"
-              alt="SRM Logo"
-              width={150}
-              height={56}
-              className="w-42 h-14 object-contain bg-white bg-opacity-80 p-2 rounded-md"
-              />
-            </Link>
-          </div>
 
           <div className="hidden md:flex items-center space-x-4">
             {session.data?.user?.email ? (
@@ -149,11 +131,22 @@ export default function Navbar() {
               </Link>
             )}
           </div>
-
+          {/* Logo (Desktop) */}
+          <div className="hidden md:block w-48">
+            <Link href="https://srmrmp.edu.in/">
+              <Image
+              src="/srm-1.png"
+              alt="SRM Logo"
+              width={150}
+              height={56}
+              className="w-42 h-18 object-contain bg-transparent bg-opacity-80 p-2 rounded-md"
+              />
+            </Link>
+          </div>
           {/* Mobile menu button */}
           <div className="md:hidden">
             <Button variant="ghost" className="text-gray-300">
-              <Menu className="h-6 w-6" />
+              <Menu className="h-4 w-" />
             </Button>
           </div>
         </div>
