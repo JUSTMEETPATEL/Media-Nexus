@@ -1,152 +1,125 @@
-'use client';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { useState, useEffect, useRef } from 'react';
-import { Menu } from 'lucide-react';
-import Image from 'next/image';
-import { authClient, useSession } from '@/lib/auth-client';
-import { redirect } from 'next/navigation';
+"use client"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { useState, useEffect, useRef } from "react"
+import { Menu } from "lucide-react"
+import Image from "next/image"
+import { authClient, useSession } from "@/lib/auth-client"
+import { redirect } from "next/navigation"
 
 const handleClick = () => {
-  authClient.signOut();
-  console.log('Sign out');
-  redirect('/sign-in');
-};
+  authClient.signOut()
+  console.log("Sign out")
+  redirect("/sign-in")
+}
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+  const session = useSession()
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node) &&
-        !(event.target as Element).closest('button')
+        !(event.target as Element).closest("button")
       ) {
-        setIsOpen(false);
+        setIsOpen(false)
       }
-    };
+    }
 
-    const handleMenuClick = (event: MouseEvent) => {
-      if ((event.target as Element).closest('button')) {
-        setIsOpen((prev) => !prev);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('click', handleMenuClick);
+    document.addEventListener("mousedown", handleClickOutside)
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('click', handleMenuClick);
-    };
-  }, []);
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
 
-  const session = useSession();
-  // const toggleDropdown = () => {
-  //   setIsOpen((prev) => !prev);
-  // };
+  const toggleMobileMenu = () => {
+    setIsOpen(!isOpen)
+  }
 
   return (
     <nav className="fixed w-full z-50 bg-gray-900 to-black border-b border-gray-800">
-      <div className="max-w-full mx-auto px-6 sm:px-4 lg:px-6">
-      <div className="flex justify-between items-center h-24">
-        {/* Logo and brand */}
-        <div className="flex-shrink-0">
-        <Link href="/" className="flex items-center">
-          <Image
-          src="/Final Logo.png"
-          alt="Media Nexus Logo"
-          width={300}
-          height={100}
-          className="h-20 w-auto object-contain"
-          />
-        </Link>
-        </div>
+      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-24">
+          {/* Logo and brand */}
+          <div className="flex-shrink-0">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/Final Logo.png"
+                alt="Media Nexus Logo"
+                width={300}
+                height={100}
+                className="h-20 w-auto object-contain"
+              />
+            </Link>
+          </div>
 
-        {/* Desktop navigation */}
-        <div className="hidden md:flex items-center justify-center flex-1">
-        <div className="flex items-center space-x-8">
-          <Link
-          href="/about"
-          className="text-gray-300 hover:text-white transition-colors"
-          >
-          About Us
-          </Link>
-              <Link
-                href="/courses"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
+          {/* Desktop navigation */}
+          <div className="hidden xl:flex items-center justify-center flex-1">
+            <div className="flex items-center space-x-4">
+              <Link href="/about" className="text-gray-300 hover:text-white transition-colors">
+                About Us
+              </Link>
+              <Link href="/courses" className="text-gray-300 hover:text-white transition-colors">
                 Courses
               </Link>
-              <Link
-                href="/facility"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
+              <Link href="/facility" className="text-gray-300 hover:text-white transition-colors">
                 Facilities
               </Link>
-              <Link
-                href="/management"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
+              <Link href="/management" className="text-gray-300 hover:text-white transition-colors">
                 Our Management
               </Link>
-              <Link
-                href="/team"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
+              <Link href="/team" className="text-gray-300 hover:text-white transition-colors">
                 Our Team
               </Link>
-              <Link
-                href="/advisory"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
+              <Link href="/advisory" className="text-gray-300 hover:text-white transition-colors">
                 Advisory Board
               </Link>
-              <Link
-                href="/contact"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
+              <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">
                 Contact Us
               </Link>
             </div>
           </div>
 
-
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Sign In / Sign Out Button */}
+          <div className="hidden xl:flex items-center space-x-4">
             {session.data?.user?.email ? (
               <Button
                 onClick={handleClick}
-                className={`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25`}
+                className="px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25"
               >
                 Sign Out
               </Button>
             ) : (
               <Link
                 href="/sign-in"
-                className={`px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25`}
+                className="px-4 py-2 rounded-md bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-cyan-500/25"
               >
                 Sign In
               </Link>
             )}
           </div>
-          {/* Logo (Desktop) */}
-          <div className="hidden md:block w-48">
+
+          {/* Logo (SRM) - Move to the right */}
+          <div className="hidden xl:block w-48 ml-10"> {/* Added ml-10 for margin-left */}
             <Link href="https://srmrmp.edu.in/">
               <Image
-              src="/srm-1.png"
-              alt="SRM Logo"
-              width={150}
-              height={56}
-              className="w-42 h-18 object-contain bg-transparent bg-opacity-80 p-2 rounded-md"
+                src="/srm-1.png"
+                alt="SRM Logo"
+                width={150}
+                height={56}
+                className="w-42 h-18 object-contain bg-transparent p-2 rounded-md"
               />
             </Link>
           </div>
+
           {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button variant="ghost" className="text-gray-300">
-              <Menu className="h-4 w-" />
+          <div className="xl:hidden">
+            <Button variant="ghost" className="text-gray-300" onClick={toggleMobileMenu}>
+              <Menu className="h-6 w-6" />
             </Button>
           </div>
         </div>
@@ -154,10 +127,7 @@ export default function Navbar() {
 
       {/* Mobile dropdown */}
       {isOpen && (
-        <div
-          ref={dropdownRef}
-          className="md:hidden absolute top-20 left-0 w-full bg-black/90 border-b border-gray-800"
-        >
+        <div ref={dropdownRef} className="xl:hidden absolute top-24 left-0 w-full bg-black/90 border-b border-gray-800">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link
               href="/about"
@@ -178,6 +148,12 @@ export default function Navbar() {
               Facilities
             </Link>
             <Link
+              href="/management"
+              className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
+            >
+              Our Management
+            </Link>
+            <Link
               href="/team"
               className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
             >
@@ -195,24 +171,17 @@ export default function Navbar() {
             >
               Contact Us
             </Link>
-            <Link
-              href="/register"
-              className={`block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md`}
-            >
-              Register Now
-            </Link>
-
             {session.data?.user?.email ? (
               <Button
                 onClick={handleClick}
-                className={`block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md`}
+                className="block w-full text-left px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md"
               >
                 Sign Out
               </Button>
             ) : (
               <Link
                 href="/sign-in"
-                className={`block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md`}
+                className="block px-3 py-2 text-base font-medium text-cyan-400 hover:text-white hover:bg-gray-700 rounded-md"
               >
                 Sign In
               </Link>
@@ -221,5 +190,5 @@ export default function Navbar() {
         </div>
       )}
     </nav>
-  );
+  )
 }
