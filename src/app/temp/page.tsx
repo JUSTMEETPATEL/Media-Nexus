@@ -6,8 +6,6 @@ import React from 'react';
 
 const Home = () => {
   const handleSubmit = async (formData: FormData) => {
-    'use server';
-
     const { error } = await authClient.signIn.magicLink({
       email: formData.get('email') as string,
       callbackURL: '/dashboard',
