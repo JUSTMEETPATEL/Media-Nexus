@@ -161,12 +161,12 @@ export default function Home() {
               About Media Nexus
             </h2>
             <p
-              className="text-sm sm:text-lg md:text-xl text-center max-w-4xl mx-auto leading-relaxed px-4 sm:px-6"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              {mediaNexus.about}
+            className="text-sm sm:text-lg md:text-xl text-center max-w-4xl mx-auto leading-relaxed px-4 sm:px-6 text-justify"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            >{mediaNexus.about}
             </p>
+
           </div>
         </section>
 
@@ -180,7 +180,7 @@ export default function Home() {
               Empowering the Next Generation
             </h2>
             <p
-              className="text-sm sm:text-lg md:text-xl text-center max-w-4xl mx-auto leading-relaxed px-4 sm:px-6"
+              className="text-sm sm:text-lg md:text-xl text-center max-w-4xl mx-auto leading-relaxed px-4 sm:px-6 text-justify"
               data-aos="fade-up"
               data-aos-delay="200"
             >
@@ -268,7 +268,7 @@ export default function Home() {
                       <CardHeader className="relative z-10">
                         <CardTitle className="text-xl sm:text-2xl mb-2 text-white">{course.title}</CardTitle>
                       </CardHeader>
-                      <CardContent className="relative z-10">
+                      <CardContent className="relative z-10 text-justify">
                         <p className="text-sm sm:text-base text-gray-200">{course.description}</p>
                       </CardContent>
                     </Card>
