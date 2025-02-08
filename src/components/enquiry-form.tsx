@@ -22,6 +22,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { toast } from '@/hooks/use-toast';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 // Helper functions remain the same
 // const checkSlotAvailability = async (courseId: number, slotId: number) => {
@@ -61,6 +62,7 @@ export default function EnquiryForm() {
   const onSubmit = async (data: z.infer<typeof slotSchema>) => {
     setIsLoading(true);
     setSlotError(null);
+    redirect("https://payment.collexo.com/user/login/?dest=/pay-fee/srmist-ramapuram-media-nexus-14523/");
 
     try {
       //check-user API call remains the same
@@ -315,19 +317,19 @@ export default function EnquiryForm() {
                 {slotError && (
                   <div className="text-red-500 text-sm">{slotError}</div>
                 )}
-                <Link href="https://payment.collexo.com/user/login/?dest=/pay-fee/srmist-ramapuram-media-nexus-14523/" target="_blank" rel="noopener noreferrer">
+                <Link href="https://payment.collexo.com/user/login/?dest=/pay-fee/srmist-ramapuram-media-nexus-14523/">
                 <Button
                   type="submit"
                   disabled={isLoading}
                   className="w-full bg-cyan-400 hover:bg-cyan-500 text-white p-6 rounded-lg
-                    transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg
-                    active:translate-y-0 active:shadow-md
-                    disabled:opacity-50 disabled:cursor-not-allowed
-                    before:absolute before:inset-0 before:bg-gradient-to-r before:from-cyan-400 before:to-cyan-300
-                    before:opacity-0 hover:before:opacity-100 before:transition-opacity relative overflow-hidden"
+                        transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg
+                        active:translate-y-0 active:shadow-md
+                        disabled:opacity-50 disabled:cursor-not-allowed
+                        before:absolute before:inset-0 before:bg-gradient-to-r before:from-cyan-400 before:to-cyan-300
+                        before:opacity-0 hover:before:opacity-100 before:transition-opacity relative overflow-hidden"
                 >
                   <span className="relative">
-                  {isLoading ? 'Submitting...' : 'Submit'}
+                    {isLoading ? 'Submitting...' : 'Submit'}
                   </span>
                 </Button>
                 </Link>

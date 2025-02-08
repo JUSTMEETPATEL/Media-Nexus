@@ -161,7 +161,7 @@ export default function Home() {
               About Media Nexus
             </h2>
             <p
-            className="text-sm sm:text-lg md:text-xl text-center max-w-4xl mx-auto leading-relaxed px-4 sm:px-6 text-justify"
+            className="text-sm sm:text-lg md:text-xl max-w-4xl mx-auto leading-relaxed px-4 sm:px-6 text-justify"
             data-aos="fade-up"
             data-aos-delay="200"
             >{mediaNexus.about}
@@ -180,7 +180,7 @@ export default function Home() {
               Empowering the Next Generation
             </h2>
             <p
-              className="text-sm sm:text-lg md:text-xl text-center max-w-4xl mx-auto leading-relaxed px-4 sm:px-6 text-justify"
+              className="text-sm sm:text-lg md:text-xl max-w-4xl mx-auto leading-relaxed px-4 sm:px-6 text-justify"
               data-aos="fade-up"
               data-aos-delay="200"
             >
