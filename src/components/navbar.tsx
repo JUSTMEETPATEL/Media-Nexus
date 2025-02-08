@@ -2,7 +2,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useState, useEffect, useRef } from "react"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { Menu, X} from "lucide-react"
 import Image from "next/image"
 import { authClient, useSession } from "@/lib/auth-client"
 import { redirect } from "next/navigation"
