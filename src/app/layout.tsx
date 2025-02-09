@@ -25,7 +25,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://media-nexus.vercel.app'),
+  metadataBase: new URL('https://medianexus.srmorg.com'),
   title: {
     default: 'Media Nexus - Professional Media Studies Certification',
     template: '%s | Media Nexus',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://media-nexus.vercel.app',
+    url: 'https://medianexus.srmorg.com',
     title: 'Media Nexus - Professional Media Studies Certification',
     description:
       'Transform your media career with our professional certification programs.',
@@ -96,9 +96,9 @@ export const metadata: Metadata = {
     yahoo: 'your-yahoo-verification-code',
   },
   alternates: {
-    canonical: 'https://media-nexus.vercel.app',
+    canonical: 'https://medianexus.srmorg.com',
     languages: {
-      'en-US': 'https://media-nexus.vercel.app/en-US',
+      'en-US': 'https://medianexus.srmorg.com/en-US',
     },
   },
 };
@@ -112,8 +112,8 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
     name: 'Media Nexus',
-    url: 'https://media-nexus.vercel.app',
-    logo: 'https://media-nexus.vercel.app/Final Logo.png',
+    url: 'https://medianexus.srmorg.com',
+    logo: 'https://medianexus.srmorg.com/Final Logo.png',
     description: 'Professional Media Studies Certification Programs',
     address: {
       '@type': 'PostalAddress',

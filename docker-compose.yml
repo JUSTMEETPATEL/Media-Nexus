@@ -8,6 +8,7 @@ services:
     environment:
       - NODE_ENV=production
       - DATABASE_URL=postgresql://myuser:mypassword@postgres:5432/mydatabase
+      - FETCH_TIMEOUT=60000
     ports:
       - "3000:3000"
     dns:
