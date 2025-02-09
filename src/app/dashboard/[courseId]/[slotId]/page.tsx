@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import AssignmentAccordion from './components/assignment-accordion';
 import { Loader } from '@/components/ui/loader';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
+import { useSession } from '@/lib/auth-client';
 
 interface Assignment {
   // Define the structure of an assignment here
@@ -19,6 +20,46 @@ const Page = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const params = useParams();
+  const router = useRouter();
+  const session = useSession();
+
+  const checkUserRole = async () => {
+    try {
+      const response = await fetch('/api/check-role', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: session.data?.user.email }),
+      });
+
+      if (!response.ok) {
+        console.error('Error:', response.status, response.statusText);
+        setIsLoading(false);
+        return;
+      }
+
+      const { role } = await response.json();
+
+      if (role === 'admin') {
+        router.push('/admin');
+      } else if (role === 'faculty') {
+        router.push('/faculty');
+      } else if (role === 'user') {
+        return true;
+      }
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error fetching role:', error);
+      setIsLoading(false);
+    }
+  };
+
+  const isUser = checkUserRole();
+
+  if(!isUser){
+    router.push('/sign-in');
+  }
 
   useEffect(() => {
     const fetchAssignments = async () => {

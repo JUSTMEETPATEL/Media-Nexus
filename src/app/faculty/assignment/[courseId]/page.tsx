@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -38,6 +38,39 @@ export default function AssignmentPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSessionLoading, setIsSessionLoading] = useState(true);
   const session = useSession();
+  const router = useRouter();
+
+  const checkUserRole = async () => {
+    try {
+      const response = await fetch('/api/check-role', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: session.data?.user.email }),
+      });
+
+      if (!response.ok) {
+        console.error('Error:', response.status, response.statusText);
+        setIsLoading(false);
+        return;
+      }
+
+      const { role } = await response.json();
+
+      if (role === 'user') {
+        router.push('/dashboard');
+      } else if (role === 'admin') {
+        router.push('/admin');
+      } else if (role === 'faculty') {
+        return true;
+      }
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error fetching role:', error);
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (!session.isPending) {
@@ -119,6 +152,12 @@ export default function AssignmentPage() {
       setIsLoading(false);
     }
   };
+
+  const isFaculty = checkUserRole();
+
+  if(!isFaculty){
+    router.push('/');
+  }
 
   if (isSessionLoading) {
     return <Loader />;

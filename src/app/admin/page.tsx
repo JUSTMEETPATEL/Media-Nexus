@@ -102,7 +102,7 @@ export default function FacultyPage() {
       } else if (role === 'faculty') {
         router.push('/faculty');
       } else if (role === 'admin') {
-          return role;
+          return true;
       }
       setIsLoading(false);
     } catch (error) {

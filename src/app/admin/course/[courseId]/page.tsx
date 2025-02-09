@@ -10,9 +10,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { StudentChart } from './components/student-chart';
 import { Loader2 } from 'lucide-react';
+import { toast } from '@/hooks/use-toast';
+import { authClient, useSession } from '@/lib/auth-client';
+import { Button } from '@/components/ui/button';
 
 interface Enquiry {
   id: string;
@@ -44,6 +47,38 @@ const Page = () => {
   const [assignments, setAssignments] = useState<Assignment[]>([]);
   const [chartData, setChartData] = useState<ChartData[]>([]);
   const [loading, setLoading] = useState(true);
+  const session = useSession();
+  const router = useRouter();
+
+  const checkUserRole = async () => {
+    try {
+      const response = await fetch('/api/check-role', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: session.data?.user.email }),
+      });
+
+      if (!response.ok) {
+        console.error('Error:', response.status, response.statusText);
+
+        return;
+      }
+
+      const { role } = await response.json();
+
+      if (role === 'user') {
+        router.push('/dashboard');
+      } else if (role === 'faculty') {
+        router.push('/faculty');
+      } else if (role === 'admin') {
+        return true;
+      }
+    } catch (error) {
+      console.error('Error fetching role:', error);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -122,6 +157,20 @@ const Page = () => {
       setLoading(false);
     }
   };
+  const handleSubmit = async (formData: FormData) => {
+    const { error } = await authClient.signIn.magicLink({
+      email: formData.get('email') as string,
+      callbackURL: '/dashboard',
+    });
+
+    if (error) {
+      toast({
+        title: 'Error',
+      });
+    } else {
+      toast({ title: 'Magic link sent to your email' });
+    }
+  };
 
   useEffect(() => {
     fetchData();
@@ -133,6 +182,12 @@ const Page = () => {
         <Loader2 className="h-8 w-8 animate-spin" />
       </div>
     );
+  }
+
+  const isFaculty = checkUserRole();
+
+  if (!isFaculty) {
+    router.push('/');
   }
 
   return (
@@ -244,6 +299,31 @@ const Page = () => {
               </div>
             </CardContent>
           </Card>
+        </div>
+        {/* Add New Students */}
+
+        <div className="pt-7">
+          <form action={handleSubmit} className="max-w-md mx-auto mt-8">
+            <div className="mb-4">
+              <label htmlFor="email" className="block text-gray-700 mb-2">
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <Button
+              type="submit"
+              className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+            >
+              Submit
+            </Button>
+          </form>
         </div>
       </div>
     </div>

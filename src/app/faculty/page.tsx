@@ -16,7 +16,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Loader } from '@/components/ui/loader';
 import { Button } from '@/components/ui/button';
-import { redirect } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 
 const programs = [
   {
@@ -66,7 +66,7 @@ const MotionCard = motion(Card);
 export default function FacultyPage() {
   const session = useSession();
   const [isLoading, setIsLoading] = useState(true);
-
+  const router = useRouter();
   useEffect(() => {
     if (!session.isPending) {
       setIsLoading(false);
@@ -77,7 +77,37 @@ export default function FacultyPage() {
     return <Loader />;
   }
 
-  console.log(session);
+  const checkUserRole = async () => {
+    try {
+      const response = await fetch('/api/check-role', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: session.data?.user.email }),
+      });
+
+      if (!response.ok) {
+        console.error('Error:', response.status, response.statusText);
+        setIsLoading(false);
+        return;
+      }
+
+      const { role } = await response.json();
+
+      if (role === 'user') {
+        router.push('/dashboard');
+      } else if (role === 'admin') {
+        router.push('/admin');
+      } else if (role === 'faculty') {
+        return true;
+      }
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error fetching role:', error);
+      setIsLoading(false);
+    }
+  };
 
   const email = session.data?.user?.email;
 
@@ -86,6 +116,12 @@ export default function FacultyPage() {
     console.log('Sign out');
     redirect('/sign-in');
   };
+
+  const isFaculty = checkUserRole();
+
+  if (!isFaculty) {
+    router.push('/dashboard');
+  }
 
   return (
     <motion.div
