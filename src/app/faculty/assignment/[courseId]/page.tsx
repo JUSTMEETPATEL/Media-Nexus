@@ -158,6 +158,15 @@ export default function AssignmentPage() {
   if(!isFaculty){
     router.push('/');
   }
+  
+  if (!session.data) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <h1 className="text-2xl text-black font-bold">Unauthorized...</h1>
+        {/* <h5>You will be redirected in 5sec ...</h5> */}
+      </div>
+    );
+  }
 
   if (isSessionLoading) {
     return <Loader />;
