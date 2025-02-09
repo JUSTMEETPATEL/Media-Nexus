@@ -5,16 +5,27 @@ import { authClient } from '@/lib/auth-client';
 export async function POST(req: Request) {
   const { email, name, whatsappNumber, courseId, slotId } = await req.json();
 
-  console.log('Received data:', {email, name, whatsappNumber, courseId, slotId});
-
-  const { error } = await authClient.signIn.magicLink({
+  console.log('Received data:', {
     email,
-    callbackURL: '/dashboard', //redirect after successful login (optional)
+    name,
+    whatsappNumber,
+    courseId,
+    slotId,
   });
-  if (error) {
-    console.error('Error sending magic link:', error);
+
+  const response = await authClient.signIn.magicLink({
+    email,
+    callbackURL: '/dashboard',
+  });
+
+  console.log('Better Auth Response:', response);
+
+  if (response.error) {
+    console.error('Error sending magic link:', response.error);
     return NextResponse.json(
-      { message: 'Error sending magic link' },
+      {
+        message: `Better Auth Error: ${response.error.message || 'Unknown error'}`,
+      },
       { status: 500 }
     );
   }
