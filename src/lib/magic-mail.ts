@@ -10,6 +10,8 @@ async function sendMagicLink(email: string, magicLink: string): Promise<void> {
     },
   });
 
+  console.log('Sending magic link to:', email,"Magic Link:",magicLink);
+
   // Email content
   const mailOptions = {
     from: '"Media Nexus" <medianexus@srmorg.com>',
