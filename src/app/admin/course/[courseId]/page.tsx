@@ -184,7 +184,8 @@ const Page = () => {
         toast({ title: data.message || 'Failed to submit enquiry'});
       }
     } catch (error) {
-      toast({ title: 'Something went wrong' });
+      const errorMessage = error instanceof Error ? error.message : 'Failed to submit enquiry';
+      toast({ title: errorMessage });
     }
   };
   
