@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     console.error('Error sending magic link:', response.error);
     return NextResponse.json(
       {
-        message: `Better Auth Error: ${response.error.message || 'Unknown error'}`,
+        message: `Better Auth Error: ${response.error.message}`,
       },
       { status: 500 }
     );
