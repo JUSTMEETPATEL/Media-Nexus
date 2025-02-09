@@ -173,7 +173,7 @@ const Page = () => {
       const response = await fetch('/api/enquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, name, whatsappNumber, courseId, slotId }),
+        body: JSON.stringify({ email, name, whatsappNumber, courseId: parseInt(courseId), slotId }),
       });
   
       const data = await response.json();
