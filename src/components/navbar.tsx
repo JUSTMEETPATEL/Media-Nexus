@@ -142,7 +142,7 @@ export default function Navbar() {
       <div
         ref={dropdownRef}
         className={`xl:hidden absolute top-20 left-0 w-full bg-gray-900/95 backdrop-blur-md border-t border-gray-800 transform transition-all duration-300 ${
-          isOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+          isOpen ? "translate-y-0 opacity-100 visible" : "translate-y-0 opacity-0 invisible h-0"
         }`}
       >
         <div className="px-4 py-3 space-y-2">
