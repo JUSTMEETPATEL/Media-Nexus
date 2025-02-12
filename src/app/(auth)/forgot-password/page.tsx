@@ -32,8 +32,41 @@ const Page = () => {
     },
   });
 
+  async function checkUser(email: string): Promise<{ exists: boolean; message: string }> {
+    try {
+      const response = await fetch('/api/check-user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to check user');
+      }
+  
+      return await response.json();
+    } catch (error) {
+      console.error('Error checking user:', error);
+      return { exists: false, message: 'Error checking user' };
+    }
+  }
+  
+
   async function onSubmit(values: z.infer<typeof forgotPasswordFormSchema>) {
     const { email } = values;
+
+    const { exists } = await checkUser(email);
+
+  if (!exists) {
+    toast({
+      title: 'Error',
+      description: 'User does not exist. Please check your email.',
+    });
+    return;
+  }
+    
     const { data, error } = await authClient.forgetPassword(
       {
         email,
