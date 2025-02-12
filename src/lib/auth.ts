@@ -5,7 +5,7 @@ import { sendMagicLink } from './magic-mail';
 import prisma from './prisma';
 import { sendResetEmail } from './reset-email';
 export const auth = betterAuth({
-  trustedOrigins: ['https://medianexus.srmorg.com'],
+  trustedOrigins: ["http://localhost:3000"],
   database: prismaAdapter(prisma, {
     provider: 'postgresql',
   }),
