@@ -22,7 +22,7 @@ const mediaNexus = {
     "To inspire a passion for continuous learning and adaptability in the rapidly changing media industry.",
   ],
   about:
-    "The Media Nexus, a new venture of SRMIST-Ramapuram, is set to revolutionize learning opportunities for non-media students with the introduction of dynamic certificate courses. Recognizing the increasing interest in creative and technical media skills, these programs aim to provide hands-on training and foundational knowledge in diverse media arts disciplines. Designed specifically for students of Easwari Engineering College, the courses also extend an invitation to other interested learners, subject to availability.",
+    "The Media Nexus, a new venture of SRMIST-Ramapuram, is set to revolutionize learning opportunities for non-media students with the introduction of dynamic certificate courses. Recognizing the increasing interest in creative and technical media skills, these programs aim to provide hands-on training and foundational knowledge in diverse media arts disciplines.",
   courses: [
     {
       id: 1,
@@ -395,7 +395,7 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row gap-8">
               <div className="w-full md:w-1/2" data-aos="fade-up">
-                <Link href="/photo-gallery">
+                <Link href="/media">
                   <div className="relative overflow-hidden rounded-lg shadow-lg group h-80">
                     <Image
                       src="/gallery-1.jpeg"
