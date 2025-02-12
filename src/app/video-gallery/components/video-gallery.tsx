@@ -44,6 +44,16 @@ const videos = [
     youtubeId: 'kfSCy07Ok7w',
     title: 'Manjummel Boys team interaction - INTRODUCTION AV',
   },
+  {
+    id: 10,
+    youtubeId: '927wdNpf1DE',
+    title: `Ajith to act again in Vishnuvardhan's direction?`,
+  },
+  {
+    id: 11,
+    youtubeId: '41Shxjx-72M',
+    title: '"Media Nexus" Training Course Inaugurated at SRM Education Group | Chennai | Jaya Plus',
+  },
 ];
 
 export function VideoGallery() {
